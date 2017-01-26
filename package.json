@@ -1,0 +1,25 @@
+{
+  "name": "react-leaflet-markercluster",
+  "version": "1.0.0",
+  "description": "React wrapper of the official Leaflet.markercluster for react-laeflet",
+  "main": "lib/react-leaflet-markercluster.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YUzhva/react-leaflet-markercluster.git"
+  },
+  "keywords": [
+    "React",
+    "Leaflet",
+    "react-leaflet",
+    "markercluster",
+    "marker",
+    "cluster"
+  ],
+  "author": "Yevhen Uzhva",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/YUzhva/react-leaflet-markercluster/issues"
+  },
+  "homepage": "https://github.com/YUzhva/react-leaflet-markercluster#readme"
+}
