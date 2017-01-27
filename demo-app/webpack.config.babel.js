@@ -1,8 +1,12 @@
 module.exports = {
-  entry: './components/main.js',
+  entry: './main.js',
   output: {
     path: __dirname,
     filename: './dist/scripts.js'
+  },
+  devServer: {
+    port: 8080,
+    contentBase: __dirname
   },
   module: {
     rules: [{

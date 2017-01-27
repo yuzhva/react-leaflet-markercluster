@@ -23,5 +23,9 @@ module.exports = {
   },
   "env": {
     "browser": true
+  },
+  "globals": {
+    "module": false,
+    "__dirname": false
   }
 };
