@@ -10,22 +10,18 @@ module.exports = {
       "modules": true
     }
   },
-  "plugins": [
-    "react"
-  ],
+  "plugins": ["react"],
   "rules": {
     "react/jsx-uses-react": "error",
     "react/jsx-uses-vars": "error",
-    "indent": [
-      "error",
-      2
-    ],
+    "indent": ["error", 2]
   },
   "env": {
     "browser": true
   },
   "globals": {
     "module": false,
-    "__dirname": false
+    "__dirname": false,
+    "require": false
   }
 };
