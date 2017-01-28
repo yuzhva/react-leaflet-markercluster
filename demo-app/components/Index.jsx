@@ -7,7 +7,7 @@ export default class Index extends Component {
   render() {
     return (
       <main>
-        <h1>Hello world</h1>
+        <h3>Demo application of clustered marks with a help of react-leaflet-markercluster</h3>
 
         <MapExample/>
       </main>
