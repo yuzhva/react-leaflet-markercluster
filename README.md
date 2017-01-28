@@ -1,0 +1,74 @@
+React wrapper of the official [Leaflet.markercluster](https://github.com/Leaflet/Leaflet.markercluster)
+for [react-laeflet](https://github.com/PaulLeCam/react-leaflet)
+
+----------
+
+
+Description
+-------------
+
+If you faced with an issue that markers are overlapping during map zooming, or they are
+overlapping because they are close to each other - probably you need to cauterize them.
+That what you can do with **react-leaflet-markercluster** and **react-leaflet**.
+**DEMO:** https://yuzhva.github.io/react-leaflet-markercluster/
+
+> **Note:**
+
+> - At first, please get touched with [Leaflet Quick Start Guide](http://leafletjs.com/examples/quick-start/).
+> - and how to use leaflet in react with [react-leaflet Getting started](https://github.com/PaulLeCam/react-leaflet/blob/master/docs/Getting%20started.md).
+
+
+
+----------
+
+
+How to use
+-------------------
+
+**1.** Install package from npm:
+
+    npm install react-leaflet-markercluster --save
+
+**2.** Use .css style in your project from:
+*"./node_modules/react-leaflet-markercluster/src/style.css"*
+
+    <link src="./node_modules/react-leaflet-markercluster/src/style.css" rel="stylesheet"/>
+
+or if you are using SASS,  you can import style like:
+*"./node_modules/react-leaflet-markercluster/src/lib/style.sass"*
+
+    @import "./node_modules/react-leaflet-markercluster/src/lib/style";
+
+Notice: that during importing styles you can dropp extention name
+
+**3.** Import package to your component:
+
+    import MarkerClusterGroup from 'react-leaflet-markercluster';
+
+**4.** Declare some markers in next format:
+
+    const markers = [
+      {lat: 49.8397, lng: 24.0297},
+      {lat: 50.4501, lng: 30.5234},
+      {lat: 52.2297, lng: 21.0122},
+      {lat: 50.0647, lng: 19.9450},
+      {lat: 48.9226, lng: 24.7111},
+      {lat: 48.7164, lng: 21.2611},
+      {lat: 51.5, lng: -0.09},
+    ]
+
+**5.** Use MarkerClusterGroup inside ract-leaflet Map component:
+
+    <Map center={[49.8397, 24.0297]} zoom={3}>
+      <TileLayer
+        url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
+        attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'/>
+
+      <MarkerClusterGroup
+        markers={markers}
+        params={{enableDefaultStyle: true}}/>
+    </Map>
+
+
+P.S: Please feel free to browse files in demo-app folder - there is example of package usage.
+**Link for the code from "How to use" section:** https://github.com/YUzhva/react-leaflet-markercluster/blob/master/demo-app/components/MapExample.jsx
