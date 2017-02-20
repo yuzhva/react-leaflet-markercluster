@@ -24,7 +24,7 @@ export default class MapExample extends Component {
 
         <MarkerClusterGroup
           markers={markers}
-          params={{enableDefaultStyle: true}}/>
+          wrapperOptions={{enableDefaultStyle: true}}/>
       </Map>
     );
   }
