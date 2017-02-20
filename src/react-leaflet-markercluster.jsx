@@ -4,7 +4,7 @@ import {LayerGroup} from 'react-leaflet';
 import L from 'leaflet'
 import 'leaflet.markercluster';
 
-import './src/style.scss';
+import './style.scss';
 
 let prevMarkerClusterGroup;
 
@@ -25,7 +25,6 @@ export default class MarkerClusterGroup extends LayerGroup {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log('nextProps', nextProps);
     if (nextProps.markers && nextProps.markers.length) {
       this.props.map.removeLayer(prevMarkerClusterGroup);
       this.addMarkerClusterGroupToMap(nextProps.markers);

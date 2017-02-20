@@ -34,7 +34,7 @@
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-leaflet": "^1.1.0",
-    "react-leaflet-markercluster": "^1.0.4",
+    "react-leaflet-markercluster": "^1.0.5",
     "webpack": "^2.2.1",
     "webpack-dev-server": "^2.4.1"
   }

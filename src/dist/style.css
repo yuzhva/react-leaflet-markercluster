@@ -83,7 +83,3 @@
     -o-transition: -o-stroke-dashoffset 0.3s ease-out, -o-stroke-opacity 0.3s ease-in;
     transition: stroke-dashoffset 0.3s ease-out, stroke-opacity 0.3s ease-in;
 }
-
-.markercluster-map {
-    height: 350px;
-}
