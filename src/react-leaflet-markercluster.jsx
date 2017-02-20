@@ -8,20 +8,46 @@ import './../../src/style.scss';
 
 export default class MarkerClusterGroup extends LayerGroup {
 
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      oldClusteredMarkers: {}
+    };
+  }
+
   componentDidMount() {
     if (this.props.markers && this.props.markers.length) {
       this.addMarkerClusterGroupToMap(this.props.markers);
     }
 
-    if (this.props.wrapperOptions) {
-      this.props.wrapperOptions.enableDefaultStyle && (
-        this.props.map._container.className += ' marker-cluster-styled'
-      );
+    this.props.wrapperOptions.enableDefaultStyle && (
+      this.props.map._container.className += ' marker-cluster-styled'
+    );
 
-      !this.props.wrapperOptions.disableDefaultAnimation && (
-        this.props.map._container.className += ' marker-cluster-animated'
-      );
+    !this.props.wrapperOptions.disableDefaultAnimation && (
+      this.props.map._container.className += ' marker-cluster-animated'
+    );
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.markers && nextProps.markers.length) {
+      this.props.map.removeLayer(this.state.oldClusteredMarkers);
+      this._addClusteredMarkersLayerToMap(nextProps);
     }
+  }
+
+  removeMarkersWithSameCoordinates(markers) {
+    // init filtered markers list with first marker from list
+    let filteredMarkers = [markers[0]];
+
+    markers.forEach((marker) => {
+      if (!JSON.stringify(filteredMarkers).includes(JSON.stringify(marker))) {
+        filteredMarkers.push(marker);
+      }
+    });
+
+    return filteredMarkers;
   }
 
   addMarkerClusterGroupToMap(markers) {
@@ -31,7 +57,11 @@ export default class MarkerClusterGroup extends LayerGroup {
 
     var markerClusterGroup = L.markerClusterGroup(this.props.options);
 
-    markers.forEach((marker) => {
+    let filteredMarkers = this.props.wrapperOptions.removeDuplicates
+      ? this.removeMarkersWithSameCoordinates(markers)
+      : markers;
+
+    filteredMarkers.forEach((marker) => {
       let currentMarkerOptions = marker.options
         ? Object.assign({}, marker.options)
         : null ;

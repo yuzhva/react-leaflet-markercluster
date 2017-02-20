@@ -29,10 +29,15 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var MarkerClusterGroup = function (_LayerGroup) {
   _inherits(MarkerClusterGroup, _LayerGroup);
 
-  function MarkerClusterGroup() {
+  function MarkerClusterGroup(props) {
     _classCallCheck(this, MarkerClusterGroup);
 
-    return _possibleConstructorReturn(this, (MarkerClusterGroup.__proto__ || Object.getPrototypeOf(MarkerClusterGroup)).apply(this, arguments));
+    var _this = _possibleConstructorReturn(this, (MarkerClusterGroup.__proto__ || Object.getPrototypeOf(MarkerClusterGroup)).call(this, props));
+
+    _this.state = {
+      oldClusteredMarkers: {}
+    };
+    return _this;
   }
 
   _createClass(MarkerClusterGroup, [{
@@ -42,11 +47,31 @@ var MarkerClusterGroup = function (_LayerGroup) {
         this.addMarkerClusterGroupToMap(this.props.markers);
       }
 
-      if (this.props.wrapperOptions) {
-        this.props.wrapperOptions.enableDefaultStyle && (this.props.map._container.className += ' marker-cluster-styled');
+      this.props.wrapperOptions.enableDefaultStyle && (this.props.map._container.className += ' marker-cluster-styled');
 
-        !this.props.wrapperOptions.disableDefaultAnimation && (this.props.map._container.className += ' marker-cluster-animated');
+      !this.props.wrapperOptions.disableDefaultAnimation && (this.props.map._container.className += ' marker-cluster-animated');
+    }
+  }, {
+    key: 'componentWillReceiveProps',
+    value: function componentWillReceiveProps(nextProps) {
+      if (nextProps.markers && nextProps.markers.length) {
+        this.props.map.removeLayer(this.state.oldClusteredMarkers);
+        this._addClusteredMarkersLayerToMap(nextProps);
       }
+    }
+  }, {
+    key: 'removeMarkersWithSameCoordinates',
+    value: function removeMarkersWithSameCoordinates(markers) {
+      // init filtered markers list with first marker from list
+      var filteredMarkers = [markers[0]];
+
+      markers.forEach(function (marker) {
+        if (!JSON.stringify(filteredMarkers).includes(JSON.stringify(marker))) {
+          filteredMarkers.push(marker);
+        }
+      });
+
+      return filteredMarkers;
     }
   }, {
     key: 'addMarkerClusterGroupToMap',
@@ -55,7 +80,9 @@ var MarkerClusterGroup = function (_LayerGroup) {
 
       var markerClusterGroup = _leaflet2.default.markerClusterGroup(this.props.options);
 
-      markers.forEach(function (marker) {
+      var filteredMarkers = this.props.wrapperOptions.removeDuplicates ? this.removeMarkersWithSameCoordinates(markers) : markers;
+
+      filteredMarkers.forEach(function (marker) {
         var currentMarkerOptions = marker.options ? Object.assign({}, marker.options) : null;
 
         markerClusterGroup.addLayer(_leaflet2.default.marker([marker.lat, marker.lng], currentMarkerOptions || markersOptions));
