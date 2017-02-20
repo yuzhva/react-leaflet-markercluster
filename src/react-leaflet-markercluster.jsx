@@ -4,17 +4,11 @@ import {LayerGroup} from 'react-leaflet';
 import L from 'leaflet'
 import 'leaflet.markercluster';
 
-import './../../src/style.scss';
+import './src/style.scss';
+
+let prevMarkerClusterGroup;
 
 export default class MarkerClusterGroup extends LayerGroup {
-
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      oldClusteredMarkers: {}
-    };
-  }
 
   componentDidMount() {
     if (this.props.markers && this.props.markers.length) {
@@ -31,9 +25,10 @@ export default class MarkerClusterGroup extends LayerGroup {
   }
 
   componentWillReceiveProps(nextProps) {
+    console.log('nextProps', nextProps);
     if (nextProps.markers && nextProps.markers.length) {
-      this.props.map.removeLayer(this.state.oldClusteredMarkers);
-      this._addClusteredMarkersLayerToMap(nextProps);
+      this.props.map.removeLayer(prevMarkerClusterGroup);
+      this.addMarkerClusterGroupToMap(nextProps.markers);
     }
   }
 
@@ -66,11 +61,14 @@ export default class MarkerClusterGroup extends LayerGroup {
         ? Object.assign({}, marker.options)
         : null ;
 
-      markerClusterGroup.addLayer(
-        L.marker([marker.lat, marker.lng], currentMarkerOptions || markersOptions)
-      );
+      let leafletMarker = L.marker([marker.lat, marker.lng], currentMarkerOptions || markersOptions);
+
+      marker.popup && leafletMarker.bindPopup(marker.popup);
+
+      markerClusterGroup.addLayer(leafletMarker);
     });
 
+    prevMarkerClusterGroup = markerClusterGroup;
     this.props.map.addLayer(markerClusterGroup);
   }
 }

@@ -26,18 +26,15 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+var prevMarkerClusterGroup = void 0;
+
 var MarkerClusterGroup = function (_LayerGroup) {
   _inherits(MarkerClusterGroup, _LayerGroup);
 
-  function MarkerClusterGroup(props) {
+  function MarkerClusterGroup() {
     _classCallCheck(this, MarkerClusterGroup);
 
-    var _this = _possibleConstructorReturn(this, (MarkerClusterGroup.__proto__ || Object.getPrototypeOf(MarkerClusterGroup)).call(this, props));
-
-    _this.state = {
-      oldClusteredMarkers: {}
-    };
-    return _this;
+    return _possibleConstructorReturn(this, (MarkerClusterGroup.__proto__ || Object.getPrototypeOf(MarkerClusterGroup)).apply(this, arguments));
   }
 
   _createClass(MarkerClusterGroup, [{
@@ -54,9 +51,10 @@ var MarkerClusterGroup = function (_LayerGroup) {
   }, {
     key: 'componentWillReceiveProps',
     value: function componentWillReceiveProps(nextProps) {
+      console.log('nextProps', nextProps);
       if (nextProps.markers && nextProps.markers.length) {
-        this.props.map.removeLayer(this.state.oldClusteredMarkers);
-        this._addClusteredMarkersLayerToMap(nextProps);
+        this.props.map.removeLayer(prevMarkerClusterGroup);
+        this.addMarkerClusterGroupToMap(nextProps.markers);
       }
     }
   }, {
@@ -85,9 +83,14 @@ var MarkerClusterGroup = function (_LayerGroup) {
       filteredMarkers.forEach(function (marker) {
         var currentMarkerOptions = marker.options ? Object.assign({}, marker.options) : null;
 
-        markerClusterGroup.addLayer(_leaflet2.default.marker([marker.lat, marker.lng], currentMarkerOptions || markersOptions));
+        var leafletMarker = _leaflet2.default.marker([marker.lat, marker.lng], currentMarkerOptions || markersOptions);
+
+        marker.popup && leafletMarker.bindPopup(marker.popup);
+
+        markerClusterGroup.addLayer(leafletMarker);
       });
 
+      prevMarkerClusterGroup = markerClusterGroup;
       this.props.map.addLayer(markerClusterGroup);
     }
   }]);

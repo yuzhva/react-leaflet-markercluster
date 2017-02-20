@@ -31,15 +31,17 @@ How to use
 -------------------
 
 **1.** Install package from npm:
-
+```javascript
     npm install react-leaflet-markercluster --save
+```
 
 **2.** Import package to your component:
-
+```javascript
     import MarkerClusterGroup from 'react-leaflet-markercluster';
+```
 
 **3.** Declare some markers in next format:
-
+```javascript
     const markers = [
       {lat: 49.8397, lng: 24.0297},
       {lat: 50.4501, lng: 30.5234},
@@ -47,11 +49,12 @@ How to use
       {lat: 50.0647, lng: 19.9450},
       {lat: 48.9226, lng: 24.7111},
       {lat: 48.7164, lng: 21.2611},
-      {lat: 51.5, lng: -0.09},
+      {lat: 51.5, lng: -0.09, popup: "<b>Hello world!</b><br>I am a lonely marker."}
     ]
+```
 
-**5.** Use MarkerClusterGroup inside ract-leaflet Map component:
-
+**4.** Use MarkerClusterGroup inside ract-leaflet Map component:
+```javascript
     <Map center={[49.8397, 24.0297]} zoom={3}>
       <TileLayer
         url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
@@ -59,9 +62,16 @@ How to use
 
       <MarkerClusterGroup
         markers={markers}
-        params={{enableDefaultStyle: true}}/>
+        wrapperOptions={{enableDefaultStyle: true}}
     </Map>
+```
 
+If you would like customize the clustered markers with the default options from: https://github.com/Leaflet/Leaflet.markercluster#all-options
+
+**Please use options property like:**
+```javascript
+  <MarkerClusterGroup options={{showCoverageOnHover: false}}/>
+```
 
 P.S: Please feel free to browse files in demo-app folder - there is example of package usage.
 

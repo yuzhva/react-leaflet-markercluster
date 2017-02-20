@@ -26,7 +26,7 @@ const markers = [
   {lat: 50.0647, lng: 19.9450},
   {lat: 48.9226, lng: 24.7111},
   {lat: 48.7164, lng: 21.2611},
-  {lat: 51.5, lng: -0.09},
+  {lat: 51.5, lng: -0.09, popup: "<b>Hello world!</b><br>I am a lonely marker."}
 ]
 
 export default class MapExample extends Component {
