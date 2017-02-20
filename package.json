@@ -1,8 +1,8 @@
 {
   "name": "react-leaflet-markercluster",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "React wrapper of the official Leaflet.markercluster for react-laeflet",
-  "main": "src/react-leaflet-markercluster.js",
+  "main": "src/dist/react-leaflet-markercluster.js",
   "scripts": {},
   "repository": {
     "type": "git",
@@ -27,8 +27,10 @@
     "eslint-plugin-react": "^6.9.0"
   },
   "dependencies": {
+    "eslint": "^3.16.0",
+    "eslint-plugin-react": "^6.10.0",
     "leaflet": "^1.0.3",
-    "leaflet.markercluster": "^1.0.2",
+    "leaflet.markercluster": "^1.0.3",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-leaflet": "^1.1.0"

@@ -24,11 +24,18 @@
     "webpack-dev-server": "^2.2.0"
   },
   "dependencies": {
+    "babel-core": "^6.23.1",
+    "babel-loader": "^6.3.2",
+    "babel-preset-react": "^6.23.0",
+    "extract-text-webpack-plugin": "^2.0.0-rc.3",
     "leaflet": "^1.0.3",
-    "leaflet.markercluster": "^1.0.2",
+    "leaflet.markercluster": "^1.0.3",
+    "node-sass": "^4.5.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-leaflet": "^1.1.0",
-    "react-leaflet-markercluster": "^1.0.1"
+    "react-leaflet-markercluster": "^1.0.3",
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^2.4.1"
   }
 }

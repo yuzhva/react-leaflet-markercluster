@@ -1,3 +1,6 @@
+[![npm](https://img.shields.io/npm/v/react-leaflet-markercluster.svg)](https://www.npmjs.com/package/react-leaflet-markercluster)
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg?style=plastic)](https://github.com/YUzhva/react-leaflet-markercluster)
+
 React wrapper of the official [Leaflet.markercluster](https://github.com/Leaflet/Leaflet.markercluster)
 for [react-laeflet](https://github.com/PaulLeCam/react-leaflet)
 
@@ -10,6 +13,8 @@ Description
 If you faced with an issue that markers are overlapping during map zooming, or they are
 overlapping because they are close to each other - probably you need to cauterize them.
 That what you can do with **react-leaflet-markercluster** and **react-leaflet**.
+
+
 **DEMO:** https://yuzhva.github.io/react-leaflet-markercluster/
 
 > **Note:**
@@ -29,23 +34,11 @@ How to use
 
     npm install react-leaflet-markercluster --save
 
-**2.** Use .css style in your project from:
-*"./node_modules/react-leaflet-markercluster/src/style.css"*
-
-    <link src="./node_modules/react-leaflet-markercluster/src/style.css" rel="stylesheet"/>
-
-or if you are using SASS,  you can import style like:
-*"./node_modules/react-leaflet-markercluster/src/lib/style.sass"*
-
-    @import "./node_modules/react-leaflet-markercluster/src/lib/style";
-
-Notice: that during importing styles you can dropp extention name
-
-**3.** Import package to your component:
+**2.** Import package to your component:
 
     import MarkerClusterGroup from 'react-leaflet-markercluster';
 
-**4.** Declare some markers in next format:
+**3.** Declare some markers in next format:
 
     const markers = [
       {lat: 49.8397, lng: 24.0297},
@@ -71,4 +64,5 @@ Notice: that during importing styles you can dropp extention name
 
 
 P.S: Please feel free to browse files in demo-app folder - there is example of package usage.
+
 **Link for the code from "How to use" section:** https://github.com/YUzhva/react-leaflet-markercluster/blob/master/demo-app/components/MapExample.jsx
