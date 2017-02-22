@@ -3,7 +3,10 @@
   "version": "1.0.5",
   "description": "React wrapper of the official Leaflet.markercluster for react-laeflet",
   "main": "src/dist/react-leaflet-markercluster.js",
-  "scripts": {},
+  "scripts": {
+    "transpile": "babel src/*.js --out-file src/dist/react-leaflet-markercluster.js",
+    "sass": "npm-sass src/style.scss > src/dist/style.css"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/YUzhva/react-leaflet-markercluster.git"
@@ -23,6 +26,7 @@
   },
   "homepage": "https://github.com/YUzhva/react-leaflet-markercluster#readme",
   "devDependencies": {
+    "babel": "^6.23.0",
     "eslint": "^3.14.1",
     "eslint-plugin-react": "^6.9.0"
   },
@@ -31,6 +35,7 @@
     "eslint-plugin-react": "^6.10.0",
     "leaflet": "^1.0.3",
     "leaflet.markercluster": "^1.0.3",
+    "npm-sass": "^2.0.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-leaflet": "^1.1.0"
