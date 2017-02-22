@@ -64,6 +64,8 @@ export default class MarkerClusterGroup extends LayerGroup {
 
       marker.popup && leafletMarker.bindPopup(marker.popup);
 
+      marker.additionalData && (leafletMarker.additionalData = marker.additionalData);
+
       markerClusterGroup.addLayer(leafletMarker);
     });
 

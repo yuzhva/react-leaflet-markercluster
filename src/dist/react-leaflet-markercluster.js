@@ -86,6 +86,8 @@ var MarkerClusterGroup = function (_LayerGroup) {
 
         marker.popup && leafletMarker.bindPopup(marker.popup);
 
+        marker.additionalData && (leafletMarker.additionalData = marker.additionalData);
+
         markerClusterGroup.addLayer(leafletMarker);
       });
 
