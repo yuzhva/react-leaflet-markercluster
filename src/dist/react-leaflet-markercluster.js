@@ -16,7 +16,7 @@ var _leaflet2 = _interopRequireDefault(_leaflet);
 
 require('leaflet.markercluster');
 
-require('./style.css');
+require('./style.scss');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -44,15 +44,15 @@ var MarkerClusterGroup = function (_LayerGroup) {
         this.addMarkerClusterGroupToMap(this.props.markers);
       }
 
-      this.props.wrapperOptions.enableDefaultStyle && (this.props.map._container.className += ' marker-cluster-styled');
+      this.props.wrapperOptions.enableDefaultStyle && (this.context.map._container.className += ' marker-cluster-styled');
 
-      !this.props.wrapperOptions.disableDefaultAnimation && (this.props.map._container.className += ' marker-cluster-animated');
+      !this.props.wrapperOptions.disableDefaultAnimation && (this.context.map._container.className += ' marker-cluster-animated');
     }
   }, {
     key: 'componentWillReceiveProps',
     value: function componentWillReceiveProps(nextProps) {
       if (nextProps.markers && nextProps.markers.length) {
-        this.props.map.removeLayer(prevMarkerClusterGroup);
+        this.context.map.removeLayer(prevMarkerClusterGroup);
         this.addMarkerClusterGroupToMap(nextProps.markers);
       }
     }
@@ -90,7 +90,7 @@ var MarkerClusterGroup = function (_LayerGroup) {
       });
 
       prevMarkerClusterGroup = markerClusterGroup;
-      this.props.map.addLayer(markerClusterGroup);
+      this.context.map.addLayer(markerClusterGroup);
     }
   }]);
 
