@@ -8,7 +8,7 @@ import './style.scss';
 
 let prevMarkerClusterGroup;
 
-export default class MarkerClusterGroup extends MapLayer {
+export default class MarkerClusterGroup extends LayerGroup {
 
   componentDidMount() {
     if (this.props.markers && this.props.markers.length) {
@@ -26,7 +26,7 @@ export default class MarkerClusterGroup extends MapLayer {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.markers && nextProps.markers.length) {
-      this.context.map.removeLayer(prevMarkerClusterGroup);
+      this.layerContainer.removeLayer(prevMarkerClusterGroup);
       this.addMarkerClusterGroupToMap(nextProps.markers);
     }
   }
@@ -68,7 +68,7 @@ export default class MarkerClusterGroup extends MapLayer {
     });
 
     prevMarkerClusterGroup = markerClusterGroup;
-    this.context.map.addLayer(markerClusterGroup);
+    this.layerContainer.addLayer(markerClusterGroup);
   }
 }
 

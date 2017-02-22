@@ -28,8 +28,8 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 var prevMarkerClusterGroup = void 0;
 
-var MarkerClusterGroup = function (_MapLayer) {
-  _inherits(MarkerClusterGroup, _MapLayer);
+var MarkerClusterGroup = function (_LayerGroup) {
+  _inherits(MarkerClusterGroup, _LayerGroup);
 
   function MarkerClusterGroup() {
     _classCallCheck(this, MarkerClusterGroup);
@@ -52,7 +52,7 @@ var MarkerClusterGroup = function (_MapLayer) {
     key: 'componentWillReceiveProps',
     value: function componentWillReceiveProps(nextProps) {
       if (nextProps.markers && nextProps.markers.length) {
-        this.context.map.removeLayer(prevMarkerClusterGroup);
+        this.layerContainer.removeLayer(prevMarkerClusterGroup);
         this.addMarkerClusterGroupToMap(nextProps.markers);
       }
     }
@@ -90,12 +90,12 @@ var MarkerClusterGroup = function (_MapLayer) {
       });
 
       prevMarkerClusterGroup = markerClusterGroup;
-      this.context.map.addLayer(markerClusterGroup);
+      this.layerContainer.addLayer(markerClusterGroup);
     }
   }]);
 
   return MarkerClusterGroup;
-}(_reactLeaflet.MapLayer);
+}(LayerGroup);
 
 exports.default = MarkerClusterGroup;
 
