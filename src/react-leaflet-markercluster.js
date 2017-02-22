@@ -1,6 +1,6 @@
 import {PropTypes} from 'react';
 
-import {MapLayer} from 'react-leaflet';
+import {LayerGroup} from 'react-leaflet';
 import L from 'leaflet'
 import 'leaflet.markercluster';
 

@@ -95,7 +95,7 @@ var MarkerClusterGroup = function (_LayerGroup) {
   }]);
 
   return MarkerClusterGroup;
-}(LayerGroup);
+}(_reactLeaflet.LayerGroup);
 
 exports.default = MarkerClusterGroup;
 
