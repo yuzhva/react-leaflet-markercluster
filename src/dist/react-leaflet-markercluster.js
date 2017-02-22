@@ -16,7 +16,7 @@ var _leaflet2 = _interopRequireDefault(_leaflet);
 
 require('leaflet.markercluster');
 
-require('./style.scss');
+require('./style.css');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
