@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 
-import MapExample from './MapExample.jsx';
+import MapExample from './map-example';
 
 export default class Index extends Component {
   render() {
