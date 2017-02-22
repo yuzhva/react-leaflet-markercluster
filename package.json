@@ -57,6 +57,7 @@
     "leaflet": "^1.0.3",
     "leaflet.markercluster": "^1.0.3",
     "react": "^15.4.2",
+    "react-bootstrap": "^0.30.7",
     "react-leaflet": "^1.1.0"
   }
 }

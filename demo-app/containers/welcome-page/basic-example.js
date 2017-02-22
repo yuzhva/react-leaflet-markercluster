@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 import L from 'leaflet'
 import {Map, TileLayer} from 'react-leaflet';
 
-import MarkerClusterGroup from './../../src/react-leaflet-markercluster';
+import MarkerClusterGroup from './../../../src/react-leaflet-markercluster';
 
 const mapPosition = [49.8397, 24.0297];
 
@@ -29,7 +29,7 @@ const markers = [
   {lat: 51.5, lng: -0.09, popup: "<b>Hello world!</b><br>I am a lonely marker."}
 ]
 
-export default class MapExample extends Component {
+export default class BasicExample extends Component {
   render() {
     return (
       <Map className="markercluster-map" center={mapPosition} zoom={3}>
