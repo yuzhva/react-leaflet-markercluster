@@ -2,7 +2,7 @@
   "name": "react-leaflet-markercluster",
   "version": "1.0.5",
   "description": "React wrapper of the official Leaflet.markercluster for react-laeflet",
-  "main": "src/dist/react-leaflet-markercluster.js",
+  "main": "dist/react-leaflet-markercluster.min.js",
   "scripts": {
     "build:source": "gulp build",
     "build:gh-pages": "webpack",

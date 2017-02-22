@@ -38,6 +38,6 @@ module.exports = {
   },
   plugins: [
     new ExtractTextPlugin('./demo-app/dist/styles.css'),
-    new HtmlWebpackPlugin({template: './demo-app/index.html'})
+    new HtmlWebpackPlugin({template: './demo-app/index.template.html'})
   ]
 };
