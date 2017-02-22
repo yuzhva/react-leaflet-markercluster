@@ -1,6 +1,6 @@
 import {PropTypes} from 'react';
 
-import {LayerGroup} from 'react-leaflet';
+import {MapLayer} from 'react-leaflet';
 import L from 'leaflet'
 import 'leaflet.markercluster';
 
@@ -8,7 +8,7 @@ import './style.scss';
 
 let prevMarkerClusterGroup;
 
-export default class MarkerClusterGroup extends LayerGroup {
+export default class MarkerClusterGroup extends MapLayer {
 
   componentDidMount() {
     if (this.props.markers && this.props.markers.length) {

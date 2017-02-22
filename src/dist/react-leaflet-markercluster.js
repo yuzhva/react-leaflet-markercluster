@@ -16,7 +16,7 @@ var _leaflet2 = _interopRequireDefault(_leaflet);
 
 require('leaflet.markercluster');
 
-require('./style.css');
+require('./style.scss');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -28,8 +28,8 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 var prevMarkerClusterGroup = void 0;
 
-var MarkerClusterGroup = function (_LayerGroup) {
-  _inherits(MarkerClusterGroup, _LayerGroup);
+var MarkerClusterGroup = function (_MapLayer) {
+  _inherits(MarkerClusterGroup, _MapLayer);
 
   function MarkerClusterGroup() {
     _classCallCheck(this, MarkerClusterGroup);
@@ -95,7 +95,7 @@ var MarkerClusterGroup = function (_LayerGroup) {
   }]);
 
   return MarkerClusterGroup;
-}(_reactLeaflet.LayerGroup);
+}(_reactLeaflet.MapLayer);
 
 exports.default = MarkerClusterGroup;
 
