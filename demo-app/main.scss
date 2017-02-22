@@ -1,4 +1,16 @@
-// MapExample component styles
-.markercluster-map {
-  height: 350px;
+.welcome-page {
+  margin-top: 40px;
+
+  // MapExample component styles
+  .markercluster-map {
+    height: 350px;
+    margin-bottom: 10px;
+  }
+
+  // Overrite bootstrap pre tag style
+  .panel-body {
+    pre {
+      padding: 0;
+    }
+  }
 }
