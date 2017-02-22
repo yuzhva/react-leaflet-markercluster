@@ -16,17 +16,17 @@ export default class MarkerClusterGroup extends LayerGroup {
     }
 
     this.props.wrapperOptions.enableDefaultStyle && (
-      this.props.map._container.className += ' marker-cluster-styled'
+      this.context.map._container.className += ' marker-cluster-styled'
     );
 
     !this.props.wrapperOptions.disableDefaultAnimation && (
-      this.props.map._container.className += ' marker-cluster-animated'
+      this.context.map._container.className += ' marker-cluster-animated'
     );
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.markers && nextProps.markers.length) {
-      this.props.map.removeLayer(prevMarkerClusterGroup);
+      this.layerContainer.removeLayer(prevMarkerClusterGroup);
       this.addMarkerClusterGroupToMap(nextProps.markers);
     }
   }
@@ -68,7 +68,7 @@ export default class MarkerClusterGroup extends LayerGroup {
     });
 
     prevMarkerClusterGroup = markerClusterGroup;
-    this.props.map.addLayer(markerClusterGroup);
+    this.layerContainer.addLayer(markerClusterGroup);
   }
 }
 
