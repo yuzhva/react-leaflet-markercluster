@@ -1,10 +1,11 @@
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: './main.js',
+  entry: './demo-app/main.js',
   output: {
     path: __dirname,
-    filename: './dist/scripts.js'
+    filename: './demo-app/dist/scripts.js'
   },
   devServer: {
     port: 8080,
@@ -13,7 +14,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /.jsx?$/,
+        test: /.js?$/,
         loader: 'babel-loader',
         exclude: /node_modules/,
         query: {
@@ -36,6 +37,7 @@ module.exports = {
     ]
   },
   plugins: [
-    new ExtractTextPlugin('./dist/styles.css')
+    new ExtractTextPlugin('./demo-app/dist/styles.css'),
+    new HtmlWebpackPlugin({template: './demo-app/index.template.html'})
   ]
 };

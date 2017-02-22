@@ -3,18 +3,18 @@ import React, {Component} from 'react';
 import L from 'leaflet'
 import {Map, TileLayer} from 'react-leaflet';
 
-import MarkerClusterGroup from 'react-leaflet-markercluster';
+import MarkerClusterGroup from './../../src/react-leaflet-markercluster';
 
 const mapPosition = [49.8397, 24.0297];
 
 const redMarker = L.icon({
-  iconUrl: './../assets/icons/red-filled-marker.svg',
+  iconUrl: './demo-app/assets/icons/red-filled-marker.svg',
   iconSize: [40, 40],
   iconAnchor: [20, 20]
 });
 
 const transparentMarker = L.icon({
-  iconUrl: './../assets/icons/red-stroke-marker.svg',
+  iconUrl: './demo-app/assets/icons/red-stroke-marker.svg',
   iconSize: [40, 40],
   iconAnchor: [20, 20]
 });

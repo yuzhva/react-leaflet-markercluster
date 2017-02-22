@@ -2,7 +2,3 @@
 
 /npm-debug.log
 /node_modules
-
-/demo-app/node_modules
-/demo-app/npm-debug.log
-/demo-app/dist
