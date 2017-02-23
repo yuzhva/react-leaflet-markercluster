@@ -1,0 +1,49 @@
+import React from 'react';
+
+import L from 'leaflet'
+import {Map, TileLayer} from 'react-leaflet';
+
+import MarkerClusterGroup from './../../../src/react-leaflet-markercluster';
+
+const mapPosition = [49.8397, 24.0297];
+
+const redMarker = L.icon({
+  iconUrl: './demo-app/assets/icons/red-filled-marker.svg',
+  iconSize: [40, 40],
+  iconAnchor: [20, 20]
+});
+
+const transparentMarker = L.icon({
+  iconUrl: './demo-app/assets/icons/red-stroke-marker.svg',
+  iconSize: [40, 40],
+  iconAnchor: [20, 20]
+});
+
+const markers = [
+  {lat: 49.8397, lng: 24.0297},
+  {lat: 50.4501, lng: 30.5234},
+  {lat: 52.2297, lng: 21.0122, options: {title: 'Warszawa title on hover'}},
+  {lat: 50.0647, lng: 19.9450},
+  {lat: 48.9226, lng: 24.7111, options: {title: 'San Frankivsko title on hover'}},
+  {lat: 48.7164, lng: 21.2611},
+  {lat: 51.5, lng: -0.09, options: {icon: transparentMarker}},
+];
+
+// E.G. (Exempli Gratia)
+const MarkerOptionsEGTwo = () => {
+  return (
+    <Map className="markercluster-map" center={mapPosition} zoom={3}>
+      <TileLayer
+        url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
+        attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'/>
+
+      <MarkerClusterGroup
+        markers={markers}
+        wrapperOptions={{enableDefaultStyle: true}}
+        markerOptions={{icon: redMarker, title: 'Default title'}}
+      />
+    </Map>
+  );
+}
+
+export default MarkerOptionsEGTwo;

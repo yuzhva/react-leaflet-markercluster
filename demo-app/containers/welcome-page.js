@@ -1,5 +1,5 @@
 import React from 'react';
-import {Accordion, Panel} from 'react-bootstrap';
+import {Panel, ListGroup, ListGroupItem} from 'react-bootstrap';
 
 import BasicExample from './../components/basic-example';
 import MarkerOptions from './../components/marker-options';
@@ -7,17 +7,29 @@ import MarkerOptions from './../components/marker-options';
 const WelcomePage = () => {
   return (
     <div className="welcome-page container">
-      <Accordion defaultActiveKey={0}>
-        {getAccordionPanels()}
-      </Accordion>
+      <Panel collapsible defaultExpanded header="Contents">
+        <ListGroup fill>
+          {getContentItems()}
+        </ListGroup>
+      </Panel>
+      {getPanels()}
     </div>
   )
 };
+const getContentItems = () => {
+  return panelsList.map((item, index) => {
+    return (
+      <ListGroupItem key={`content-item-${index}`}>
+        <a href={`#${item.id}`}>{item.header}</a>
+      </ListGroupItem>
+    )
+  })
+};
 
-const getAccordionPanels = () => {
+const getPanels = () => {
   return panelsList.map((card, index) => {
     return (
-      <Panel header={card.header} eventKey={index} key={`panel-${index}`}>
+      <Panel id={card.id} header={card.header} key={`panel-${index}`} collapsible defaultExpanded>
         {card.component}
       </Panel>
     )
@@ -25,8 +37,12 @@ const getAccordionPanels = () => {
 };
 
 const panelsList = [
-  {header: 'Basic example', component: <BasicExample />},
-  {header: 'How to set custom options for marker?', component: <MarkerOptions />}
+  {id: 'basic-example', header: 'Basic example', component: <BasicExample />},
+  {
+    id: 'marker-options',
+    header: 'How to set custom options (like icon or title) for marker?',
+    component: <MarkerOptions />
+  }
 ];
 
 export default WelcomePage;
