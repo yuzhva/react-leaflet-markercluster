@@ -4,7 +4,7 @@
   "description": "React wrapper of the official Leaflet.markercluster for react-laeflet",
   "main": "src/dist/react-leaflet-markercluster.js",
   "scripts": {
-    "transpile": "babel src/*.js --out-file src/dist/react-leaflet-markercluster.js",
+    "transpile": "babel src/*.js --out-file src/dist/react-leaflet-markercluster.js && sed -i '' 's/scss/css/g' src/dist/react-leaflet-markercluster.js",
     "sass": "npm-sass src/style.scss > src/dist/style.css"
   },
   "repository": {

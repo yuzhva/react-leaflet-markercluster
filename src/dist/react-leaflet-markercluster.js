@@ -52,23 +52,11 @@ var MarkerClusterGroup = function (_LayerGroup) {
     key: 'componentWillReceiveProps',
     value: function componentWillReceiveProps(nextProps) {
       if (nextProps.markers && nextProps.markers.length) {
-        this.layerContainer.removeLayer(prevMarkerClusterGroup);
+        if (prevMarkerClusterGroup) {
+          this.layerContainer.removeLayer(prevMarkerClusterGroup);
+        }
         this.addMarkerClusterGroupToMap(nextProps.markers);
       }
-    }
-  }, {
-    key: 'removeMarkersWithSameCoordinates',
-    value: function removeMarkersWithSameCoordinates(markers) {
-      // init filtered markers list with first marker from list
-      var filteredMarkers = [markers[0]];
-
-      markers.forEach(function (marker) {
-        if (!JSON.stringify(filteredMarkers).includes(JSON.stringify(marker))) {
-          filteredMarkers.push(marker);
-        }
-      });
-
-      return filteredMarkers;
     }
   }, {
     key: 'addMarkerClusterGroupToMap',
@@ -77,9 +65,9 @@ var MarkerClusterGroup = function (_LayerGroup) {
 
       var markerClusterGroup = _leaflet2.default.markerClusterGroup(this.props.options);
 
-      var filteredMarkers = this.props.wrapperOptions.removeDuplicates ? this.removeMarkersWithSameCoordinates(markers) : markers;
+      var markerLayers = [];
 
-      filteredMarkers.forEach(function (marker) {
+      markers.forEach(function (marker) {
         var currentMarkerOptions = marker.options ? Object.assign({}, marker.options) : null;
 
         var leafletMarker = _leaflet2.default.marker([marker.lat, marker.lng], currentMarkerOptions || markersOptions);
@@ -88,8 +76,10 @@ var MarkerClusterGroup = function (_LayerGroup) {
 
         marker.additionalData && (leafletMarker.additionalData = marker.additionalData);
 
-        markerClusterGroup.addLayer(leafletMarker);
+        markerLayers.push(leafletMarker);
       });
+
+      markerClusterGroup.addLayers(markerLayers);
 
       prevMarkerClusterGroup = markerClusterGroup;
       this.layerContainer.addLayer(markerClusterGroup);

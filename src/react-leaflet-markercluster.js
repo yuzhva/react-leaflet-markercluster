@@ -26,22 +26,11 @@ export default class MarkerClusterGroup extends LayerGroup {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.markers && nextProps.markers.length) {
-      this.layerContainer.removeLayer(prevMarkerClusterGroup);
+      if (prevMarkerClusterGroup) {
+        this.layerContainer.removeLayer(prevMarkerClusterGroup);
+      }
       this.addMarkerClusterGroupToMap(nextProps.markers);
     }
-  }
-
-  removeMarkersWithSameCoordinates(markers) {
-    // init filtered markers list with first marker from list
-    let filteredMarkers = [markers[0]];
-
-    markers.forEach((marker) => {
-      if (!JSON.stringify(filteredMarkers).includes(JSON.stringify(marker))) {
-        filteredMarkers.push(marker);
-      }
-    });
-
-    return filteredMarkers;
   }
 
   addMarkerClusterGroupToMap(markers) {
@@ -51,11 +40,9 @@ export default class MarkerClusterGroup extends LayerGroup {
 
     var markerClusterGroup = L.markerClusterGroup(this.props.options);
 
-    let filteredMarkers = this.props.wrapperOptions.removeDuplicates
-      ? this.removeMarkersWithSameCoordinates(markers)
-      : markers;
+    var markerLayers = [];
 
-    filteredMarkers.forEach((marker) => {
+    markers.forEach((marker) => {
       let currentMarkerOptions = marker.options
         ? Object.assign({}, marker.options)
         : null ;
@@ -66,8 +53,10 @@ export default class MarkerClusterGroup extends LayerGroup {
 
       marker.additionalData && (leafletMarker.additionalData = marker.additionalData);
 
-      markerClusterGroup.addLayer(leafletMarker);
+      markerLayers.push(leafletMarker);
     });
+
+    markerClusterGroup.addLayers(markerLayers);
 
     prevMarkerClusterGroup = markerClusterGroup;
     this.layerContainer.addLayer(markerClusterGroup);
