@@ -59,6 +59,24 @@ const MarkerclusterOptions = () => {
             `}
       </Highlight>
 
+      <p>And don't forget about styles for your class:</p>
+
+      <Highlight className='css'>
+            {`
+    /* Customising the Clustered Markers */
+    .marker-cluster-custom {
+      background: #9370db;
+      border: 3px solid #ededed;
+      border-radius: 50%;
+      color: #ededed;
+      height: 40px;
+      line-height: 37px;
+      text-align: center;
+      width: 40px;
+    }
+            `}
+      </Highlight>
+
       <MarkerclusterOptionsEGOne />
 
       <div className="alert alert-warning" role="alert">
