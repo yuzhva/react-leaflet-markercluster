@@ -1,4 +1,32 @@
-// MapExample component styles
-.markercluster-map {
-  height: 350px;
+$puple: #9370db;
+$gray: #ededed;
+
+.welcome-page {
+  margin-top: 40px;
+
+  // MapExample component styles
+  .markercluster-map {
+    height: 350px;
+    margin-bottom: 10px;
+
+    // Customising the Clustered Markers
+    .marker-cluster-custom {
+      background: $puple;
+      border: 3px solid $gray;
+      border-radius: 50%;
+      color: $gray;
+      height: 40px;
+      line-height: 37px;
+      text-align: center;
+      width: 40px;
+    }
+  }
+
+
+  // Overrite bootstrap pre tag style
+  .panel-body {
+    pre {
+      padding: 0;
+    }
+  }
 }

@@ -1,5 +1,20 @@
-// Build React components with webpack
-import './components/index.js';
+import React, {Component} from 'react';
+import ReactDOM from 'react-dom';
 
-// Build styles with webpack
+import WelcomePage from './containers/welcome-page';
+
 import './main.scss';
+
+export default class Index extends Component {
+  render() {
+    return (
+      <main>
+        <WelcomePage />
+      </main>
+    );
+  }
+}
+
+ReactDOM.render(
+  <Index/>, document.getElementById('react-leaflet-markercluster_demo-app')
+);

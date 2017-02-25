@@ -40,3 +40,7 @@ gulp.task('uglify:style', () => {
     .pipe(rename({ suffix: '.min' }))
     .pipe(gulp.dest('./dist'));
 });
+
+gulp.task('demo-app:clean', () => {
+  return del(['./index.html', './demo-app/dist/**']);
+});
