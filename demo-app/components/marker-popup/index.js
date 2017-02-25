@@ -11,6 +11,8 @@ const MarkerPopup = () => {
 
       <Highlight className='javascript'>
             {`
+  import MarkerClusterGroup from 'react-leaflet-markercluster';
+
   // If you would like to add popup for marker
   // just pass popup key to marker object:
   const markers = [

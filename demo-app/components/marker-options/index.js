@@ -23,6 +23,7 @@ const BasicExample = () => {
       <Highlight className='javascript'>
             {`
   import L from 'leaflet'
+  import MarkerClusterGroup from 'react-leaflet-markercluster';
 
   // Create marker icon according to the official leaflet documentation
   const redMarker = L.icon({

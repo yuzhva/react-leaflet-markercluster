@@ -13,6 +13,7 @@ const MarkerclusterOptions = () => {
       <Highlight className='javascript'>
             {`
   import L from 'leaflet'
+  import MarkerClusterGroup from 'react-leaflet-markercluster';
 
   // Define markers list with REQUIRED 'lat' and 'lng' keys:
   const markers = [
