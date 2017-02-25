@@ -59,7 +59,7 @@ const MarkerclusterOptions = () => {
             `}
       </Highlight>
 
-      <p>And don't forget about styles for your class:</p>
+      <p>And do not forget about styles for your class:</p>
 
       <Highlight className='css'>
             {`

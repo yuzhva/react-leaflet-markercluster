@@ -23,7 +23,7 @@ const CustomOptions = () => {
         </li>
       </ul>
 
-      <p>Let's create some basic example:</p>
+      <p>Lets create some basic example:</p>
       <Highlight className='javascript'>
         {`
   import MarkerClusterGroup from 'react-leaflet-markercluster';
@@ -62,7 +62,7 @@ const CustomOptions = () => {
           </a>
       </div>
 
-      <p>Let's use some of the react-leaflet-markercluster wrapper option by sending
+      <p>Lets use some of the react-leaflet-markercluster wrapper option by sending
         &nbsp;<strong>wrapperOptions=""</strong> property to MarkerClusterGroup component:
       </p>
 

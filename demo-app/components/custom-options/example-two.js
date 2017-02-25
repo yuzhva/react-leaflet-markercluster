@@ -22,7 +22,7 @@ const wrapperOptions = {
 };
 
 // E.G. (Exempli Gratia)
-const CustomOptionsEGOne = () => {
+const CustomOptionsEGTwo = () => {
   return (
     <Map className="markercluster-map" center={mapPosition} zoom={4}>
       <TileLayer
@@ -37,4 +37,4 @@ const CustomOptionsEGOne = () => {
   );
 }
 
-export default CustomOptionsEGOne;
+export default CustomOptionsEGTwo;

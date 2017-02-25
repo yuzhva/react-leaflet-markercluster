@@ -4,7 +4,7 @@ import Highlight from 'react-highlight';
 import MarkerOptionsEGOne from './example-one';
 import MarkerOptionsEGTwo from './example-two';
 
-const BasicExample = () => {
+const MarkerOptions = () => {
   return (
     <div className="marker-options">
       <p>According to the official leaflet documentation, you could set some
@@ -134,4 +134,4 @@ const BasicExample = () => {
   )
 };
 
-export default BasicExample;
+export default MarkerOptions;
