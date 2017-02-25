@@ -2,6 +2,7 @@ import React from 'react';
 import {Panel, ListGroup, ListGroupItem} from 'react-bootstrap';
 
 import BasicExample from './../components/basic-example';
+import MarkerclusterOptions from './../components/markercluster-options';
 import MarkerOptions from './../components/marker-options';
 
 const WelcomePage = () => {
@@ -39,8 +40,13 @@ const getPanels = () => {
 const panelsList = [
   {id: 'basic-example', header: 'Basic example', component: <BasicExample />},
   {
+    id: 'markercluster-options',
+    header: 'How to set Leaflet.markercluster plugin options (custom icon for cluster)?',
+    component: <MarkerclusterOptions />
+  },
+  {
     id: 'marker-options',
-    header: 'How to set custom options (like icon or title) for marker?',
+    header: 'How to set custom options (like custom icon or title) for marker?',
     component: <MarkerOptions />
   }
 ];
