@@ -4,6 +4,7 @@ import {Panel, ListGroup, ListGroupItem} from 'react-bootstrap';
 import BasicExample from './../components/basic-example';
 import MarkerclusterOptions from './../components/markercluster-options';
 import MarkerOptions from './../components/marker-options';
+import MarkerPopup from './../components/marker-popup';
 
 const WelcomePage = () => {
   return (
@@ -48,6 +49,11 @@ const panelsList = [
     id: 'marker-options',
     header: 'How to set custom options (like custom icon or title) for marker?',
     component: <MarkerOptions />
+  },
+  {
+    id: 'marker-popup',
+    header: 'How to set marker popup?',
+    component: <MarkerPopup />
   }
 ];
 
