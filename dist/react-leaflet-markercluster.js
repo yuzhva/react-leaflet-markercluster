@@ -98,7 +98,8 @@ var MarkerClusterGroup = function (_LayerGroup) {
 
       prevMarkerClusterGroup = markerClusterGroup;
 
-      // Init event listeners for new layerContainer layer, because we have removed the previous
+      // Init event listeners for new layerContainer layer even when component receiving new props
+      // because we have removed the previous layer from layerContainer
       this.initEventListeners(markerClusterGroup);
     }
   }, {

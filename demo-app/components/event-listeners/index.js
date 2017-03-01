@@ -10,7 +10,7 @@ const EventListeners = () => {
       <p>There is only three events available for now:</p>
       <ul className="list-group">
         <li className="list-group-item">
-          <strong>onMarkerClick</strong> | reutrns: <strong>marker</strong> object
+          <strong>onMarkerClick</strong> | returns: <strong>marker</strong> object
           &nbsp;| <a href="http://leafletjs.com/reference-1.0.3.html#marker-method"
             className="alert-link"
             target="_blank">
@@ -19,7 +19,7 @@ const EventListeners = () => {
             </a>
         </li>
         <li className="list-group-item">
-          <strong>onClusterClick</strong> | reutrns: <strong>cluster</strong> object
+          <strong>onClusterClick</strong> | returns: <strong>cluster</strong> object
           &nbsp;| <a href="https://github.com/Leaflet/Leaflet.markercluster#clusters-methods"
             className="alert-link"
             target="_blank">
@@ -28,7 +28,7 @@ const EventListeners = () => {
             </a>
         </li>
         <li className="list-group-item">
-          <strong>onPopupClose</strong> | reutrns: <strong>popup</strong> object
+          <strong>onPopupClose</strong> | returns: <strong>popup</strong> object
           &nbsp;| <a href="http://leafletjs.com/reference-1.0.3.html#popup-method"
             className="alert-link"
             target="_blank">

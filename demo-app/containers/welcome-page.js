@@ -6,8 +6,8 @@ import MarkerclusterOptions from './../components/markercluster-options';
 import MarkerOptions from './../components/marker-options';
 import MarkerPopup from './../components/marker-popup';
 import MarkerTooltip from './../components/marker-tooltip';
-import CustomOptions from './../components/custom-options';
 import EventListeners from './../components/event-listeners';
+import CustomOptions from './../components/custom-options';
 
 const WelcomePage = () => {
   return (
