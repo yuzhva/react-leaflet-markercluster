@@ -1,6 +1,6 @@
 import React from 'react';
 
-import L from 'leaflet'
+import L from 'leaflet';
 import {Map, TileLayer} from 'react-leaflet';
 
 import MarkerClusterGroup from './../../../src/react-leaflet-markercluster';
@@ -28,7 +28,7 @@ const MarkerOptionsEGOne = () => {
   return (
     <Map className="markercluster-map" center={mapPosition} zoom={3}>
       <TileLayer
-        url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
+        url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'/>
 
       <MarkerClusterGroup
