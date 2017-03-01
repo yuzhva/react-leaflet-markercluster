@@ -17,7 +17,7 @@ const BasicEGOne = () => {
   return (
     <Map className="markercluster-map" center={mapPosition} zoom={4}>
       <TileLayer
-        url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
+        url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'/>
 
       <MarkerClusterGroup
