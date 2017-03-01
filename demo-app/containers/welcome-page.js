@@ -5,6 +5,7 @@ import BasicExample from './../components/basic-example';
 import MarkerclusterOptions from './../components/markercluster-options';
 import MarkerOptions from './../components/marker-options';
 import MarkerPopup from './../components/marker-popup';
+import MarkerTooltip from './../components/marker-tooltip';
 import CustomOptions from './../components/custom-options';
 
 const WelcomePage = () => {
@@ -55,6 +56,11 @@ const panelsList = [
     id: 'marker-popup',
     header: 'How to set marker popup?',
     component: <MarkerPopup />
+  },
+  {
+    id: 'marker-tooltip',
+    header: 'How to set marker tooltip?',
+    component: <MarkerTooltip />
   },
   {
     id: 'custom-options',

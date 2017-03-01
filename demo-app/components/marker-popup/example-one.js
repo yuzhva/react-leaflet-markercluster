@@ -1,6 +1,6 @@
 import React from 'react';
 
-import L from 'leaflet'
+import L from 'leaflet';
 import {Map, TileLayer} from 'react-leaflet';
 
 import MarkerClusterGroup from './../../../src/react-leaflet-markercluster';

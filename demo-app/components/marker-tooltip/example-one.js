@@ -7,24 +7,23 @@ import MarkerClusterGroup from './../../../src/react-leaflet-markercluster';
 
 const mapPosition = [51.0, 19.0];
 
-const redMarker = L.icon({
-  iconUrl: './demo-app/assets/icons/red-filled-marker.svg',
-  iconSize: [40, 40],
-  iconAnchor: [20, 20]
-});
+// Setting tooltip according to Leaflet documentation
+// http://leafletjs.com/reference-1.0.3.html#tooltip-l-tooltip
+const tooltipWithOptions = L.tooltip({direction: 'bottom'})
+.setContent('my tooltip text 2');
 
 const markers = [
-  {lat: 49.8397, lng: 24.0297, options: {icon: redMarker}},
+  {lat: 49.8397, lng: 24.0297, tooltip: 'my tooltip text 1'},
   {lat: 50.4501, lng: 30.5234},
-  {lat: 52.2297, lng: 21.0122, options: {title: 'Warszawa title on hover'}},
+  {lat: 52.2297, lng: 21.0122},
   {lat: 50.0647, lng: 19.9450},
-  {lat: 48.9226, lng: 24.7111, options: {title: 'San Frankivsko title on hover'}},
+  {lat: 48.9226, lng: 24.7111},
   {lat: 48.7164, lng: 21.2611},
-  {lat: 51.5, lng: -0.09, options: {icon: redMarker}},
+  {lat: 51.5, lng: -0.09, tooltip: tooltipWithOptions},
 ];
 
 // E.G. (Exempli Gratia)
-const MarkerOptionsEGOne = () => {
+const MarkerTooltipEGOne = () => {
   return (
     <Map className="markercluster-map" center={mapPosition} zoom={3}>
       <TileLayer
@@ -39,4 +38,4 @@ const MarkerOptionsEGOne = () => {
   );
 };
 
-export default MarkerOptionsEGOne;
+export default MarkerTooltipEGOne;
