@@ -52,7 +52,8 @@ var MarkerClusterGroup = function (_LayerGroup) {
     key: 'componentWillReceiveProps',
     value: function componentWillReceiveProps(nextProps) {
       if (nextProps.markers && nextProps.markers.length) {
-        this.layerContainer.removeLayer(prevMarkerClusterGroup);
+        // Remove layer only if MarkerClusterGroup was previously rendered
+        prevMarkerClusterGroup && this.layerContainer.removeLayer(prevMarkerClusterGroup);
         this.addMarkerClusterGroupToMap(nextProps.markers);
       }
     }
@@ -79,18 +80,23 @@ var MarkerClusterGroup = function (_LayerGroup) {
 
       var filteredMarkers = this.props.wrapperOptions.removeDuplicates ? this.removeMarkersWithSameCoordinates(markers) : markers;
 
+      var leafletMarkers = [];
+
       filteredMarkers.forEach(function (marker) {
         var currentMarkerOptions = marker.options ? Object.assign({}, marker.options) : null;
 
         var leafletMarker = _leaflet2.default.marker([marker.lat, marker.lng], currentMarkerOptions || markersOptions);
 
         marker.popup && leafletMarker.bindPopup(marker.popup);
+        marker.tooltip && leafletMarker.bindTooltip(marker.tooltip);
 
-        markerClusterGroup.addLayer(leafletMarker);
+        leafletMarkers.push(leafletMarker);
       });
 
-      prevMarkerClusterGroup = markerClusterGroup;
+      markerClusterGroup.addLayers(leafletMarkers);
       this.layerContainer.addLayer(markerClusterGroup);
+
+      prevMarkerClusterGroup = markerClusterGroup;
     }
   }]);
 
