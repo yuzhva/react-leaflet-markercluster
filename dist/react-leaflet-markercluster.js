@@ -97,6 +97,27 @@ var MarkerClusterGroup = function (_LayerGroup) {
       this.layerContainer.addLayer(markerClusterGroup);
 
       prevMarkerClusterGroup = markerClusterGroup;
+
+      // Init event listeners for new layerContainer layer even when component receiving new props
+      // because we have removed the previous layer from layerContainer
+      this.initEventListeners(markerClusterGroup);
+    }
+  }, {
+    key: 'initEventListeners',
+    value: function initEventListeners(markerClusterGroup) {
+      var _this2 = this;
+
+      this.props.onMarkerClick && markerClusterGroup.on('click', function (marker) {
+        _this2.props.onMarkerClick(marker.layer);
+      });
+
+      this.props.onClusterClick && markerClusterGroup.on('clusterclick', function (cluster) {
+        _this2.props.onClusterClick(cluster.layer);
+      });
+
+      this.props.onPopupClose && markerClusterGroup.on('popupclose', function (map) {
+        _this2.props.onPopupClose(map.popup);
+      });
     }
   }]);
 

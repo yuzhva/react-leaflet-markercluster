@@ -75,6 +75,30 @@ export default class MarkerClusterGroup extends LayerGroup {
     this.layerContainer.addLayer(markerClusterGroup);
 
     prevMarkerClusterGroup = markerClusterGroup;
+
+    // Init event listeners for new layerContainer layer even when component receiving new props
+    // because we have removed the previous layer from layerContainer
+    this.initEventListeners(markerClusterGroup);
+  }
+
+  initEventListeners(markerClusterGroup) {
+    this.props.onMarkerClick && (
+      markerClusterGroup.on('click', (marker) => {
+        this.props.onMarkerClick(marker.layer);
+      })
+    );
+
+    this.props.onClusterClick && (
+      markerClusterGroup.on('clusterclick', (cluster) => {
+        this.props.onClusterClick(cluster.layer);
+      })
+    );
+
+    this.props.onPopupClose && (
+      markerClusterGroup.on('popupclose', (map) => {
+        this.props.onPopupClose(map.popup);
+      })
+    );
   }
 }
 

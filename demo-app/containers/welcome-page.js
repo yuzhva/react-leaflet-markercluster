@@ -6,6 +6,7 @@ import MarkerclusterOptions from './../components/markercluster-options';
 import MarkerOptions from './../components/marker-options';
 import MarkerPopup from './../components/marker-popup';
 import MarkerTooltip from './../components/marker-tooltip';
+import EventListeners from './../components/event-listeners';
 import CustomOptions from './../components/custom-options';
 
 const WelcomePage = () => {
@@ -61,6 +62,11 @@ const panelsList = [
     id: 'marker-tooltip',
     header: 'How to set marker tooltip?',
     component: <MarkerTooltip />
+  },
+  {
+    id: 'event-listeners',
+    header: 'Event listeners of react-leaflet-markercluster wrapper.',
+    component: <EventListeners />
   },
   {
     id: 'custom-options',
