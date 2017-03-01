@@ -1,6 +1,10 @@
 engines:
   eslint:
     enabled: true
+  scss-lint:
+    enabled: true
+  csslint:
+    enabled: true
 
 exclude_paths:
 - "dist/"

@@ -1,6 +1,8 @@
 # React leaflet markercluster
 [![npm](https://img.shields.io/npm/v/react-leaflet-markercluster.svg)](
   https://www.npmjs.com/package/react-leaflet-markercluster)
+[![Code Climate](https://codeclimate.com/github/YUzhva/react-leaflet-markercluster/badges/gpa.svg)](
+  https://codeclimate.com/github/YUzhva/react-leaflet-markercluster)
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg?style=plastic)](
   https://github.com/YUzhva/react-leaflet-markercluster)
 
