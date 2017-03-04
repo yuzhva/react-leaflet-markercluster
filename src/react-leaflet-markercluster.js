@@ -65,8 +65,8 @@ export default class MarkerClusterGroup extends LayerGroup {
 
       let leafletMarker = L.marker([marker.lat, marker.lng], currentMarkerOptions || markersOptions);
 
-      marker.popup && leafletMarker.bindPopup(marker.popup);
-      marker.tooltip && leafletMarker.bindTooltip(marker.tooltip);
+      marker.popup && leafletMarker.bindPopup(marker.popup, marker.popupOptions);
+      marker.tooltip && leafletMarker.bindTooltip(marker.tooltip, marker.tooltipOptions);
 
       leafletMarkers.push(leafletMarker);
     });
