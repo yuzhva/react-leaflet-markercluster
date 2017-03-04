@@ -87,8 +87,8 @@ var MarkerClusterGroup = function (_LayerGroup) {
 
         var leafletMarker = _leaflet2.default.marker([marker.lat, marker.lng], currentMarkerOptions || markersOptions);
 
-        marker.popup && leafletMarker.bindPopup(marker.popup);
-        marker.tooltip && leafletMarker.bindTooltip(marker.tooltip);
+        marker.popup && leafletMarker.bindPopup(marker.popup, marker.popupOptions);
+        marker.tooltip && leafletMarker.bindTooltip(marker.tooltip, marker.tooltipOptions);
 
         leafletMarkers.push(leafletMarker);
       });
