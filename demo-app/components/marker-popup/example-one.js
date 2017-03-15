@@ -5,7 +5,7 @@ import {Map, TileLayer} from 'react-leaflet';
 
 import MarkerClusterGroup from './../../../src/react-leaflet-markercluster';
 
-const mapPosition = [51.0, 19.0];
+import {MAP_ZOOM, MAP_MAX_ZOOM, MAP_CENTER_COORDINATES} from './../../constants';
 
 const redMarker = L.icon({
   iconUrl: './demo-app/assets/icons/red-filled-marker.svg',
@@ -14,22 +14,28 @@ const redMarker = L.icon({
 });
 
 const markers = [
-  {lat: 49.8397, lng: 24.0297, popup: getPopup('clustered'), options: {icon: redMarker}},
+  {lat: 49.8397, lng: 24.0297, popup: getStringPopup('clustered'), options: {icon: redMarker}},
   {lat: 50.4501, lng: 30.5234},
   {lat: 52.2297, lng: 21.0122},
   {lat: 50.0647, lng: 19.9450},
   {lat: 48.9226, lng: 24.7111},
   {lat: 48.7164, lng: 21.2611},
-  {lat: 51.5, lng: -0.09, popup: getPopup('lonely')},
+  {lat: 51.5, lng: -0.09, popup: getLeafletPopup('lonely')},
 ];
 
 // E.G. (Exempli Gratia)
 const MarkerPopupEGOne = () => {
   return (
-    <Map className="markercluster-map" center={mapPosition} zoom={3}>
+    <Map
+      className="markercluster-map"
+      center={MAP_CENTER_COORDINATES}
+      zoom={MAP_ZOOM}
+      maxZoom={MAP_MAX_ZOOM}>
+
       <TileLayer
         url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
-        attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'/>
+        attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+      />
 
       <MarkerClusterGroup
         markers={markers}
@@ -39,13 +45,23 @@ const MarkerPopupEGOne = () => {
   );
 };
 
-function getPopup(name) {
+function getStringPopup(name) {
   return (`
     <div>
       <b>Hello world!</b>
       <p>I am a ${name} popup.</p>
     </div>
   `);
+}
+
+function getLeafletPopup(name) {
+  return L.popup({minWidth: 200, closeButton: false})
+    .setContent(`
+      <div>
+        <b>Hello world!</b>
+        <p>I am a ${name} popup.</p>
+      </div>
+    `);
 }
 
 export default MarkerPopupEGOne;

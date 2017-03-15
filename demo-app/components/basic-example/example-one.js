@@ -4,7 +4,7 @@ import {Map, TileLayer} from 'react-leaflet';
 
 import MarkerClusterGroup from './../../../src/react-leaflet-markercluster';
 
-const mapPosition = [51.0, 19.0];
+import {MAP_ZOOM, MAP_MAX_ZOOM, MAP_CENTER_COORDINATES} from './../../constants';
 
 const markers = [
   {lat: 49.8397, lng: 24.0297},
@@ -15,10 +15,16 @@ const markers = [
 // E.G. (Exempli Gratia)
 const BasicEGOne = () => {
   return (
-    <Map className="markercluster-map" center={mapPosition} zoom={4}>
+    <Map
+      className="markercluster-map"
+      center={MAP_CENTER_COORDINATES}
+      zoom={MAP_ZOOM}
+      maxZoom={MAP_MAX_ZOOM}>
+
       <TileLayer
         url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
-        attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'/>
+        attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+      />
 
       <MarkerClusterGroup
         markers={markers}
