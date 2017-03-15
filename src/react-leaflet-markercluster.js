@@ -104,13 +104,17 @@ export default class MarkerClusterGroup extends LayerGroup {
 
 MarkerClusterGroup.propTypes = {
   // List of markers with required lat and lng keys
-  markers: PropTypes.array,
-  // Leaflet.markercluster native options
+  markers: PropTypes.arrayOf(PropTypes.object),
+  // All available options for Leaflet.markercluster
   options: PropTypes.object,
+  // All available options for Leaflet.Marker
+  markerOptions: PropTypes.object,
   // Options that are supporting by react-leaflet-markercluster wrapper
   wrapperOptions: PropTypes.object,
-  // Used to display clickable/draggable icons on the map
-  markerOptions: PropTypes.object
+  // Events
+  onMarkerClick: PropTypes.func,
+  onClusterClick: PropTypes.func,
+  onPopupClose: PropTypes.func
 }
 
 MarkerClusterGroup.defaultProps = {

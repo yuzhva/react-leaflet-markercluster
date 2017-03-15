@@ -17,6 +17,7 @@ module.exports = {
     "indent": ["error", 2]
   },
   "env": {
+    "node":  true,
     "browser": true
   },
   "globals": {
