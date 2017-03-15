@@ -5,7 +5,9 @@ import {Map, TileLayer} from 'react-leaflet';
 
 import MarkerClusterGroup from './../../../src/react-leaflet-markercluster';
 
-const mapPosition = [51.0, 19.0];
+import {MAP_MAX_ZOOM} from './../../constants';
+const mapPosition = [51.0, 19.0]
+;
 
 const redMarker = L.icon({
   iconUrl: './demo-app/assets/icons/red-filled-marker.svg',
@@ -26,10 +28,16 @@ const markers = [
 // E.G. (Exempli Gratia)
 const MarkerPopupEGOne = () => {
   return (
-    <Map className="markercluster-map" center={mapPosition} zoom={3}>
+    <Map
+      className="markercluster-map"
+      center={mapPosition}
+      zoom={3}
+      maxZoom={MAP_MAX_ZOOM}>
+
       <TileLayer
         url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
-        attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'/>
+        attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+      />
 
       <MarkerClusterGroup
         markers={markers}
