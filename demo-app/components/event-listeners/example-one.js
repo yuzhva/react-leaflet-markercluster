@@ -4,9 +4,7 @@ import {Map, TileLayer} from 'react-leaflet';
 
 import MarkerClusterGroup from './../../../src/react-leaflet-markercluster';
 
-import {MAP_MAX_ZOOM} from './../../constants';
-
-const mapPosition = [51.0, 19.0];
+import {MAP_ZOOM, MAP_MAX_ZOOM, MAP_CENTER_COORDINATES} from './../../constants';
 
 const markers = [
   {lat: 49.8397, lng: 24.0297},
@@ -19,8 +17,8 @@ const EventListenersEGOne = () => {
   return (
     <Map
       className="markercluster-map"
-      center={mapPosition}
-      zoom={4}
+      center={MAP_CENTER_COORDINATES}
+      zoom={MAP_ZOOM}
       maxZoom={MAP_MAX_ZOOM}>
 
       <TileLayer
