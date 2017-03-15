@@ -16,13 +16,13 @@ const MarkerPopup = () => {
   // If you would like to add popup for marker
   // just pass popup key to marker object:
   const markers = [
-    {lat: 49.8397, lng: 24.0297, popup: getPopup('clustered'), options: {icon: redMarker}},
+    {lat: 49.8397, lng: 24.0297, popup: getStringPopup('clustered'), options: {icon: redMarker}},
     {lat: 50.4501, lng: 30.5234},
     {lat: 52.2297, lng: 21.0122},
     {lat: 50.0647, lng: 19.9450},
     {lat: 48.9226, lng: 24.7111},
     {lat: 48.7164, lng: 21.2611},
-    {lat: 51.5, lng: -0.09, popup: getPopup('lonely')},
+    {lat: 51.5, lng: -0.09, popup: getLeafletPopup('lonely')},
   ];
 
   // Template for getting popup html MarkerClusterGroup
@@ -34,6 +34,17 @@ const MarkerPopup = () => {
         <p>I am a \${name} popup.</p>
       </div>
     \`);
+  }
+
+  // that function returns Leaflet.Popup
+  function getLeafletPopup(name) {
+    return L.popup({minWidth: 200, closeButton: false})
+      .setContent(\`
+        <div>
+          <b>Hello world!</b>
+          <p>I am a \${name} popup.</p>
+        </div>
+      \`);
   }
 
   // Put <MarkerClusterGroup ... /> inside react-leaflet after <TileLayer />
