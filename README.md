@@ -100,6 +100,15 @@ and all plugin options.
 + `onClusterClick: function`
 + `onPopupClose: function`
 
+**Refs.** Accessing markerClusterGroup Leaflet element:
+```javascript
+<MarkerClusterGroup
+  markers={markers}
+  wrapperOptions={{enableDefaultStyle: true}}
+  ref={(markerClusterGroup) => { this.markerClusterGroup = markerClusterGroup.leafletElement }}
+/>
+```
+
 # How to run demo app
 **1.** Clone our repo:
 ```bash
