@@ -27,7 +27,9 @@ export default class MarkerClusterGroup extends LayerGroup {
   componentWillReceiveProps(nextProps) {
     if (nextProps.markers && nextProps.markers.length) {
       // Remove layer only if MarkerClusterGroup was previously rendered
-      prevMarkerClusterGroup && this.layerContainer.removeLayer(prevMarkerClusterGroup);
+      prevMarkerClusterGroup && this.layerContainer.removeLayer(
+        prevMarkerClusterGroup
+      );
       this.addMarkerClusterGroupToMap(nextProps.markers);
     }
   }
@@ -63,7 +65,10 @@ export default class MarkerClusterGroup extends LayerGroup {
         ? Object.assign({}, marker.options)
         : null ;
 
-      let leafletMarker = L.marker([marker.lat, marker.lng], currentMarkerOptions || markersOptions);
+      let leafletMarker = L.marker(
+        [marker.lat, marker.lng],
+        currentMarkerOptions || markersOptions
+      );
 
       marker.popup && leafletMarker.bindPopup(marker.popup);
       marker.tooltip && leafletMarker.bindTooltip(marker.tooltip);
@@ -76,9 +81,12 @@ export default class MarkerClusterGroup extends LayerGroup {
 
     prevMarkerClusterGroup = markerClusterGroup;
 
-    // Init event listeners for new layerContainer layer even when component receiving new props
+    // Init listeners for layerContainer even when component receiving new props
     // because we have removed the previous layer from layerContainer
     this.initEventListeners(markerClusterGroup);
+
+    // Override auto created leafletElement with L.markerClusterGroup element
+    this.leafletElement = markerClusterGroup;
   }
 
   initEventListeners(markerClusterGroup) {
@@ -99,6 +107,10 @@ export default class MarkerClusterGroup extends LayerGroup {
         this.props.onPopupClose(map.popup);
       })
     );
+  }
+
+  getLeafletElement() {
+    return this.leafletElement;
   }
 }
 

@@ -98,9 +98,12 @@ var MarkerClusterGroup = function (_LayerGroup) {
 
       prevMarkerClusterGroup = markerClusterGroup;
 
-      // Init event listeners for new layerContainer layer even when component receiving new props
+      // Init listeners for layerContainer even when component receiving new props
       // because we have removed the previous layer from layerContainer
       this.initEventListeners(markerClusterGroup);
+
+      // Override auto created leafletElement with L.markerClusterGroup element
+      this.leafletElement = markerClusterGroup;
     }
   }, {
     key: 'initEventListeners',
@@ -118,6 +121,11 @@ var MarkerClusterGroup = function (_LayerGroup) {
       this.props.onPopupClose && markerClusterGroup.on('popupclose', function (map) {
         _this2.props.onPopupClose(map.popup);
       });
+    }
+  }, {
+    key: 'getLeafletElement',
+    value: function getLeafletElement() {
+      return this.leafletElement;
     }
   }]);
 
