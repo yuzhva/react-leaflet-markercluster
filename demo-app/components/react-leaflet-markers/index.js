@@ -36,8 +36,8 @@ const ReactLeafletMarkers = () => {
     <MarkerClusterGroup
       wrapperOptions={{enableDefaultStyle: true}}
     >
-      {markers.map((marker, index) =>
-        <Marker key={index} position={[marker.lat, marker.lng]} icon={redMarker}>
+      {markers.map(marker =>
+        <Marker position={[marker.lat, marker.lng]} icon={redMarker} key={marker.id}>
           <Popup>
             <span>A pretty CSS3 popup. <br/> Easily customizable.</span>
           </Popup>
