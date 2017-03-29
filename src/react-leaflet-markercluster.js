@@ -14,9 +14,9 @@ export default class MarkerClusterGroup extends LayerGroup {
     const { markers } = this.props;
 
     // Flag to know if there are react-leaflet markers
-    const withReactLeafletMarkers = this.leafletMarkerReferences.length;
+    const hasReactLeafletMarkers = this.leafletMarkerReferences.length;
 
-    if (markers && markers.length || withReactLeafletMarkers) {
+    if (markers && markers.length || hasReactLeafletMarkers) {
       this.addMarkerClusterGroupToMap(markers);
     }
 
@@ -30,9 +30,9 @@ export default class MarkerClusterGroup extends LayerGroup {
   }
 
   componentWillReceiveProps(nextProps) {
-    const withReactLeafletMarkers = this.leafletMarkerReferences.length;
+    const hasReactLeafletMarkers = this.leafletMarkerReferences.length;
 
-    if (nextProps.markers && nextProps.markers.length || withReactLeafletMarkers) {
+    if (nextProps.markers && nextProps.markers.length || hasReactLeafletMarkers) {
       // Remove layer only if MarkerClusterGroup was previously rendered
       prevMarkerClusterGroup && this.layerContainer.removeLayer(
         prevMarkerClusterGroup
@@ -61,7 +61,7 @@ export default class MarkerClusterGroup extends LayerGroup {
       wrapperOptions
     } = this.props;
 
-    const withReactLeafletMarkers = this.leafletMarkerReferences.length;
+    const hasReactLeafletMarkers = this.leafletMarkerReferences.length;
 
     let markersOptions = 
       markerOptions ?
@@ -71,11 +71,10 @@ export default class MarkerClusterGroup extends LayerGroup {
     let markerClusterGroup = L.markerClusterGroup(options);
 
     let markersArr = 
-      withReactLeafletMarkers ?
+      hasReactLeafletMarkers ?
       this.leafletMarkerReferences :
       markers;
 
-    // Removed due to there isn't doc
     let filteredMarkers =
       wrapperOptions.removeDuplicates ?
       this.removeMarkersWithSameCoordinates(markersArr) :
@@ -89,7 +88,7 @@ export default class MarkerClusterGroup extends LayerGroup {
         null;
 
       let leafletMarker = 
-        withReactLeafletMarkers ? 
+        hasReactLeafletMarkers ? 
         marker :
         L.marker(
           [marker.lat, marker.lng],
@@ -139,15 +138,17 @@ export default class MarkerClusterGroup extends LayerGroup {
     return this.leafletElement;
   }
 
-  // Get Leaflet references from react-leaflet markers
   render() {
     const simulateToGetRefs = [];
+
     // Array that contains all leaflet marker instances 
     this.leafletMarkerReferences = [];
+
+    // Get Leaflet references from react-leaflet markers
     React.Children.map(this.props.children, (marker) =>
       simulateToGetRefs.push(
         React.cloneElement(marker, {
-          ref: ref => this.leafletMarkerReferences.push(ref.leafletElement),
+          ref: ref => this.leafletMarkerReferences.push(ref.leafletElement)
         }))
     )
     return (
