@@ -8,6 +8,8 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _react = require('react');
 
+var _react2 = _interopRequireDefault(_react);
+
 var _reactLeaflet = require('react-leaflet');
 
 var _leaflet = require('leaflet');
@@ -40,8 +42,14 @@ var MarkerClusterGroup = function (_LayerGroup) {
   _createClass(MarkerClusterGroup, [{
     key: 'componentDidMount',
     value: function componentDidMount() {
-      if (this.props.markers && this.props.markers.length) {
-        this.addMarkerClusterGroupToMap(this.props.markers);
+      var markers = this.props.markers;
+
+      // Flag to know if there are react-leaflet markers
+
+      var hasReactLeafletMarkers = this.leafletMarkerReferences.length;
+
+      if (markers && markers.length || hasReactLeafletMarkers) {
+        this.addMarkerClusterGroupToMap(markers);
       }
 
       this.props.wrapperOptions.enableDefaultStyle && (this.context.map._container.className += ' marker-cluster-styled');
@@ -51,7 +59,9 @@ var MarkerClusterGroup = function (_LayerGroup) {
   }, {
     key: 'componentWillReceiveProps',
     value: function componentWillReceiveProps(nextProps) {
-      if (nextProps.markers && nextProps.markers.length) {
+      var hasReactLeafletMarkers = this.leafletMarkerReferences.length;
+
+      if (nextProps.markers && nextProps.markers.length || hasReactLeafletMarkers) {
         // Remove layer only if MarkerClusterGroup was previously rendered
         prevMarkerClusterGroup && this.layerContainer.removeLayer(prevMarkerClusterGroup);
         this.addMarkerClusterGroupToMap(nextProps.markers);
@@ -64,7 +74,7 @@ var MarkerClusterGroup = function (_LayerGroup) {
       var filteredMarkers = [markers[0]];
 
       markers.forEach(function (marker) {
-        if (!JSON.stringify(filteredMarkers).includes(JSON.stringify(marker))) {
+        if (marker.lat && marker.lng && !JSON.stringify(filteredMarkers).includes(JSON.stringify(marker))) {
           filteredMarkers.push(marker);
         }
       });
@@ -74,18 +84,28 @@ var MarkerClusterGroup = function (_LayerGroup) {
   }, {
     key: 'addMarkerClusterGroupToMap',
     value: function addMarkerClusterGroupToMap(markers) {
-      var markersOptions = this.props.markerOptions ? Object.assign({}, this.props.markerOptions) : {};
+      var _props = this.props,
+          markerOptions = _props.markerOptions,
+          options = _props.options,
+          wrapperOptions = _props.wrapperOptions;
 
-      var markerClusterGroup = _leaflet2.default.markerClusterGroup(this.props.options);
 
-      var filteredMarkers = this.props.wrapperOptions.removeDuplicates ? this.removeMarkersWithSameCoordinates(markers) : markers;
+      var hasReactLeafletMarkers = this.leafletMarkerReferences.length;
+
+      var markersOptions = markerOptions ? Object.assign({}, markerOptions) : {};
+
+      var markerClusterGroup = _leaflet2.default.markerClusterGroup(options);
+
+      var markersArr = hasReactLeafletMarkers ? this.leafletMarkerReferences : markers;
+
+      var filteredMarkers = wrapperOptions.removeDuplicates ? this.removeMarkersWithSameCoordinates(markersArr) : markersArr;
 
       var leafletMarkers = [];
 
       filteredMarkers.forEach(function (marker) {
         var currentMarkerOptions = marker.options ? Object.assign({}, marker.options) : null;
 
-        var leafletMarker = _leaflet2.default.marker([marker.lat, marker.lng], currentMarkerOptions || markersOptions);
+        var leafletMarker = hasReactLeafletMarkers ? marker : _leaflet2.default.marker([marker.lat, marker.lng], currentMarkerOptions || markersOptions);
 
         marker.popup && leafletMarker.bindPopup(marker.popup);
         marker.tooltip && leafletMarker.bindTooltip(marker.tooltip);
@@ -126,6 +146,30 @@ var MarkerClusterGroup = function (_LayerGroup) {
     key: 'getLeafletElement',
     value: function getLeafletElement() {
       return this.leafletElement;
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this3 = this;
+
+      var simulateToGetRefs = [];
+
+      // Array that contains all leaflet marker instances 
+      this.leafletMarkerReferences = [];
+
+      // Get Leaflet references from react-leaflet markers
+      _react2.default.Children.map(this.props.children, function (marker) {
+        return simulateToGetRefs.push(_react2.default.cloneElement(marker, {
+          ref: function ref(_ref) {
+            return _this3.leafletMarkerReferences.push(_ref.leafletElement);
+          }
+        }));
+      });
+      return _react2.default.createElement(
+        'div',
+        null,
+        simulateToGetRefs
+      );
     }
   }]);
 
