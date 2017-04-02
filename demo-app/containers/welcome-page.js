@@ -2,7 +2,6 @@ import React from 'react';
 import {Panel, ListGroup, ListGroupItem} from 'react-bootstrap';
 
 import BasicExample from './../components/basic-example';
-import ReactLeafletMarkers from './../components/react-leaflet-markers';
 import MarkerclusterOptions from './../components/markercluster-options';
 import MarkerOptions from './../components/marker-options';
 import MarkerPopup from './../components/marker-popup';
@@ -44,11 +43,6 @@ const getPanels = () => {
 
 const panelsList = [
   {id: 'basic-example', header: 'Basic example', component: <BasicExample />},
-  {
-    id: 'react-leaflet-markers',
-    header: 'How to set react-leaflet markers?',
-    component: <ReactLeafletMarkers />
-  },
   {
     id: 'markercluster-options',
     header: 'How to set Leaflet.markercluster plugin options (custom icon for cluster)?',
