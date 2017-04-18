@@ -1,4 +1,4 @@
-import {PropTypes} from 'react';
+import React, {PropTypes, Children, cloneElement} from 'react';
 
 import {LayerGroup} from 'react-leaflet';
 import L from 'leaflet'
@@ -109,8 +109,40 @@ export default class MarkerClusterGroup extends LayerGroup {
     );
   }
 
+  renderReactLeafletMarkers() {
+    const leafletMarkers = [];
+    const markerClusterGroup = L.markerClusterGroup(this.props.options);
+
+    // Map trhrought all react-leaflet Markers and clone them with ref prop
+    // ref prop required to get leafletElement of Marker
+    return Children.map(this.props.children, (reactLeafletMarker, index) => (
+      cloneElement(reactLeafletMarker, {
+        ref: (marker) => {
+          leafletMarkers.push(marker.leafletElement);
+
+          if (
+            (index === (this.props.children.length - 1)) ||
+            typeof this.props.children === 'object'
+          ) {
+            markerClusterGroup.addLayers(leafletMarkers);
+            this.layerContainer.addLayer(markerClusterGroup);
+          }
+        },
+        key: `react-leaflet-marker-${index}`
+      })
+    ));
+  }
+
   getLeafletElement() {
     return this.leafletElement;
+  }
+
+  render() {
+    return (
+      <section className="marker-cluster-group">
+        {this.props.children && this.renderReactLeafletMarkers()}
+      </section>
+    )
   }
 }
 
