@@ -8,6 +8,12 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _react = require('react');
 
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 var _reactLeaflet = require('react-leaflet');
 
 var _leaflet = require('leaflet');
@@ -26,8 +32,6 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var prevMarkerClusterGroup = void 0;
-
 var MarkerClusterGroup = function (_LayerGroup) {
   _inherits(MarkerClusterGroup, _LayerGroup);
 
@@ -38,10 +42,13 @@ var MarkerClusterGroup = function (_LayerGroup) {
   }
 
   _createClass(MarkerClusterGroup, [{
-    key: 'componentDidMount',
-    value: function componentDidMount() {
+    key: 'componentWillMount',
+    value: function componentWillMount() {
+      // Override auto created leafletElement with L.markerClusterGroup element
+      this.leafletElement = _leaflet2.default.markerClusterGroup(this.props.options);
+
       if (this.props.markers && this.props.markers.length) {
-        this.addMarkerClusterGroupToMap(this.props.markers);
+        this.addLayersWithMarkersFromProps(this.props.markers);
       }
 
       this.props.wrapperOptions.enableDefaultStyle && (this.context.map._container.className += ' marker-cluster-styled');
@@ -52,9 +59,12 @@ var MarkerClusterGroup = function (_LayerGroup) {
     key: 'componentWillReceiveProps',
     value: function componentWillReceiveProps(nextProps) {
       if (nextProps.markers && nextProps.markers.length) {
-        // Remove layer only if MarkerClusterGroup was previously rendered
-        prevMarkerClusterGroup && this.layerContainer.removeLayer(prevMarkerClusterGroup);
-        this.addMarkerClusterGroupToMap(nextProps.markers);
+        // Remove layer from map with previously rendered clustered markers
+        this.layerContainer.removeLayer(this.leafletElement);
+        // Remove layers with markers from markerClusterGroup
+        this.leafletElement.clearLayers();
+
+        this.addLayersWithMarkersFromProps(nextProps.markers);
       }
     }
   }, {
@@ -72,11 +82,9 @@ var MarkerClusterGroup = function (_LayerGroup) {
       return filteredMarkers;
     }
   }, {
-    key: 'addMarkerClusterGroupToMap',
-    value: function addMarkerClusterGroupToMap(markers) {
+    key: 'addLayersWithMarkersFromProps',
+    value: function addLayersWithMarkersFromProps(markers) {
       var markersOptions = this.props.markerOptions ? Object.assign({}, this.props.markerOptions) : {};
-
-      var markerClusterGroup = _leaflet2.default.markerClusterGroup(this.props.options);
 
       var filteredMarkers = this.props.wrapperOptions.removeDuplicates ? this.removeMarkersWithSameCoordinates(markers) : markers;
 
@@ -93,17 +101,8 @@ var MarkerClusterGroup = function (_LayerGroup) {
         leafletMarkers.push(leafletMarker);
       });
 
-      markerClusterGroup.addLayers(leafletMarkers);
-      this.layerContainer.addLayer(markerClusterGroup);
-
-      prevMarkerClusterGroup = markerClusterGroup;
-
-      // Init listeners for layerContainer even when component receiving new props
-      // because we have removed the previous layer from layerContainer
-      this.initEventListeners(markerClusterGroup);
-
-      // Override auto created leafletElement with L.markerClusterGroup element
-      this.leafletElement = markerClusterGroup;
+      this.leafletElement.addLayers(leafletMarkers);
+      !this.props.children && this.addClusteredMarkersToMap();
     }
   }, {
     key: 'initEventListeners',
@@ -123,9 +122,54 @@ var MarkerClusterGroup = function (_LayerGroup) {
       });
     }
   }, {
+    key: 'addLayersWithReactLeafletMarkers',
+    value: function addLayersWithReactLeafletMarkers() {
+      var _this3 = this;
+
+      var leafletMarkers = [];
+
+      // Map trhrought all react-leaflet Markers and clone them with ref prop
+      // ref prop required to get leafletElement of Marker
+      return _react.Children.map(this.props.children, function (reactLeafletMarker, index) {
+        return (0, _react.cloneElement)(reactLeafletMarker, {
+          ref: function ref(marker) {
+            if (marker) {
+              leafletMarkers.push(marker.leafletElement);
+
+              if (index === _this3.props.children.length - 1 ||
+              // addClusteredMarkersToMap when there is only one marker
+              !Array.isArray(_this3.props.children)) {
+                _this3.leafletElement.addLayers(leafletMarkers);
+                _this3.addClusteredMarkersToMap();
+              }
+            }
+          },
+          key: 'react-leaflet-marker-' + index
+        });
+      });
+    }
+  }, {
+    key: 'addClusteredMarkersToMap',
+    value: function addClusteredMarkersToMap() {
+      this.layerContainer.addLayer(this.leafletElement);
+
+      // Init listeners for layerContainer even when component receiving new props
+      // because we have removed the previous layer from layerContainer
+      this.initEventListeners(this.leafletElement);
+    }
+  }, {
     key: 'getLeafletElement',
     value: function getLeafletElement() {
       return this.leafletElement;
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return this.props.children ? _react2.default.createElement(
+        'section',
+        { className: 'marker-cluster-group' },
+        this.addLayersWithReactLeafletMarkers()
+      ) : null;
     }
   }]);
 
@@ -137,17 +181,19 @@ exports.default = MarkerClusterGroup;
 
 MarkerClusterGroup.propTypes = {
   // List of markers with required lat and lng keys
-  markers: _react.PropTypes.arrayOf(_react.PropTypes.object),
+  markers: _propTypes2.default.arrayOf(_propTypes2.default.object),
+  // List of react-leaflet markers
+  children: _propTypes2.default.node,
   // All available options for Leaflet.markercluster
-  options: _react.PropTypes.object,
+  options: _propTypes2.default.object,
   // All available options for Leaflet.Marker
-  markerOptions: _react.PropTypes.object,
+  markerOptions: _propTypes2.default.object,
   // Options that are supporting by react-leaflet-markercluster wrapper
-  wrapperOptions: _react.PropTypes.object,
+  wrapperOptions: _propTypes2.default.object,
   // Events
-  onMarkerClick: _react.PropTypes.func,
-  onClusterClick: _react.PropTypes.func,
-  onPopupClose: _react.PropTypes.func
+  onMarkerClick: _propTypes2.default.func,
+  onClusterClick: _propTypes2.default.func,
+  onPopupClose: _propTypes2.default.func
 };
 
 MarkerClusterGroup.defaultProps = {
