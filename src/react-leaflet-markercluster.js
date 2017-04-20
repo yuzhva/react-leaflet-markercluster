@@ -104,7 +104,7 @@ export default class MarkerClusterGroup extends LayerGroup {
   addLayersWithReactLeafletMarkers() {
     const leafletMarkers = [];
 
-    // Map trhrought all react-leaflet Markers and clone them with ref prop
+    // Map through all react-leaflet Markers and clone them with ref prop
     // ref prop required to get leafletElement of Marker
     return Children.map(this.props.children, (reactLeafletMarker, index) => (
       cloneElement(reactLeafletMarker, {

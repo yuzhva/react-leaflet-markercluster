@@ -128,7 +128,7 @@ var MarkerClusterGroup = function (_LayerGroup) {
 
       var leafletMarkers = [];
 
-      // Map trhrought all react-leaflet Markers and clone them with ref prop
+      // Map through all react-leaflet Markers and clone them with ref prop
       // ref prop required to get leafletElement of Marker
       return _react.Children.map(this.props.children, function (reactLeafletMarker, index) {
         return (0, _react.cloneElement)(reactLeafletMarker, {

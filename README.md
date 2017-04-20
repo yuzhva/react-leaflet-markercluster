@@ -77,8 +77,8 @@ to enable default Leaflet.markercluster style for clustered markers group.
 [**Check demo**](https://yuzhva.github.io/react-leaflet-markercluster/) for more examples
 and all plugin options.
 
-P.S: support of react-leaflet Marker available as a testing feature.
-Just grab your markers with component like:
+**P.S:** support of react-leaflet Marker available as a testing feature.  
+Just grab your markers inside MarkerClusterGroup like:
 ```javascript
 <Map className="markercluster-map" center={[51.0, 19.0]} zoom={4} maxZoom={18}>
   <TileLayer
