@@ -114,7 +114,8 @@ export default class MarkerClusterGroup extends LayerGroup {
 
             if (
               (index === (this.props.children.length - 1)) ||
-              typeof this.props.children === 'object'
+              // addClusteredMarkersToMap when there is only one marker
+              !Array.isArray(this.props.children)
             ) {
               this.leafletElement.addLayers(leafletMarkers);
               this.addClusteredMarkersToMap();
@@ -139,11 +140,13 @@ export default class MarkerClusterGroup extends LayerGroup {
   }
 
   render() {
-    return (
+    return this.props.children
+    ? (
       <section className="marker-cluster-group">
-        {this.props.children && this.addLayersWithReactLeafletMarkers()}
+        {this.addLayersWithReactLeafletMarkers()}
       </section>
     )
+    : null;
   }
 }
 
