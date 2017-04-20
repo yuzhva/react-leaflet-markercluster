@@ -77,6 +77,23 @@ to enable default Leaflet.markercluster style for clustered markers group.
 [**Check demo**](https://yuzhva.github.io/react-leaflet-markercluster/) for more examples
 and all plugin options.
 
+**P.S:** support of react-leaflet Marker available as a testing feature.  
+Just grab your markers inside MarkerClusterGroup like:
+```javascript
+<Map className="markercluster-map" center={[51.0, 19.0]} zoom={4} maxZoom={18}>
+  <TileLayer
+    url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+    attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+  />
+
+  <MarkerClusterGroup wrapperOptions={{enableDefaultStyle: true}}>
+    <Marker position={[49.8397, 24.0297]} />
+    <Marker position={[52.2297, 21.0122]} />
+    <Marker position={[51.5074, -0.0901]} />
+  </MarkerClusterGroup>
+</Map>
+```
+
 # API
 * `markers: array of objects` (required)
 
@@ -105,7 +122,9 @@ and all plugin options.
 <MarkerClusterGroup
   markers={markers}
   wrapperOptions={{enableDefaultStyle: true}}
-  ref={(markerClusterGroup) => { this.markerClusterGroup = markerClusterGroup.leafletElement }}
+  ref={(markerClusterGroup) => {
+    this.markerClusterGroup = markerClusterGroup.leafletElement;
+  }}
 />
 ```
 

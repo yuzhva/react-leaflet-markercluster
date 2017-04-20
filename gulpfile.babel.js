@@ -17,7 +17,7 @@ gulp.task('dist:clean', () => {
 
 gulp.task('dist:script', () => {
   return gulp.src('./src/react-leaflet-markercluster.js')
-    .pipe(babel({presets: ['es2015']}))
+    .pipe(babel({presets: ['es2015', 'react']}))
     .pipe(gulp.dest('./dist'));
 });
 

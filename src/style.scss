@@ -6,4 +6,8 @@
   &-animated {
     @import './node_modules/leaflet.markercluster/dist/MarkerCluster';
   }
+
+  &-group {
+    display: none;
+  }
 }

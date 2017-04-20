@@ -10,7 +10,7 @@ import {MAP_ZOOM, MAP_MAX_ZOOM, MAP_CENTER_COORDINATES} from './../../constants'
 const redMarker = L.icon({
   iconUrl: './demo-app/assets/icons/red-filled-marker.svg',
   iconSize: [40, 40],
-  iconAnchor: [20, 20]
+  iconAnchor: [20, 40]
 });
 
 const markers = [
