@@ -29,7 +29,7 @@ const MarkerOptions = () => {
   const redMarker = L.icon({
     iconUrl: './demo-app/assets/icons/red-filled-marker.svg',
     iconSize: [40, 40],
-    iconAnchor: [20, 20]
+    iconAnchor: [20, 40]
   });
 
   // If you would like to add some specific options for marker
@@ -81,12 +81,12 @@ const MarkerOptions = () => {
   const redMarker = L.icon({
     iconUrl: './demo-app/assets/icons/red-filled-marker.svg',
     iconSize: [40, 40],
-    iconAnchor: [20, 20]
+    iconAnchor: [20, 40]
   });
   const transparentMarker = L.icon({
     iconUrl: './demo-app/assets/icons/red-stroke-marker.svg',
     iconSize: [40, 40],
-    iconAnchor: [20, 20]
+    iconAnchor: [20, 40]
   });
 
   // Define markers list with REQUIRE 'lat' and 'lng' keys.
