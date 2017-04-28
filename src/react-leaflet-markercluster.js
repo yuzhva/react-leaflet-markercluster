@@ -24,6 +24,9 @@ export default class MarkerClusterGroup extends LayerGroup {
     !this.props.wrapperOptions.disableDefaultAnimation && (
       this.context.map._container.className += ' marker-cluster-animated'
     );
+
+    // Init listeners for markerClusterGroup leafletElement only once
+    this.initEventListeners(this.leafletElement);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -77,8 +80,10 @@ export default class MarkerClusterGroup extends LayerGroup {
       leafletMarkers.push(leafletMarker);
     });
 
+    // Add markers leafletElements to the markerClusterGroup
     this.leafletElement.addLayers(leafletMarkers);
-    !this.props.children && this.addClusteredMarkersToMap();
+    // Add clustered markers to the leaflet map
+    !this.props.children && this.layerContainer.addLayer(this.leafletElement);
   }
 
   initEventListeners(markerClusterGroup) {
@@ -117,22 +122,16 @@ export default class MarkerClusterGroup extends LayerGroup {
               // addClusteredMarkersToMap when there is only one marker
               !Array.isArray(this.props.children)
             ) {
+              // Add markers leafletElements to the markerClusterGroup
               this.leafletElement.addLayers(leafletMarkers);
-              this.addClusteredMarkersToMap();
+              // Add clustered markers to the leaflet map
+              this.layerContainer.addLayer(this.leafletElement);
             }
           }
         },
         key: `react-leaflet-marker-${index}`
       })
     ));
-  }
-
-  addClusteredMarkersToMap() {
-    this.layerContainer.addLayer(this.leafletElement);
-
-    // Init listeners for layerContainer even when component receiving new props
-    // because we have removed the previous layer from layerContainer
-    this.initEventListeners(this.leafletElement);
   }
 
   getLeafletElement() {
