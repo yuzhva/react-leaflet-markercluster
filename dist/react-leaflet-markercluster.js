@@ -54,6 +54,9 @@ var MarkerClusterGroup = function (_LayerGroup) {
       this.props.wrapperOptions.enableDefaultStyle && (this.context.map._container.className += ' marker-cluster-styled');
 
       !this.props.wrapperOptions.disableDefaultAnimation && (this.context.map._container.className += ' marker-cluster-animated');
+
+      // Init listeners for markerClusterGroup leafletElement only once
+      this.initEventListeners(this.leafletElement);
     }
   }, {
     key: 'componentWillReceiveProps',
@@ -101,8 +104,10 @@ var MarkerClusterGroup = function (_LayerGroup) {
         leafletMarkers.push(leafletMarker);
       });
 
+      // Add markers leafletElements to the markerClusterGroup
       this.leafletElement.addLayers(leafletMarkers);
-      !this.props.children && this.addClusteredMarkersToMap();
+      // Add clustered markers to the leaflet map
+      !this.props.children && this.layerContainer.addLayer(this.leafletElement);
     }
   }, {
     key: 'initEventListeners',
@@ -139,23 +144,16 @@ var MarkerClusterGroup = function (_LayerGroup) {
               if (index === _this3.props.children.length - 1 ||
               // addClusteredMarkersToMap when there is only one marker
               !Array.isArray(_this3.props.children)) {
+                // Add markers leafletElements to the markerClusterGroup
                 _this3.leafletElement.addLayers(leafletMarkers);
-                _this3.addClusteredMarkersToMap();
+                // Add clustered markers to the leaflet map
+                _this3.layerContainer.addLayer(_this3.leafletElement);
               }
             }
           },
           key: 'react-leaflet-marker-' + index
         });
       });
-    }
-  }, {
-    key: 'addClusteredMarkersToMap',
-    value: function addClusteredMarkersToMap() {
-      this.layerContainer.addLayer(this.leafletElement);
-
-      // Init listeners for layerContainer even when component receiving new props
-      // because we have removed the previous layer from layerContainer
-      this.initEventListeners(this.leafletElement);
     }
   }, {
     key: 'getLeafletElement',
