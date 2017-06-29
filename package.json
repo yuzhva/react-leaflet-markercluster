@@ -12,14 +12,7 @@
     "type": "git",
     "url": "git+https://github.com/YUzhva/react-leaflet-markercluster.git"
   },
-  "keywords": [
-    "react",
-    "leaflet",
-    "react-leaflet",
-    "markercluster",
-    "marker",
-    "cluster"
-  ],
+  "keywords": ["react", "leaflet", "react-leaflet", "markercluster", "marker", "cluster"],
   "author": "Yevhen Uzhva",
   "license": "MIT",
   "bugs": {
@@ -53,9 +46,14 @@
     "sass-loader": "^4.1.1",
     "style-loader": "^0.13.2",
     "webpack": "^2.4.1",
-    "webpack-dev-server": "^2.4.5"
+    "webpack-dev-server": "^2.4.5",
+    "leaflet": "^1.0.3",
+    "leaflet.markercluster": "^1.0.4",
+    "prop-types": "^15.5.8",
+    "react": "^15.5.4",
+    "react-leaflet": "^1.1.3"
   },
-  "dependencies": {
+  "peerDependencies": {
     "leaflet": "^1.0.3",
     "leaflet.markercluster": "^1.0.4",
     "prop-types": "^15.5.8",
