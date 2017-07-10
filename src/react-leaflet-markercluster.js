@@ -13,7 +13,7 @@ export default class MarkerClusterGroup extends LayerGroup {
     // Override auto created leafletElement with L.markerClusterGroup element
     this.leafletElement = L.markerClusterGroup(this.props.options);
 
-    if (this.props.markers && this.props.markers.length) {
+    if (this.props.markers.length) {
       this.addLayersWithMarkersFromProps(this.props.markers);
     }
 
@@ -30,7 +30,7 @@ export default class MarkerClusterGroup extends LayerGroup {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.markers && nextProps.markers.length) {
+    if (nextProps.markers.length && !isArraysEqual(this.props.markers, nextProps.markers)) {
       // Remove layer from map with previously rendered clustered markers
       this.layerContainer.removeLayer(this.leafletElement);
       // Remove layers with markers from markerClusterGroup
@@ -149,6 +149,10 @@ export default class MarkerClusterGroup extends LayerGroup {
   }
 }
 
+function isArraysEqual(firstArray, secondArray) {
+  return (JSON.stringify(firstArray) === JSON.stringify(secondArray));
+}
+
 MarkerClusterGroup.propTypes = {
   // List of markers with required lat and lng keys
   markers: PropTypes.arrayOf(PropTypes.object),
@@ -167,5 +171,6 @@ MarkerClusterGroup.propTypes = {
 }
 
 MarkerClusterGroup.defaultProps = {
+  markers: [],
   wrapperOptions: {}
 };
