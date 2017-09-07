@@ -68,6 +68,11 @@ var MarkerClusterGroup = function (_LayerGroup) {
         this.leafletElement.clearLayers();
 
         this.addLayersWithMarkersFromProps(nextProps.markers);
+      } else if (!nextProps.markers.length && this.props.markers.length) {
+        // If the incoming markers props is an empty array & we currently have markers,
+        // clear the current layers (as per above), but without addint a new layer
+        this.layerContainer.removeLayer(this.leafletElement);
+        this.leafletElement.clearLayers();
       }
     }
   }, {
