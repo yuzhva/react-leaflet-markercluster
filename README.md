@@ -7,19 +7,19 @@
   https://www.npmjs.com/package/react-leaflet-markercluster)
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg?style=plastic)](#license)
 
-React wrapper of the official [Leaflet.markercluster](
+React wrapper for the official [Leaflet.markercluster](
 https://github.com/Leaflet/Leaflet.markercluster)
-for [react-laeflet](https://github.com/PaulLeCam/react-leaflet)
+for [react-leaflet](https://github.com/PaulLeCam/react-leaflet)
 
 **DEMO with examples:** https://yuzhva.github.io/react-leaflet-markercluster/
 
 # Description
 
-If you faced with an issue that markers are overlapping during map zooming, or they are
-overlapping because they are close to each other - probably you need to group them.
-That what you can do with **react-leaflet-markercluster**.
+If you are faced with an issue with markers overlapping during map zooming, or they are
+overlapping because they are close to each other - you probably need to group them.
+That is what you can do with **react-leaflet-markercluster**.
 
-> **Note: At first, please get touched with:**
+> **Note: Before getting started, please see these useful guides:**
 > - [Leaflet Quick Start Guide](
 http://leafletjs.com/examples/quick-start/).
 > - [react-leaflet Getting started](
@@ -38,7 +38,7 @@ https://github.com/PaulLeCam/react-leaflet/blob/master/docs/Getting%20started.md
 ```bash
 yarn add react-leaflet-markercluster
 ```
-or you could use npm:
+or you can use npm:
 ```bash
 npm install react-leaflet-markercluster --save
 ```
@@ -138,7 +138,7 @@ git clone https://github.com/YUzhva/react-leaflet-markercluster.git
 ```bash
 yarn install --no-lockfile
 ```
-or you could use npm:
+or you can use npm:
 ```bash
 npm install
 ```
@@ -148,7 +148,7 @@ npm install
 npm run start
 ```
 
-**4.** After starting the server webpack should automatically open next address:
+**4.** After starting the server, webpack should automatically open the following address:
 ```
 http://localhost:8080/
 ```
