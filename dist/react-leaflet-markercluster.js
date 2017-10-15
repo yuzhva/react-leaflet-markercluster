@@ -61,18 +61,13 @@ var MarkerClusterGroup = function (_LayerGroup) {
   }, {
     key: 'componentWillReceiveProps',
     value: function componentWillReceiveProps(nextProps) {
-      if (nextProps.markers.length && !isArraysEqual(this.props.markers, nextProps.markers)) {
+      if (!isArraysEqual(this.props.markers, nextProps.markers)) {
         // Remove layer from map with previously rendered clustered markers
         this.layerContainer.removeLayer(this.leafletElement);
         // Remove layers with markers from markerClusterGroup
         this.leafletElement.clearLayers();
 
-        this.addLayersWithMarkersFromProps(nextProps.markers);
-      } else if (!nextProps.markers.length && this.props.markers.length) {
-        // If the incoming markers props is an empty array & we currently have markers,
-        // clear the current layers (as per above), but without adding a new layer
-        this.layerContainer.removeLayer(this.leafletElement);
-        this.leafletElement.clearLayers();
+        nextProps.markers.length && this.addLayersWithMarkersFromProps(nextProps.markers);
       }
     }
   }, {
