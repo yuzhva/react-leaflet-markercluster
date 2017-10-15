@@ -4721,7 +4721,7 @@ prop-types@^15.5.10:
     fbjs "^0.8.9"
     loose-envify "^1.3.1"
 
-prop-types@^15.5.6, prop-types@^15.5.7, prop-types@^15.5.8, prop-types@~15.5.7:
+prop-types@^15.5.6, prop-types@^15.5.8:
   version "15.5.8"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.5.8.tgz#6b7b2e141083be38c8595aa51fc55775c7199394"
   dependencies:
@@ -4834,15 +4834,6 @@ react-bootstrap@^0.31.0:
     uncontrollable "^4.1.0"
     warning "^3.0.0"
 
-react-dom@^15.5.4:
-  version "15.5.4"
-  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-15.5.4.tgz#ba0c28786fd52ed7e4f2135fe0288d462aef93da"
-  dependencies:
-    fbjs "^0.8.9"
-    loose-envify "^1.1.0"
-    object-assign "^4.1.0"
-    prop-types "~15.5.7"
-
 react-dom@^16.0.0:
   version "16.0.0"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.0.0.tgz#9cc3079c3dcd70d4c6e01b84aab2a7e34c303f58"
@@ -4852,13 +4843,11 @@ react-dom@^16.0.0:
     object-assign "^4.1.1"
     prop-types "^15.6.0"
 
-react-highlight@^0.10.0:
+react-highlight@briancappello/react-highlight#react-v16-compiled:
   version "0.10.0"
-  resolved "https://registry.yarnpkg.com/react-highlight/-/react-highlight-0.10.0.tgz#d386f9dceab867dc0dcc2364153fb1cc7645d046"
+  resolved "https://codeload.github.com/briancappello/react-highlight/tar.gz/a1812a5842396f9561abaed4a9bc55c1cfd624d3"
   dependencies:
     highlight.js "^9.11.0"
-    react "^15.5.4"
-    react-dom "^15.5.4"
 
 react-leaflet@^1.4.0:
   version "1.4.0"
@@ -4883,15 +4872,6 @@ react-prop-types@^0.4.0:
   resolved "https://registry.yarnpkg.com/react-prop-types/-/react-prop-types-0.4.0.tgz#f99b0bfb4006929c9af2051e7c1414a5c75b93d0"
   dependencies:
     warning "^3.0.0"
-
-react@^15.5.4:
-  version "15.5.4"
-  resolved "https://registry.yarnpkg.com/react/-/react-15.5.4.tgz#fa83eb01506ab237cdc1c8c3b1cea8de012bf047"
-  dependencies:
-    fbjs "^0.8.9"
-    loose-envify "^1.1.0"
-    object-assign "^4.1.0"
-    prop-types "^15.5.7"
 
 react@^16.0.0:
   version "16.0.0"
