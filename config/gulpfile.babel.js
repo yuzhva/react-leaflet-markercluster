@@ -42,5 +42,5 @@ gulp.task('uglify:style', () => (
 ));
 
 gulp.task('demo-app:clean', () => (
-  del(['./index.html', './demo-app/dist/**'])
+  del(['./index.html', './../../**'])
 ));

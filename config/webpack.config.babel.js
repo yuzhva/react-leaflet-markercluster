@@ -1,15 +1,19 @@
+import path from 'path';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 
+const rootPath = path.join(__dirname, '..');
+const demoAppPath = path.join(rootPath, 'demo-app');
+
 module.exports = {
-  entry: './demo-app/main.js',
+  entry: path.join(demoAppPath, 'main.js'),
   output: {
-    path: __dirname,
-    filename: './demo-app/dist/scripts.js',
+    path: demoAppPath,
+    filename: 'scripts.js',
   },
   devServer: {
     port: 8080,
-    contentBase: __dirname,
+    contentBase: rootPath,
   },
   module: {
     rules: [
