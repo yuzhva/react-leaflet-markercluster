@@ -5,6 +5,7 @@ import {LayerGroup} from 'react-leaflet';
 import L from 'leaflet'
 import 'leaflet.markercluster';
 
+// TODO: remove from v1.2.0 because of deprecated wrapperOptions prop
 import './style.scss';
 
 export default class MarkerClusterGroup extends LayerGroup {
@@ -13,17 +14,12 @@ export default class MarkerClusterGroup extends LayerGroup {
     // Override auto created leafletElement with L.markerClusterGroup element
     this.leafletElement = L.markerClusterGroup(this.props.options);
 
+    // TODO: remove from v1.2.0 because of deprecated wrapperOptions prop
+    this.initMapClasses();
+
     if (this.props.markers.length) {
       this.addLayersWithMarkersFromProps(this.props.markers);
     }
-
-    this.props.wrapperOptions.enableDefaultStyle && (
-      this.context.map._container.className += ' marker-cluster-styled'
-    );
-
-    !this.props.wrapperOptions.disableDefaultAnimation && (
-      this.context.map._container.className += ' marker-cluster-animated'
-    );
 
     // Init listeners for markerClusterGroup leafletElement only once
     this.initEventListeners(this.leafletElement);
@@ -37,6 +33,23 @@ export default class MarkerClusterGroup extends LayerGroup {
       this.leafletElement.clearLayers();
 
       nextProps.markers.length && this.addLayersWithMarkersFromProps(nextProps.markers);
+    }
+  }
+
+  initMapClasses() {
+    const {wrapperOptions} = this.props;
+    if (wrapperOptions) {
+      const mapClassName = this.context.map._container.className;
+      const isStyledClassAppliyed = mapClassName.indexOf('marker-cluster-styled') !== -1;
+      const isAnimatedClassAppliyed = mapClassName.indexOf('marker-cluster-animated') !== -1;
+
+      wrapperOptions.enableDefaultStyle && !isStyledClassAppliyed && (
+        this.context.map._container.className += ' marker-cluster-styled'
+      );
+
+      !wrapperOptions.disableDefaultAnimation && !isAnimatedClassAppliyed && (
+        this.context.map._container.className += ' marker-cluster-animated'
+      );
     }
   }
 
@@ -54,11 +67,14 @@ export default class MarkerClusterGroup extends LayerGroup {
   }
 
   addLayersWithMarkersFromProps(markers) {
-    let markersOptions = this.props.markerOptions
-      ? Object.assign({}, this.props.markerOptions)
+    const {markerOptions, wrapperOptions, children} = this.props;
+
+    let markersOptions = markerOptions
+      ? Object.assign({}, markerOptions)
       : {};
 
-    let filteredMarkers = this.props.wrapperOptions.removeDuplicates
+    // TODO: remove from v1.2.0 because of deprecated wrapperOptions prop
+    let filteredMarkers = wrapperOptions && wrapperOptions.removeDuplicates
       ? this.removeMarkersWithSameCoordinates(markers)
       : markers;
 
@@ -83,7 +99,7 @@ export default class MarkerClusterGroup extends LayerGroup {
     // Add markers leafletElements to the markerClusterGroup
     this.leafletElement.addLayers(leafletMarkers);
     // Add clustered markers to the leaflet map
-    !this.props.children && this.layerContainer.addLayer(this.leafletElement);
+    !children && this.layerContainer.addLayer(this.leafletElement);
   }
 
   initEventListeners(markerClusterGroup) {
@@ -172,5 +188,4 @@ MarkerClusterGroup.propTypes = {
 
 MarkerClusterGroup.defaultProps = {
   markers: [],
-  wrapperOptions: {}
 };
