@@ -166,7 +166,7 @@ export default class MarkerClusterGroup extends LayerGroup {
             }
           }
         },
-        key: `react-leaflet-marker-${index}`,
+        key: `react-leaflet-marker-${JSON.stringify(reactLeafletMarker.props.position)}-${index}`,
       })
     ));
   }
