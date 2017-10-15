@@ -43,11 +43,7 @@ const MarkerOptionsEGTwo = () => (
       attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
     />
 
-    <MarkerClusterGroup
-      markers={markers}
-      wrapperOptions={{ enableDefaultStyle: true }}
-      markerOptions={{ icon: redMarker, title: 'Default title' }}
-    />
+    <MarkerClusterGroup markers={markers} markerOptions={{ icon: redMarker, title: 'Default title' }} />
   </Map>
 );
 

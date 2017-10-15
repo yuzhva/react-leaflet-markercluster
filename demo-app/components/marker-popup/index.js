@@ -53,7 +53,7 @@ function getLeafletPopup(name) {
     attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
   />
 
-    <MarkerClusterGroup markers={markers} wrapperOptions={{ enableDefaultStyle: true }} />
+    <MarkerClusterGroup markers={markers} />
 </Map>
       `}
     </Highlight>

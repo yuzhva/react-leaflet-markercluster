@@ -6,7 +6,6 @@ import MarkerOptions from './../../components/marker-options';
 import MarkerPopup from './../../components/marker-popup';
 import MarkerTooltip from './../../components/marker-tooltip';
 import EventListeners from './../../components/event-listeners';
-import CustomOptions from './../../components/custom-options';
 
 export default [
   {
@@ -33,9 +32,5 @@ export default [
     id: 'event-listeners',
     header: 'Event listeners of react-leaflet-markercluster wrapper.',
     component: <EventListeners />,
-  }, {
-    id: 'custom-options',
-    header: 'Custom options supported by react-leaflet-markercluster wrapper.',
-    component: <CustomOptions />,
   },
 ];

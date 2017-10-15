@@ -29,7 +29,6 @@ const EventListenersEGOne = () => (
     {/* eslint-disable no-console */}
     <MarkerClusterGroup
       markers={markers}
-      wrapperOptions={{ enableDefaultStyle: true }}
       onMarkerClick={(marker) => console.log(marker, marker.getLatLng())}
       onClusterClick={(cluster) => console.log(cluster, cluster.getAllChildMarkers())}
       onPopupClose={(popup) => console.log(popup, popup.getContent())}

@@ -25,7 +25,7 @@ const markers = [
     attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
   />
 
-  <MarkerClusterGroup markers={markers} wrapperOptions={{ enableDefaultStyle: true }} />
+  <MarkerClusterGroup markers={markers} />
 </Map>
       `}
     </Highlight>
@@ -57,7 +57,7 @@ import MarkerClusterGroup from 'react-leaflet-markercluster';
     attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
   />
 
-  <MarkerClusterGroup wrapperOptions={{ enableDefaultStyle: true }}>
+  <MarkerClusterGroup>
     <Marker position={[49.8397, 24.0297]} />
     <Marker position={[52.2297, 21.0122]} />
     <Marker position={[51.5074, -0.0901]} />

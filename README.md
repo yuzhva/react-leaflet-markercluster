@@ -65,14 +65,9 @@ const markers = [
     attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
   />
 
-  <MarkerClusterGroup
-    markers={markers}
-    wrapperOptions={{ enableDefaultStyle: true }}
-  />
+  <MarkerClusterGroup markers={markers} />
 </Map>
 ```
-> NOTE: use **wrapperOptions={{ enableDefaultStyle: true }}** property
-to enable default Leaflet.markercluster style for clustered markers group.
 
 [**Check demo**](https://yuzhva.github.io/react-leaflet-markercluster/) for more examples
 and all plugin options.
@@ -86,7 +81,7 @@ Just grab your markers inside MarkerClusterGroup like:
     attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
   />
 
-  <MarkerClusterGroup wrapperOptions={{ enableDefaultStyle: true }}>
+  <MarkerClusterGroup>
     <Marker position={[49.8397, 24.0297]} />
     <Marker position={[52.2297, 21.0122]} />
     <Marker position={[51.5074, -0.0901]} />
@@ -109,9 +104,6 @@ Just grab your markers inside MarkerClusterGroup like:
   https://github.com/Leaflet/Leaflet.markercluster#options)
 + `markerOptions: object` All available [options for Leaflet.Marker](
   http://leafletjs.com/reference-1.0.3.html#marker-option)
-* `wrapperOptions: object`
-  - `enableDefaultStyle: boolean` default: false
-  - `disableDefaultAnimation: boolean` default: false
 + `onMarkerClick: function`
 + `onClusterClick: function`
 + `onPopupClose: function`
@@ -120,7 +112,6 @@ Just grab your markers inside MarkerClusterGroup like:
 ```javascript
 <MarkerClusterGroup
   markers={markers}
-  wrapperOptions={{ enableDefaultStyle: true }}
   ref={(markerClusterGroup) => {
     this.markerClusterGroup = markerClusterGroup.leafletElement;
   }}

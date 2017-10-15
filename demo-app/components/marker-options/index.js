@@ -54,7 +54,7 @@ const markers = [
     attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
   />
 
-  <MarkerClusterGroup markers={markers} wrapperOptions={{ enableDefaultStyle: true }} />
+  <MarkerClusterGroup markers={markers} />
 </Map>
       `}
     </Highlight>
@@ -114,11 +114,7 @@ const markers = [
     attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
   />
 
-  <MarkerClusterGroup
-    markers={markers}
-    wrapperOptions={{ enableDefaultStyle: true }}
-    markerOptions={{ icon: redMarker, title: 'Default title' }}
-  />
+  <MarkerClusterGroup markers={markers} markerOptions={{ icon: redMarker, title: 'Default title' }} />
 </Map>
       `}
     </Highlight>

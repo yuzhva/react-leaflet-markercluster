@@ -50,11 +50,7 @@ const MarkerclusterOptionsEGOne = () => (
       attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
     />
 
-    <MarkerClusterGroup
-      markers={markers}
-      options={markerclusterOptions}
-      wrapperOptions={{ enableDefaultStyle: true }}
-    />
+    <MarkerClusterGroup markers={markers} options={markerclusterOptions} />
   </Map>
 );
 
