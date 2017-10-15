@@ -1,0 +1,24 @@
+{
+  "engines": {
+    "eslint": {
+      "enabled": true
+    },
+    "scss-lint": {
+      "enabled": true
+    },
+    "csslint": {
+      "enabled": true
+    }
+  },
+  "ratings": {
+    "paths": [
+      "src/**",
+      "**.js",
+      "**.scss"
+    ]
+  },
+  "exclude_paths": [
+    "dist/",
+    "demo-app/"
+  ]
+}
