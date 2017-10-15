@@ -51,9 +51,9 @@ import MarkerClusterGroup from 'react-leaflet-markercluster';
 **3.** Declare some markers in next format:
 ```javascript
 const markers = [
-  { lat: 49.8397, lng: 24.0297 },
-  { lat: 52.2297, lng: 21.0122 },
-  { lat: 51.5074, lng: -0.0901 },
+  { position: [49.8397, 24.0297] },
+  { position: [52.2297, 21.0122] },
+  { position: [51.5074, -0.0901] },
 ];
 ```
 
@@ -98,8 +98,7 @@ Just grab your markers inside MarkerClusterGroup like:
 * `markers: array of objects` (required)
 
   keys for marker object, that will be placed in markers array:
-    - `lat: number` (required)
-    - `lng: number` (required)
+    - `position: array | object` [Leaflet.LatLng](http://leafletjs.com/reference-1.2.0.html#latlng) (required)
     - `options: object` All available [options for Leaflet.Marker](
       http://leafletjs.com/reference-1.0.3.html#marker-option).
       + NOTE: Personal marker.options overwriting defined markerOptions for all markers.

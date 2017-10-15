@@ -30,12 +30,12 @@ import MarkerClusterGroup from 'react-leaflet-markercluster';
 
 // Define markers list with REQUIRED 'lat' and 'lng' keys:
 const markers = [
-  { lat: 49.8397, lng: 24.0297 },
-  { lat: 49.8397, lng: 24.0297 },
-  { lat: 49.8397, lng: 24.0297 },
-  { lat: 52.2297, lng: 21.0122 },
-  { lat: 52.2297, lng: 21.0122 },
-  { lat: 51.5074, lng: -0.0901 },
+  { position: [49.8397, 24.0297] },
+  { position: [49.8397, 24.0297] },
+  { position: [49.8397, 24.0297] },
+  { position: [52.2297, 21.0122] },
+  { position: [52.2297, 21.0122] },
+  { position: [51.5074, -0.0901] },
 ];
 
 // Put <MarkerClusterGroup ... /> inside react-leaflet after <TileLayer />
@@ -74,12 +74,12 @@ import MarkerClusterGroup from 'react-leaflet-markercluster';
 
 // Define markers list with REQUIRED 'lat' and 'lng' keys:
 const markers = [
-  { lat: 49.8397, lng: 24.0297 },
-  { lat: 49.8397, lng: 24.0297 },
-  { lat: 49.8397, lng: 24.0297 },
-  { lat: 52.2297, lng: 21.0122 },
-  { lat: 52.2297, lng: 21.0122 },
-  { lat: 51.5074, lng: -0.0901 },
+  { position: [49.8397, 24.0297] },
+  { position: [49.8397, 24.0297] },
+  { position: [49.8397, 24.0297] },
+  { position: [52.2297, 21.0122] },
+  { position: [52.2297, 21.0122] },
+  { position: [51.5074, -0.0901] },
 ];
 
 // Define JS object with some of wrapper options:

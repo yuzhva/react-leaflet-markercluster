@@ -1,4 +1,4 @@
-// TODO: Remove importing of `raf` and tempPolyfills file once the below issue is sorted
+// TEMP: Remove importing of `raf` and tempPolyfills file once the below issue is sorted
 // https://github.com/facebook/jest/issues/4545#issuecomment-333004504
 
 /* eslint-disable */

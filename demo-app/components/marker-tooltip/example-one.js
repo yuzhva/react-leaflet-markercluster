@@ -13,13 +13,13 @@ const tooltipWithOptions = L.tooltip({ direction: 'bottom' })
   .setContent('my tooltip text 2');
 
 const markers = [
-  { lat: 49.8397, lng: 24.0297, tooltip: 'my tooltip text 1' },
-  { lat: 50.4501, lng: 30.5234 },
-  { lat: 52.2297, lng: 21.0122 },
-  { lat: 50.0647, lng: 19.9450 },
-  { lat: 48.9226, lng: 24.7111 },
-  { lat: 48.7164, lng: 21.2611 },
-  { lat: 51.5, lng: -0.09, tooltip: tooltipWithOptions },
+  { position: [49.8397, 24.0297], tooltip: 'my tooltip text 1' },
+  { position: [50.4501, 30.5234] },
+  { position: [52.2297, 21.0122] },
+  { position: [50.0647, 19.9450] },
+  { position: [48.9226, 24.7111] },
+  { position: [48.7164, 21.2611] },
+  { position: [51.5, -0.09], tooltip: tooltipWithOptions },
 ];
 
 // E.G. (Exempli Gratia)
