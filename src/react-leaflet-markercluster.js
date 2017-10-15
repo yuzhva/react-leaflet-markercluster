@@ -3,22 +3,31 @@ import PropTypes from 'prop-types';
 
 import {LayerGroup} from 'react-leaflet';
 import L from 'leaflet'
-import 'leaflet.markercluster';
+
+require('leaflet.markercluster');
 
 // TODO: remove from v1.2.0 because of deprecated wrapperOptions prop
-import './style.scss';
+require('./style.scss');
 
 export default class MarkerClusterGroup extends LayerGroup {
 
   componentWillMount() {
+    const {markers, options} = this.props;
     // Override auto created leafletElement with L.markerClusterGroup element
-    this.leafletElement = L.markerClusterGroup(this.props.options);
+    this.leafletElement = L.markerClusterGroup(options);
 
     // TODO: remove from v1.2.0 because of deprecated wrapperOptions prop
     this.initMapClasses();
 
-    if (this.props.markers.length) {
-      this.addLayersWithMarkersFromProps(this.props.markers);
+    // markers.length && this.addLayersWithMarkersFromProps(markers);
+    // TODO: remove deprecation warning at v1.2.0
+    if (markers.length) {
+      this.addLayersWithMarkersFromProps(markers);
+
+      havingDeprecatedProps(markers) && (
+        console.warn('[react-leaflet-markercluster] Warning: marker "lat: xx", "lng: xx" properties are deprecated'
+          + ' and will be removed in v1.2.0. Please use "position: [lat, lng]" instead https://goo.gl/85TmbY')
+      )
     }
 
     // Init listeners for markerClusterGroup leafletElement only once
@@ -39,6 +48,10 @@ export default class MarkerClusterGroup extends LayerGroup {
   initMapClasses() {
     const {wrapperOptions} = this.props;
     if (wrapperOptions) {
+
+      console.warn('[react-leaflet-markercluster] Warning: "wrapperOptions" property is deprecated'
+        + ' and will be removed in v1.2.0. Please see: https://goo.gl/85TmbY');
+
       const mapClassName = this.context.map._container.className;
       const isStyledClassAppliyed = mapClassName.indexOf('marker-cluster-styled') !== -1;
       const isAnimatedClassAppliyed = mapClassName.indexOf('marker-cluster-animated') !== -1;
@@ -86,7 +99,7 @@ export default class MarkerClusterGroup extends LayerGroup {
         : null ;
 
       let leafletMarker = L.marker(
-        [marker.lat, marker.lng],
+        marker.position || [marker.lat, marker.lng],
         currentMarkerOptions || markersOptions
       );
 
@@ -167,6 +180,11 @@ export default class MarkerClusterGroup extends LayerGroup {
 
 function isArraysEqual(firstArray, secondArray) {
   return (JSON.stringify(firstArray) === JSON.stringify(secondArray));
+}
+
+// TODO: remove deprecation warning at v1.2.0
+function havingDeprecatedProps(markers) {
+  return markers.findIndex((marker) => marker.lat || marker.lng) !== -1
 }
 
 MarkerClusterGroup.propTypes = {
