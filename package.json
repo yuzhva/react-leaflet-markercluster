@@ -1,7 +1,7 @@
 {
   "name": "react-leaflet-markercluster",
   "version": "1.1.6",
-  "description": "React wrapper of the official Leaflet.markercluster for react-laeflet",
+  "description": "React wrapper of Leaflet.markercluster for react-laeflet",
   "main": "dist/react-leaflet-markercluster.min.js",
   "scripts": {
     "build:source": "gulp --gulpfile=config/gulpfile.babel.js build",

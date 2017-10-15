@@ -8,7 +8,7 @@ import uglifyJS from 'gulp-uglify';
 import uglifyCSS from 'gulp-clean-css';
 
 gulp.task('build', () => {
-  runSequence('dist:clean', 'dist:script', 'dist:style', 'uglify:script', 'uglify:style');
+  runSequence('dist:clean', 'dist:script', 'dist:styles', 'uglify:script', 'uglify:styles');
 });
 
 gulp.task('dist:clean', () => (
@@ -21,8 +21,8 @@ gulp.task('dist:script', () => (
     .pipe(gulp.dest('./dist'))
 ));
 
-gulp.task('dist:style', () => (
-  gulp.src('./src/style.scss')
+gulp.task('dist:styles', () => (
+  gulp.src('./src/styles.scss')
     .pipe(sass().on('error', sass.logError))
     .pipe(gulp.dest('./dist'))
 ));
@@ -34,8 +34,8 @@ gulp.task('uglify:script', () => (
     .pipe(gulp.dest('./dist'))
 ));
 
-gulp.task('uglify:style', () => (
-  gulp.src('./dist/style.css')
+gulp.task('uglify:styles', () => (
+  gulp.src('./dist/styles.css')
     .pipe(uglifyCSS({ compatibility: 'ie8' }))
     .pipe(rename({ suffix: '.min' }))
     .pipe(gulp.dest('./dist'))

@@ -22,7 +22,7 @@ var _leaflet2 = _interopRequireDefault(_leaflet);
 
 require('leaflet.markercluster');
 
-require('./style.css');
+require('./styles.css');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
