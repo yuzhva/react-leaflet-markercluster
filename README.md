@@ -7,7 +7,7 @@
   https://www.npmjs.com/package/react-leaflet-markercluster)
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg?style=plastic)](#license)
 
-React wrapper for the official [Leaflet.markercluster](
+React wrapper of [Leaflet.markercluster](
 https://github.com/Leaflet/Leaflet.markercluster)
 for [react-leaflet](https://github.com/PaulLeCam/react-leaflet)
 
@@ -31,24 +31,41 @@ https://github.com/PaulLeCam/react-leaflet/blob/master/docs/Getting%20started.md
 * [API](#api)
 * [How to run demo app](#how-to-run-demo-app)
 * [Contributing](#contributing)
+* [UMD](#umd)
 
 # Getting started
 
-**1.** Install package with yarn:
+**1.** Install package:
 ```bash
-yarn add react-leaflet-markercluster
+yarn add react-leaflet-markercluster # yarn
+npm install react-leaflet-markercluster # npm
 ```
-or you can use npm:
+The `react-leaflet-markercluster` requires `leaflet.markercluster` as [`peerDependency`](https://docs.npmjs.com/files/package.json#peerdependencies)
+(React, PropTypes, Leaflet, react-leaflet also should be installed)
 ```bash
-npm install react-leaflet-markercluster --save
+yarn add leaflet.markercluster # yarn
+npm install leaflet.markercluster # npm
 ```
 
-**2.** Import package to your component:
+**2.** Import Markercluster styles:
+```javascript
+@import '~react-leaflet-markercluster/dist/styles.min.css'; // sass
+@import url('~react-leaflet-markercluster/dist/styles.min.css'); // css
+
+require('react-leaflet-markercluster/dist/styles.min.css'); // inside .js file
+```
+or include CSS styles directly to the head of HTML file:
+```html
+<link rel="stylesheet" href="https://unpkg.com/react-leaflet-markercluster/dist/styles.min.css" />
+```
+
+
+**3.** Import package to your component:
 ```javascript
 import MarkerClusterGroup from 'react-leaflet-markercluster';
 ```
 
-**3.** Declare some markers in next format:
+**4.** Declare some markers in next format:
 ```javascript
 const markers = [
   { position: [49.8397, 24.0297] },
@@ -57,7 +74,7 @@ const markers = [
 ];
 ```
 
-**4.** Put `<MarkerClusterGroup ... />` inside react-leaflet, right after `<TileLayer />`:
+**5.** Put `<MarkerClusterGroup ... />` inside react-leaflet, right after `<TileLayer />`:
 ```javascript
 <Map className="markercluster-map" center={[51.0, 19.0]} zoom={4} maxZoom={18}>
   <TileLayer
@@ -124,13 +141,10 @@ Just grab your markers inside MarkerClusterGroup like:
 git clone https://github.com/YUzhva/react-leaflet-markercluster.git
 ```
 
-**2.** Install all dependencies with yarn:
+**2.** Install all dependencies:
 ```bash
-yarn install --no-lockfile
-```
-or you can use npm:
-```bash
-npm install
+yarn install --no-lockfile # yarn
+npm install # npm
 ```
 
 **3.** Start the server:
@@ -162,6 +176,19 @@ Distributions should be updated after running build:source command.
 **4.** Commit your changes and open Pull Request.
 
 **5.** :beer: **Thank you for contribution** :beer:
+
+
+# UMD
+UMD builds are available on [unpkg](https://unpkg.com/):
+
+```html
+<!-- unpkg, production (minified) -->
+<script src="https://unpkg.com/react-leaflet-markercluster/dist/react-leaflet-markercluster.min.js"></script>
+<!-- unpkg, production -->
+<script src="https://unpkg.com/react-leaflet-markercluster/dist/react-leaflet-markercluster.js"></script>
+<!-- unpkg, development -->
+<script src="https://unpkg.com/react-leaflet-markercluster/src/react-leaflet-markercluster.js"></script>
+```
 
 # License
 MIT License, see [LICENSE](
