@@ -51,9 +51,9 @@ import MarkerClusterGroup from 'react-leaflet-markercluster';
 **3.** Declare some markers in next format:
 ```javascript
 const markers = [
-  {lat: 49.8397, lng: 24.0297},
-  {lat: 52.2297, lng: 21.0122},
-  {lat: 51.5074, lng: -0.0901}
+  { lat: 49.8397, lng: 24.0297 },
+  { lat: 52.2297, lng: 21.0122 },
+  { lat: 51.5074, lng: -0.0901 },
 ];
 ```
 
@@ -61,17 +61,17 @@ const markers = [
 ```javascript
 <Map className="markercluster-map" center={[51.0, 19.0]} zoom={4} maxZoom={18}>
   <TileLayer
-    url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
     attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
   />
 
   <MarkerClusterGroup
     markers={markers}
-    wrapperOptions={{enableDefaultStyle: true}}
+    wrapperOptions={{ enableDefaultStyle: true }}
   />
 </Map>
 ```
-> NOTE: use **wrapperOptions={{enableDefaultStyle: true}}** property
+> NOTE: use **wrapperOptions={{ enableDefaultStyle: true }}** property
 to enable default Leaflet.markercluster style for clustered markers group.
 
 [**Check demo**](https://yuzhva.github.io/react-leaflet-markercluster/) for more examples
@@ -82,11 +82,11 @@ Just grab your markers inside MarkerClusterGroup like:
 ```javascript
 <Map className="markercluster-map" center={[51.0, 19.0]} zoom={4} maxZoom={18}>
   <TileLayer
-    url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
     attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
   />
 
-  <MarkerClusterGroup wrapperOptions={{enableDefaultStyle: true}}>
+  <MarkerClusterGroup wrapperOptions={{ enableDefaultStyle: true }}>
     <Marker position={[49.8397, 24.0297]} />
     <Marker position={[52.2297, 21.0122]} />
     <Marker position={[51.5074, -0.0901]} />
@@ -121,7 +121,7 @@ Just grab your markers inside MarkerClusterGroup like:
 ```javascript
 <MarkerClusterGroup
   markers={markers}
-  wrapperOptions={{enableDefaultStyle: true}}
+  wrapperOptions={{ enableDefaultStyle: true }}
   ref={(markerClusterGroup) => {
     this.markerClusterGroup = markerClusterGroup.leafletElement;
   }}

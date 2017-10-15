@@ -3,13 +3,13 @@ import ReactDOM from 'react-dom'; // eslint-disable-line import/no-extraneous-de
 
 import WelcomePage from './containers/welcome-page';
 
-const Index = () => (
+const MAIN = (
   <main>
     <WelcomePage />
   </main>
 );
 
 ReactDOM.render(
-  <Index />,
-  document.getElementById('react-leaflet-markercluster_demo-app'),
+  MAIN,
+  document.getElementById('react-leaflet-markercluster--demo-app'),
 );
