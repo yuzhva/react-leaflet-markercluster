@@ -63,8 +63,8 @@
   "peerDependencies": {
     "leaflet": "^1.1.0",
     "leaflet.markercluster": "^1.0.6",
-    "prop-types": "^15.5.8",
-    "react": "^15.5.4",
+    "prop-types": "^15.5.7",
+    "react": "^15.0.0 || ^16.0.0",
     "react-leaflet": "^1.4.0"
   }
 }
