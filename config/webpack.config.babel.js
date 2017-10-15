@@ -6,7 +6,7 @@ const rootPath = path.join(__dirname, '..');
 const demoAppPath = path.join(rootPath, 'demo-app');
 
 module.exports = {
-  entry: path.join(demoAppPath, 'main.js'),
+  entry: [path.join(demoAppPath, 'main.js'), path.join(demoAppPath, 'main.scss')],
   output: {
     path: demoAppPath,
     filename: 'scripts.js',
@@ -41,7 +41,7 @@ module.exports = {
     ],
   },
   plugins: [
-    new ExtractTextPlugin('./demo-app/dist/styles.css'),
-    new HtmlWebpackPlugin({ template: './demo-app/index.template.html' }),
+    new ExtractTextPlugin('styles.css'),
+    new HtmlWebpackPlugin({ template: path.join(demoAppPath, 'index.template.html') }),
   ],
 };
