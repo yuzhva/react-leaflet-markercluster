@@ -6,7 +6,16 @@
   "scripts": {
     "build:source": "gulp build",
     "build:gh-pages": "gulp demo-app:clean && webpack -p",
-    "start": "webpack-dev-server --open --inline --hot --env dev"
+    "start": "webpack-dev-server --open --inline --hot --env dev",
+    "lint": "npm run lint:js && npm run lint:scss",
+    "lint:js": "eslint --ext .js src/",
+    "lint:scss": "stylelint 'src/**/*.scss' --syntax=scss",
+    "lint:staged": "lint-staged"
+  },
+  "pre-commit": "lint:staged",
+  "lint-staged": {
+    "*.js": "lint:js",
+    "*.scss": "stylelint --syntax=scss"
   },
   "repository": {
     "type": "git",
@@ -49,8 +58,10 @@
     "html-webpack-plugin": "^2.29.0",
     "leaflet": "^1.1.0",
     "leaflet.markercluster": "^1.0.6",
+    "lint-staged": "^4.2.3",
     "node-sass": "^4.5.3",
     "npm-sass": "^2.2.1",
+    "pre-commit": "^1.2.2",
     "prop-types": "^15.5.10",
     "react": "^16.0.0",
     "react-bootstrap": "^0.31.0",
