@@ -1,12 +1,31 @@
 {
   "name": "react-leaflet-markercluster",
-  "version": "1.1.6",
-  "description": "React wrapper of the official Leaflet.markercluster for react-laeflet",
+  "version": "1.1.7",
+  "description": "React wrapper of Leaflet.markercluster for react-laeflet",
   "main": "dist/react-leaflet-markercluster.min.js",
   "scripts": {
-    "build:source": "gulp build",
-    "build:gh-pages": "gulp demo-app:clean && webpack -p",
-    "start": "webpack-dev-server --open --inline --hot --env dev"
+    "build:source": "gulp --gulpfile=config/gulpfile.babel.js build",
+    "build:gh-pages": "gulp --gulpfile=config/gulpfile.babel.js gh-pages:clean && webpack --config=config/webpack.config.babel.js -p",
+    "start": "webpack-dev-server --config=config/webpack.config.babel.js --open --inline --hot --env dev",
+    "test": "jest --coverage",
+    "lint": "npm run lint:js && npm run lint:scss",
+    "lint:js": "eslint --ext .js src/",
+    "lint:scss": "stylelint 'src/**/*.scss' --syntax=scss",
+    "lint:staged": "lint-staged"
+  },
+  "pre-commit": "lint:staged",
+  "lint-staged": {
+    "*.js": "lint:js",
+    "*.scss": "stylelint --syntax=scss"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(css|scss)$": "<rootDir>/__mocks__/styleMock.js"
+    },
+    "setupTestFrameworkScriptFile": "<rootDir>/config/tests.config.js",
+    "collectCoverageFrom": [
+      "src/**/*.js"
+    ]
   },
   "repository": {
     "type": "git",
@@ -34,37 +53,49 @@
     "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.4",
     "del": "^3.0.0",
-    "eslint": "^4.2.0",
-    "eslint-plugin-react": "^7.1.0",
-    "extract-text-webpack-plugin": "^2.1.2",
+    "enzyme": "^3.1.0",
+    "enzyme-adapter-react-16": "^1.0.1",
+    "eslint": "^4.9.0",
+    "eslint-config-airbnb": "^16.0.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-react": "^7.4.0",
+    "extract-text-webpack-plugin": "^3.0.1",
     "gulp": "^3.9.1",
-    "gulp-babel": "^6.1.2",
+    "gulp-babel": "^7.0.0",
     "gulp-clean-css": "^3.6.0",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^3.1.0",
     "gulp-uglify": "^3.0.0",
     "html-webpack-plugin": "^2.29.0",
+    "jest": "^21.2.1",
     "leaflet": "^1.1.0",
     "leaflet.markercluster": "^1.0.6",
+    "lint-staged": "^4.2.3",
     "node-sass": "^4.5.3",
     "npm-sass": "^2.2.1",
+    "pre-commit": "^1.2.2",
     "prop-types": "^15.5.10",
-    "react": "^15.6.1",
+    "react": "^16.0.0",
     "react-bootstrap": "^0.31.0",
-    "react-dom": "^15.6.1",
-    "react-highlight": "^0.10.0",
+    "react-dom": "^16.0.0",
+    "react-highlight": "briancappello/react-highlight#react-v16-compiled",
     "react-leaflet": "^1.4.0",
+    "react-test-renderer": "^16.0.0",
     "run-sequence": "^2.0.0",
     "sass-loader": "^6.0.6",
-    "style-loader": "^0.18.2",
+    "style-loader": "^0.19.0",
+    "stylelint": "^8.2.0",
+    "stylelint-config-sass-guidelines": "^3.1.0",
+    "stylelint-declaration-use-variable": "^1.6.0",
     "webpack": "^3.1.0",
     "webpack-dev-server": "^2.5.1"
   },
   "peerDependencies": {
     "leaflet": "^1.1.0",
     "leaflet.markercluster": "^1.0.6",
-    "prop-types": "^15.5.8",
-    "react": "^15.5.4",
+    "prop-types": "^15.5.7",
+    "react": "^15.0.0 || ^16.0.0",
     "react-leaflet": "^1.4.0"
   }
 }
