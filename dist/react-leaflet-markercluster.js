@@ -86,7 +86,7 @@ var MarkerClusterGroup = function (_LayerGroup) {
         this.addLayersWithMarkersFromProps(markers);
 
         if (havingDeprecatedProps(markers)) {
-          console.warn('[react-leaflet-markercluster] Warning: marker "lat: xx", "lng: xx" properties are deprecated' + ' and will be removed in v1.2.0. Please use "position: [lat, lng]" instead https://goo.gl/85TmbY');
+          console.warn('[react-leaflet-markercluster] Warning: marker "lat: xx", "lng: xx" properties are deprecated' + ' and will be removed in v1.2.0. Please use "position: [lat, lng]" instead https://goo.gl/s7a6Cj');
         }
       }
 
@@ -111,7 +111,7 @@ var MarkerClusterGroup = function (_LayerGroup) {
       var wrapperOptions = this.props.wrapperOptions;
 
       if (wrapperOptions) {
-        console.warn('[react-leaflet-markercluster] Warning: "wrapperOptions" property is deprecated' + ' and will be removed in v1.2.0. Please see: https://goo.gl/85TmbY');
+        console.warn('[react-leaflet-markercluster] Warning: "wrapperOptions" property is deprecated' + ' and will be removed in v1.2.0. Please see: https://goo.gl/s7a6Cj');
 
         var mapClassName = this.context.map._container.className;
         var isStyledClassAppliyed = mapClassName.indexOf('marker-cluster-styled') !== -1;

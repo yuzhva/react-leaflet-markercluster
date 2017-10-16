@@ -1,7 +1,7 @@
 # v1.2.0
 There are critical changes that touches to the MarkerClusterGroup API:
 
-### **1.** marker object `lat` and `lng` keys are deprecated.
+### **1.** marker object `lat` and `lng` keys are deprecated (will be removed at v1.2.0).
 To set marker position, please use `position` key at marker object like:
 ```javascript
 const markers = [
@@ -20,7 +20,7 @@ const markers = [
 ];
 ```
 
-### **2.** `wrapperOptions` is fully deprecated and will not use anymore.
+### **2.** `wrapperOptions` is fully deprecated and will not use anymore (will be removed at v1.2.0).
 How to replace `wrapperOptions` old `enableDefaultStyle | disableDefaultAnimation | removeDuplicates` features:
 - `enableDefaultStyle:` to enable `leaflet.markercluster` default style for cluster,
 just import Markercluster styles:
@@ -70,6 +70,7 @@ render() {
 ### **3.** Bug Fix
 - Check if map className was already added/changed when MarkerClusterGroup is mounting
 - Remove markers from map when MarkerClusterGroup received empty array in nextProps
-- Updated MarkerClusterGroup API and added deprecation warnings
+- Updated MarkerClusterGroup API. Deprecation warnings about `wrapperOptions`
+  and marker `lat` and `lng` object keys.
 - React 16 peerDependency support
 - Updated documentation

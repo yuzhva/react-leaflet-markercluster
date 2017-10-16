@@ -48,7 +48,7 @@ export default class MarkerClusterGroup extends LayerGroup {
 
       if (havingDeprecatedProps(markers)) {
         console.warn('[react-leaflet-markercluster] Warning: marker "lat: xx", "lng: xx" properties are deprecated'
-          + ' and will be removed in v1.2.0. Please use "position: [lat, lng]" instead https://goo.gl/85TmbY');
+          + ' and will be removed in v1.2.0. Please use "position: [lat, lng]" instead https://goo.gl/s7a6Cj');
       }
     }
 
@@ -71,7 +71,7 @@ export default class MarkerClusterGroup extends LayerGroup {
     const { wrapperOptions } = this.props;
     if (wrapperOptions) {
       console.warn('[react-leaflet-markercluster] Warning: "wrapperOptions" property is deprecated'
-        + ' and will be removed in v1.2.0. Please see: https://goo.gl/85TmbY');
+        + ' and will be removed in v1.2.0. Please see: https://goo.gl/s7a6Cj');
 
       const mapClassName = this.context.map._container.className;
       const isStyledClassAppliyed = mapClassName.indexOf('marker-cluster-styled') !== -1;
