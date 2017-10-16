@@ -11,7 +11,6 @@ import uglifyCSS from 'gulp-clean-css';
 const rootPath = path.join(__dirname, '..');
 const srcPath = path.join(rootPath, 'src');
 const distPath = path.join(rootPath, 'dist');
-const demoAppPath = path.join(rootPath, 'demo-app');
 
 gulp.task('build', () => (
   runSequence('dist:clean', 'dist:script', 'dist:styles', 'uglify:script', 'uglify:styles')
@@ -47,6 +46,6 @@ gulp.task('uglify:styles', () => (
     .pipe(gulp.dest(distPath))
 ));
 
-gulp.task('demo-app:clean', () => (
-  del([path.join(demoAppPath, 'index.html'), path.join(demoAppPath, 'dist')], { force: true })
+gulp.task('gh-pages:clean', () => (
+  del([path.join(rootPath, 'index.html'), distPath], { force: true })
 ));

@@ -5,7 +5,7 @@
   "main": "dist/react-leaflet-markercluster.min.js",
   "scripts": {
     "build:source": "gulp --gulpfile=config/gulpfile.babel.js build",
-    "build:gh-pages": "gulp --gulpfile=config/gulpfile.babel.js demo-app:clean && webpack --config=config/webpack.config.babel.js -p",
+    "build:gh-pages": "gulp --gulpfile=config/gulpfile.babel.js gh-pages:clean && webpack --config=config/webpack.config.babel.js -p",
     "start": "webpack-dev-server --config=config/webpack.config.babel.js --open --inline --hot --env dev",
     "test": "jest --coverage",
     "lint": "npm run lint:js && npm run lint:scss",

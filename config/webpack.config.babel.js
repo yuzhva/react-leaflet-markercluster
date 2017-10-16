@@ -8,7 +8,7 @@ const demoAppPath = path.join(rootPath, 'demo-app');
 module.exports = {
   entry: [path.join(demoAppPath, 'main.js'), path.join(demoAppPath, 'main.scss')],
   output: {
-    path: demoAppPath,
+    path: rootPath,
     filename: './dist/bundle.js',
   },
   devServer: {
