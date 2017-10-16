@@ -9,7 +9,7 @@ module.exports = {
   entry: [path.join(demoAppPath, 'main.js'), path.join(demoAppPath, 'main.scss')],
   output: {
     path: demoAppPath,
-    filename: 'scripts.js',
+    filename: './dist/bundle.js',
   },
   devServer: {
     port: 8080,
@@ -41,7 +41,7 @@ module.exports = {
     ],
   },
   plugins: [
-    new ExtractTextPlugin('styles.css'),
+    new ExtractTextPlugin('./dist/styles.css'),
     new HtmlWebpackPlugin({ template: path.join(demoAppPath, 'index.template.html') }),
   ],
 };
