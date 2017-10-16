@@ -1,0 +1,19 @@
+{
+  "extends": "stylelint-config-sass-guidelines",
+  "plugins": [
+    "stylelint-declaration-use-variable"
+  ],
+  "rules": {
+    "declaration-no-important": true,
+    "max-nesting-depth": 3,
+    "sh-waqar/declaration-use-variable": [
+      "color",
+      "background-color",
+      "border-color",
+      "outline-color",
+      "transition",
+      "font-family"
+    ],
+    "scss/at-import-partial-extension-blacklist": [""]
+  }
+}

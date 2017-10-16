@@ -7,7 +7,7 @@
   https://www.npmjs.com/package/react-leaflet-markercluster)
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg?style=plastic)](#license)
 
-React wrapper for the official [Leaflet.markercluster](
+React wrapper of [Leaflet.markercluster](
 https://github.com/Leaflet/Leaflet.markercluster)
 for [react-leaflet](https://github.com/PaulLeCam/react-leaflet)
 
@@ -34,59 +34,69 @@ https://github.com/PaulLeCam/react-leaflet/blob/master/docs/Getting%20started.md
 
 # Getting started
 
-**1.** Install package with yarn:
+**1.** Install package:
 ```bash
-yarn add react-leaflet-markercluster
+yarn add react-leaflet-markercluster # yarn
+npm install react-leaflet-markercluster # npm
 ```
-or you can use npm:
+The `react-leaflet-markercluster` requires `leaflet.markercluster` as [`peerDependency`](https://docs.npmjs.com/files/package.json#peerdependencies)
+
+(React, PropTypes, Leaflet, react-leaflet also should be installed)
 ```bash
-npm install react-leaflet-markercluster --save
+yarn add leaflet.markercluster # yarn
+npm install leaflet.markercluster # npm
 ```
 
-**2.** Import package to your component:
+**2.** Import Markercluster styles:
+```javascript
+@import '~react-leaflet-markercluster/dist/styles.min.css'; // sass
+@import url('~react-leaflet-markercluster/dist/styles.min.css'); // css
+
+require('react-leaflet-markercluster/dist/styles.min.css'); // inside .js file
+```
+or include CSS styles directly to the head of HTML file:
+```html
+<link rel="stylesheet" href="https://unpkg.com/react-leaflet-markercluster/dist/styles.min.css" />
+```
+
+**3.** Import package to your component:
 ```javascript
 import MarkerClusterGroup from 'react-leaflet-markercluster';
 ```
 
-**3.** Declare some markers in next format:
+**4.** Declare some markers in next format:
 ```javascript
 const markers = [
-  {lat: 49.8397, lng: 24.0297},
-  {lat: 52.2297, lng: 21.0122},
-  {lat: 51.5074, lng: -0.0901}
+  { position: [49.8397, 24.0297] },
+  { position: [52.2297, 21.0122] },
+  { position: [51.5074, -0.0901] },
 ];
 ```
 
-**4.** Put `<MarkerClusterGroup ... />` inside react-leaflet, right after `<TileLayer />`:
+**5.** Put `<MarkerClusterGroup ... />` inside react-leaflet, right after `<TileLayer />`:
 ```javascript
 <Map className="markercluster-map" center={[51.0, 19.0]} zoom={4} maxZoom={18}>
   <TileLayer
-    url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
     attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
   />
 
-  <MarkerClusterGroup
-    markers={markers}
-    wrapperOptions={{enableDefaultStyle: true}}
-  />
+  <MarkerClusterGroup markers={markers} />
 </Map>
 ```
-> NOTE: use **wrapperOptions={{enableDefaultStyle: true}}** property
-to enable default Leaflet.markercluster style for clustered markers group.
 
-[**Check demo**](https://yuzhva.github.io/react-leaflet-markercluster/) for more examples
-and all plugin options.
+[**Check demo**](https://yuzhva.github.io/react-leaflet-markercluster/) for more examples.
 
 **P.S:** support of react-leaflet Marker available as a testing feature.  
 Just grab your markers inside MarkerClusterGroup like:
 ```javascript
 <Map className="markercluster-map" center={[51.0, 19.0]} zoom={4} maxZoom={18}>
   <TileLayer
-    url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
     attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
   />
 
-  <MarkerClusterGroup wrapperOptions={{enableDefaultStyle: true}}>
+  <MarkerClusterGroup>
     <Marker position={[49.8397, 24.0297]} />
     <Marker position={[52.2297, 21.0122]} />
     <Marker position={[51.5074, -0.0901]} />
@@ -98,8 +108,7 @@ Just grab your markers inside MarkerClusterGroup like:
 * `markers: array of objects` (required)
 
   keys for marker object, that will be placed in markers array:
-    - `lat: number` (required)
-    - `lng: number` (required)
+    - `position: array | object` [Leaflet.LatLng](http://leafletjs.com/reference-1.2.0.html#latlng) (required)
     - `options: object` All available [options for Leaflet.Marker](
       http://leafletjs.com/reference-1.0.3.html#marker-option).
       + NOTE: Personal marker.options overwriting defined markerOptions for all markers.
@@ -110,9 +119,6 @@ Just grab your markers inside MarkerClusterGroup like:
   https://github.com/Leaflet/Leaflet.markercluster#options)
 + `markerOptions: object` All available [options for Leaflet.Marker](
   http://leafletjs.com/reference-1.0.3.html#marker-option)
-* `wrapperOptions: object`
-  - `enableDefaultStyle: boolean` default: false
-  - `disableDefaultAnimation: boolean` default: false
 + `onMarkerClick: function`
 + `onClusterClick: function`
 + `onPopupClose: function`
@@ -121,7 +127,6 @@ Just grab your markers inside MarkerClusterGroup like:
 ```javascript
 <MarkerClusterGroup
   markers={markers}
-  wrapperOptions={{enableDefaultStyle: true}}
   ref={(markerClusterGroup) => {
     this.markerClusterGroup = markerClusterGroup.leafletElement;
   }}
@@ -134,13 +139,10 @@ Just grab your markers inside MarkerClusterGroup like:
 git clone https://github.com/YUzhva/react-leaflet-markercluster.git
 ```
 
-**2.** Install all dependencies with yarn:
+**2.** Install all dependencies:
 ```bash
-yarn install --no-lockfile
-```
-or you can use npm:
-```bash
-npm install
+yarn install --no-lockfile # yarn
+npm install # npm
 ```
 
 **3.** Start the server:
@@ -166,12 +168,25 @@ npm run build:source
 Distributions should be updated after running build:source command.
 
 **3.** In newly updated `./dist` folder, please:
-* change `styles.scss` to `styles.css` in `*.js` file
-* change `styles.scss` to `styles.min.css` in `*.min.js` file
+* change `deprecated-styles.scss` to `deprecated-styles.css` in `*.js` file
+* change `deprecated-styles.scss` to `deprecated-styles.min.css` in `*.min.js` file
 
 **4.** Commit your changes and open Pull Request.
 
 **5.** :beer: **Thank you for contribution** :beer:
+
+
+# UMD
+UMD builds are available on [unpkg](https://unpkg.com/):
+
+```html
+<!-- unpkg, production (minified) -->
+<script src="https://unpkg.com/react-leaflet-markercluster/dist/react-leaflet-markercluster.min.js"></script>
+<!-- unpkg, production -->
+<script src="https://unpkg.com/react-leaflet-markercluster/dist/react-leaflet-markercluster.js"></script>
+<!-- unpkg, development -->
+<script src="https://unpkg.com/react-leaflet-markercluster/src/react-leaflet-markercluster.js"></script>
+```
 
 # License
 MIT License, see [LICENSE](
