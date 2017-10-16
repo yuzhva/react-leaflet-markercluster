@@ -168,8 +168,8 @@ npm run build:source
 Distributions should be updated after running build:source command.
 
 **3.** In newly updated `./dist` folder, please:
-* change `styles.scss` to `styles.css` in `*.js` file
-* change `styles.scss` to `styles.min.css` in `*.min.js` file
+* change `deprecated-styles.scss` to `deprecated-styles.css` in `*.js` file
+* change `deprecated-styles.scss` to `deprecated-styles.min.css` in `*.min.js` file
 
 **4.** Commit your changes and open Pull Request.
 

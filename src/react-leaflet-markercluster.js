@@ -7,7 +7,7 @@ import L from 'leaflet';
 require('leaflet.markercluster');
 
 // TEMP: remove from v1.2.0 because of deprecated wrapperOptions prop
-require('./styles.scss');
+require('./deprecated-styles.scss');
 
 // TEMP: remove deprecation warning at v1.2.0
 function havingDeprecatedProps(markers) {

@@ -27,7 +27,8 @@ gulp.task('dist:script', () => (
 ));
 
 gulp.task('dist:styles', () => (
-  gulp.src(path.join(srcPath, 'styles.scss'))
+  // TEMP: remove compiling of deprecated-styles from v1.2.0 because of deprecated wrapperOptions
+  gulp.src([path.join(srcPath, 'styles.scss'), path.join(srcPath, 'deprecated-styles.scss')])
     .pipe(sass({ includePaths: [rootPath] }).on('error', sass.logError))
     .pipe(gulp.dest(distPath))
 ));
@@ -40,7 +41,8 @@ gulp.task('uglify:script', () => (
 ));
 
 gulp.task('uglify:styles', () => (
-  gulp.src(path.join(distPath, 'styles.css'))
+  // TEMP: remove uglifying of deprecated-styles from v1.2.0 because of deprecated wrapperOptions
+  gulp.src([path.join(distPath, 'styles.css'), path.join(distPath, 'deprecated-styles.css')])
     .pipe(uglifyCSS({ compatibility: 'ie8' }))
     .pipe(rename({ suffix: '.min' }))
     .pipe(gulp.dest(distPath))
