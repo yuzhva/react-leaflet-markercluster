@@ -6,3 +6,16 @@
 /yarn-error.log
 
 /coverage
+
+# Ignored unnecessary folders and files for npm package
+/__mocks__
+/__tests__
+/config
+/demo-app
+
+.babelrc
+.codeclimate.json
+.eslintrc.json
+.stylelintrc.json
+package-lock.json
+yarn.lock
