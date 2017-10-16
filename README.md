@@ -31,7 +31,6 @@ https://github.com/PaulLeCam/react-leaflet/blob/master/docs/Getting%20started.md
 * [API](#api)
 * [How to run demo app](#how-to-run-demo-app)
 * [Contributing](#contributing)
-* [UMD](#umd)
 
 # Getting started
 
@@ -59,7 +58,6 @@ or include CSS styles directly to the head of HTML file:
 ```html
 <link rel="stylesheet" href="https://unpkg.com/react-leaflet-markercluster/dist/styles.min.css" />
 ```
-
 
 **3.** Import package to your component:
 ```javascript
