@@ -1,10 +1,10 @@
 .marker-cluster {
   &-styled {
-    @import './node_modules/leaflet.markercluster/dist/MarkerCluster.Default';
+    @import 'node_modules/leaflet.markercluster/dist/MarkerCluster.Default';
   }
 
   &-animated {
-    @import './node_modules/leaflet.markercluster/dist/MarkerCluster';
+    @import 'node_modules/leaflet.markercluster/dist/MarkerCluster';
   }
 
   &-group {

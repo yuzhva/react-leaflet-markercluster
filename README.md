@@ -41,6 +41,7 @@ yarn add react-leaflet-markercluster # yarn
 npm install react-leaflet-markercluster # npm
 ```
 The `react-leaflet-markercluster` requires `leaflet.markercluster` as [`peerDependency`](https://docs.npmjs.com/files/package.json#peerdependencies)
+
 (React, PropTypes, Leaflet, react-leaflet also should be installed)
 ```bash
 yarn add leaflet.markercluster # yarn
@@ -86,8 +87,7 @@ const markers = [
 </Map>
 ```
 
-[**Check demo**](https://yuzhva.github.io/react-leaflet-markercluster/) for more examples
-and all plugin options.
+[**Check demo**](https://yuzhva.github.io/react-leaflet-markercluster/) for more examples.
 
 **P.S:** support of react-leaflet Marker available as a testing feature.  
 Just grab your markers inside MarkerClusterGroup like:
