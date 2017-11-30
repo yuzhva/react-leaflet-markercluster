@@ -20,6 +20,10 @@ var _leaflet = require('leaflet');
 
 var _leaflet2 = _interopRequireDefault(_leaflet);
 
+var _deepEqual = require('deep-equal');
+
+var _deepEqual2 = _interopRequireDefault(_deepEqual);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -42,7 +46,7 @@ function havingDeprecatedProps(markers) {
 
 // NOTE: Helpers
 function isArraysEqual(firstArray, secondArray) {
-  return JSON.stringify(firstArray) === JSON.stringify(secondArray);
+  return firstArray.length === secondArray.length && (0, _deepEqual2.default)(firstArray, secondArray);
 }
 
 function removeMarkersWithSameCoordinates(markers) {

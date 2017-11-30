@@ -97,5 +97,8 @@
     "prop-types": "^15.5.7",
     "react": "^15.0.0 || ^16.0.0",
     "react-leaflet": "^1.4.0"
+  },
+  "dependencies": {
+    "deep-equal": "^1.0.1"
   }
 }
