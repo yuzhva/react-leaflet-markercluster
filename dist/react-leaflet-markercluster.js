@@ -35,7 +35,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 require('leaflet.markercluster');
 
 // TEMP: remove from v1.2.0 because of deprecated wrapperOptions prop
-require('./deprecated-styles.css');
+require('./deprecated-styles.css!');
 
 // TEMP: remove deprecation warning at v1.2.0
 function havingDeprecatedProps(markers) {
