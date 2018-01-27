@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import { LayerGroup } from 'react-leaflet';
 import L from 'leaflet';
+import deepEqual from 'deep-equal';
 
 require('leaflet.markercluster');
 
@@ -16,7 +17,7 @@ function havingDeprecatedProps(markers) {
 
 // NOTE: Helpers
 function isArraysEqual(firstArray, secondArray) {
-  return (JSON.stringify(firstArray) === JSON.stringify(secondArray));
+  return firstArray.length === secondArray.length && deepEqual(firstArray, secondArray);
 }
 
 function removeMarkersWithSameCoordinates(markers) {
