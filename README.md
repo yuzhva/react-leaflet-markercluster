@@ -167,13 +167,9 @@ npm run build:source
 > Don't contribute directly to `./dist` folder.
 Distributions should be updated after running build:source command.
 
-**3.** In newly updated `./dist` folder, please:
-* change `deprecated-styles.scss` to `deprecated-styles.css` in `*.js` file
-* change `deprecated-styles.scss` to `deprecated-styles.min.css` in `*.min.js` file
+**3.** Commit your changes and open Pull Request.
 
-**4.** Commit your changes and open Pull Request.
-
-**5.** :beer: **Thank you for contribution** :beer:
+:beer: **Thank you for contribution** :beer:
 
 
 # UMD

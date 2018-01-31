@@ -7,9 +7,6 @@ import deepEqual from 'deep-equal';
 
 require('leaflet.markercluster');
 
-// TEMP: remove from v1.2.0 because of deprecated wrapperOptions prop
-require('./deprecated-styles.scss!');
-
 // TEMP: remove deprecation warning at v1.2.0
 function havingDeprecatedProps(markers) {
   return markers.findIndex((marker) => marker.lat || marker.lng) !== -1;
@@ -39,7 +36,7 @@ export default class MarkerClusterGroup extends LayerGroup {
     // Override auto created leafletElement with L.markerClusterGroup element
     this.leafletElement = L.markerClusterGroup(options);
 
-    // TEMP: remove from v1.2.0 because of deprecated wrapperOptions prop
+    // TEMP: remove from v1.1.9 because of deprecated wrapperOptions prop
     this.initMapClasses();
 
     // if (markers.length) this.addLayersWithMarkersFromProps(markers);
@@ -72,19 +69,7 @@ export default class MarkerClusterGroup extends LayerGroup {
     const { wrapperOptions } = this.props;
     if (wrapperOptions) {
       console.warn('[react-leaflet-markercluster] Warning: "wrapperOptions" property is deprecated'
-        + ' and will be removed in v1.2.0. Please see: https://goo.gl/s7a6Cj');
-
-      const mapClassName = this.context.map._container.className;
-      const isStyledClassAppliyed = mapClassName.indexOf('marker-cluster-styled') !== -1;
-      const isAnimatedClassAppliyed = mapClassName.indexOf('marker-cluster-animated') !== -1;
-
-      if (wrapperOptions.enableDefaultStyle && !isStyledClassAppliyed) {
-        this.context.map._container.className += ' marker-cluster-styled';
-      }
-
-      if (!wrapperOptions.disableDefaultAnimation && !isAnimatedClassAppliyed) {
-        this.context.map._container.className += ' marker-cluster-animated';
-      }
+        + ' and has been removed in v1.1.8. Please see: https://goo.gl/pq3oM7');
     }
   }
 
