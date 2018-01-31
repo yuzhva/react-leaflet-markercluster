@@ -1,8 +1,2 @@
 @import 'node_modules/leaflet.markercluster/dist/MarkerCluster.Default';
 @import 'node_modules/leaflet.markercluster/dist/MarkerCluster';
-
-.marker-cluster {
-  &-group {
-    display: none;
-  }
-}

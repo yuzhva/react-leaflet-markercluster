@@ -1,4 +1,3 @@
-import React, { Children, cloneElement } from 'react';
 import PropTypes from 'prop-types';
 
 import { LayerGroup } from 'react-leaflet';
@@ -57,7 +56,7 @@ export default class MarkerClusterGroup extends LayerGroup {
   componentWillReceiveProps(nextProps) {
     if (!isArraysEqual(this.props.markers, nextProps.markers)) {
       // Remove layer from map with previously rendered clustered markers
-      this.layerContainer.removeLayer(this.leafletElement);
+      // this.layerContainer.removeLayer(this.leafletElement);
       // Remove layers with markers from markerClusterGroup
       this.leafletElement.clearLayers();
 
@@ -74,7 +73,7 @@ export default class MarkerClusterGroup extends LayerGroup {
   }
 
   addLayersWithMarkersFromProps(markers) {
-    const { markerOptions, wrapperOptions, children } = this.props;
+    const { markerOptions, wrapperOptions } = this.props;
 
     const markersOptions = markerOptions
       ? Object.assign({}, markerOptions)
@@ -105,8 +104,6 @@ export default class MarkerClusterGroup extends LayerGroup {
 
     // Add markers leafletElements to the markerClusterGroup
     this.leafletElement.addLayers(leafletMarkers);
-    // Add clustered markers to the leaflet map
-    if (!children) this.layerContainer.addLayer(this.leafletElement);
   }
 
   initEventListeners(markerClusterGroup) {
@@ -129,46 +126,22 @@ export default class MarkerClusterGroup extends LayerGroup {
     }
   }
 
-  addLayersWithReactLeafletMarkers() {
-    const leafletMarkers = [];
-
-    // Map through all react-leaflet Markers and clone them with ref prop
-    // ref prop required to get leafletElement of Marker
-    return Children.map(this.props.children, (reactLeafletMarker, index) => (
-      cloneElement(reactLeafletMarker, {
-        ref: (marker) => {
-          if (marker) {
-            leafletMarkers.push(marker.leafletElement);
-
-            if (
-              (index === (this.props.children.length - 1)) ||
-              // addClusteredMarkersToMap when there is only one marker
-              !Array.isArray(this.props.children)
-            ) {
-              // Add markers leafletElements to the markerClusterGroup
-              this.leafletElement.addLayers(leafletMarkers);
-              // Add clustered markers to the leaflet map
-              this.layerContainer.addLayer(this.leafletElement);
-            }
-          }
-        },
-        key: `react-leaflet-marker-${JSON.stringify(reactLeafletMarker.props.position)}-${index}`,
-      })
-    ));
-  }
-
   getLeafletElement() {
     return this.leafletElement;
   }
 
-  render() {
-    return this.props.children
-      ? (
-        <section className="marker-cluster-group">
-          {this.addLayersWithReactLeafletMarkers()}
-        </section>
-      )
-      : null;
+  // react-leaflet custom-component methods
+  // https://react-leaflet.js.org/docs/en/custom-components.html
+  getChildContext() {
+    return {
+      layerContainer: this.leafletElement,
+    };
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  createLeafletElement(props) {
+    // eslint-disable-next-line new-cap
+    return new L.markerClusterGroup(props.options);
   }
 }
 
