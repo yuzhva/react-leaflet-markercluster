@@ -3,9 +3,9 @@ import React from 'react';
 import L from 'leaflet';
 import { Map, TileLayer } from 'react-leaflet';
 
-import MarkerClusterGroup from './../../../src/react-leaflet-markercluster';
+import MarkerClusterGroup from './../../../../src/react-leaflet-markercluster';
 
-import { MAP_ZOOM, MAP_MAX_ZOOM, MAP_CENTER_COORDINATES } from './../../constants';
+import { MAP_ZOOM, MAP_MAX_ZOOM, MAP_CENTER_COORDINATES } from './../../../constants';
 
 // Helpers
 function getStringPopup(name) {

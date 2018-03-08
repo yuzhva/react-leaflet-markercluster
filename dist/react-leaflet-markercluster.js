@@ -6,10 +6,6 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
 var _propTypes = require('prop-types');
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
@@ -33,9 +29,6 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 require('leaflet.markercluster');
-
-// TEMP: remove from v1.2.0 because of deprecated wrapperOptions prop
-require('./deprecated-styles.css!');
 
 // TEMP: remove deprecation warning at v1.2.0
 function havingDeprecatedProps(markers) {
@@ -77,11 +70,17 @@ var MarkerClusterGroup = function (_LayerGroup) {
       var _props = this.props,
           markers = _props.markers,
           options = _props.options;
+
+      // TEMP: remove deprecation warning at v1.2.0
+
+      if (options) {
+        console.warn('[react-leaflet-markercluster] Warning: "options" property is deprecated' + ' and will be removed in v1.2.0. Please see: https://goo.gl/pq3oM7');
+      }
+
       // Override auto created leafletElement with L.markerClusterGroup element
+      this.leafletElement = _leaflet2.default.markerClusterGroup(options || this.props);
 
-      this.leafletElement = _leaflet2.default.markerClusterGroup(options);
-
-      // TEMP: remove from v1.2.0 because of deprecated wrapperOptions prop
+      // TEMP: remove from v1.1.9 because of deprecated wrapperOptions prop
       this.initMapClasses();
 
       // if (markers.length) this.addLayersWithMarkersFromProps(markers);
@@ -102,7 +101,7 @@ var MarkerClusterGroup = function (_LayerGroup) {
     value: function componentWillReceiveProps(nextProps) {
       if (!isArraysEqual(this.props.markers, nextProps.markers)) {
         // Remove layer from map with previously rendered clustered markers
-        this.layerContainer.removeLayer(this.leafletElement);
+        // this.layerContainer.removeLayer(this.leafletElement);
         // Remove layers with markers from markerClusterGroup
         this.leafletElement.clearLayers();
 
@@ -115,19 +114,7 @@ var MarkerClusterGroup = function (_LayerGroup) {
       var wrapperOptions = this.props.wrapperOptions;
 
       if (wrapperOptions) {
-        console.warn('[react-leaflet-markercluster] Warning: "wrapperOptions" property is deprecated' + ' and will be removed in v1.2.0. Please see: https://goo.gl/s7a6Cj');
-
-        var mapClassName = this.context.map._container.className;
-        var isStyledClassAppliyed = mapClassName.indexOf('marker-cluster-styled') !== -1;
-        var isAnimatedClassAppliyed = mapClassName.indexOf('marker-cluster-animated') !== -1;
-
-        if (wrapperOptions.enableDefaultStyle && !isStyledClassAppliyed) {
-          this.context.map._container.className += ' marker-cluster-styled';
-        }
-
-        if (!wrapperOptions.disableDefaultAnimation && !isAnimatedClassAppliyed) {
-          this.context.map._container.className += ' marker-cluster-animated';
-        }
+        console.warn('[react-leaflet-markercluster] Warning: "wrapperOptions" property is deprecated' + ' and has been removed in v1.1.8. Please see: https://goo.gl/pq3oM7');
       }
     }
   }, {
@@ -135,8 +122,7 @@ var MarkerClusterGroup = function (_LayerGroup) {
     value: function addLayersWithMarkersFromProps(markers) {
       var _props2 = this.props,
           markerOptions = _props2.markerOptions,
-          wrapperOptions = _props2.wrapperOptions,
-          children = _props2.children;
+          wrapperOptions = _props2.wrapperOptions;
 
 
       var markersOptions = markerOptions ? Object.assign({}, markerOptions) : {};
@@ -159,8 +145,6 @@ var MarkerClusterGroup = function (_LayerGroup) {
 
       // Add markers leafletElements to the markerClusterGroup
       this.leafletElement.addLayers(leafletMarkers);
-      // Add clustered markers to the leaflet map
-      if (!children) this.layerContainer.addLayer(this.leafletElement);
     }
   }, {
     key: 'initEventListeners',
@@ -186,47 +170,29 @@ var MarkerClusterGroup = function (_LayerGroup) {
       }
     }
   }, {
-    key: 'addLayersWithReactLeafletMarkers',
-    value: function addLayersWithReactLeafletMarkers() {
-      var _this3 = this;
-
-      var leafletMarkers = [];
-
-      // Map through all react-leaflet Markers and clone them with ref prop
-      // ref prop required to get leafletElement of Marker
-      return _react.Children.map(this.props.children, function (reactLeafletMarker, index) {
-        return (0, _react.cloneElement)(reactLeafletMarker, {
-          ref: function ref(marker) {
-            if (marker) {
-              leafletMarkers.push(marker.leafletElement);
-
-              if (index === _this3.props.children.length - 1 ||
-              // addClusteredMarkersToMap when there is only one marker
-              !Array.isArray(_this3.props.children)) {
-                // Add markers leafletElements to the markerClusterGroup
-                _this3.leafletElement.addLayers(leafletMarkers);
-                // Add clustered markers to the leaflet map
-                _this3.layerContainer.addLayer(_this3.leafletElement);
-              }
-            }
-          },
-          key: 'react-leaflet-marker-' + JSON.stringify(reactLeafletMarker.props.position) + '-' + index
-        });
-      });
-    }
-  }, {
     key: 'getLeafletElement',
     value: function getLeafletElement() {
       return this.leafletElement;
     }
+
+    // react-leaflet custom-component methods
+    // https://react-leaflet.js.org/docs/en/custom-components.html
+
   }, {
-    key: 'render',
-    value: function render() {
-      return this.props.children ? _react2.default.createElement(
-        'section',
-        { className: 'marker-cluster-group' },
-        this.addLayersWithReactLeafletMarkers()
-      ) : null;
+    key: 'getChildContext',
+    value: function getChildContext() {
+      return {
+        layerContainer: this.leafletElement
+      };
+    }
+
+    // eslint-disable-next-line class-methods-use-this
+
+  }, {
+    key: 'createLeafletElement',
+    value: function createLeafletElement(props) {
+      // eslint-disable-next-line new-cap
+      return new _leaflet2.default.markerClusterGroup(props.options || props);
     }
   }]);
 

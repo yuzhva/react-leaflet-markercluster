@@ -7,7 +7,7 @@ import MarkerClusterGroup from './../../../src/react-leaflet-markercluster';
 import { MAP_ZOOM, MAP_MAX_ZOOM, MAP_CENTER_COORDINATES } from './../../constants';
 
 // E.G. (Exempli Gratia)
-const BasicEGTwo = () => (
+const BasicEGOne = () => (
   <Map
     className="markercluster-map"
     center={MAP_CENTER_COORDINATES}
@@ -25,7 +25,8 @@ const BasicEGTwo = () => (
       <Marker position={[52.2297, 21.0122]} />
       <Marker position={[51.5074, -0.0901]} />
     </MarkerClusterGroup>
+
   </Map>
 );
 
-export default BasicEGTwo;
+export default BasicEGOne;

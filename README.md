@@ -20,10 +20,8 @@ overlapping because they are close to each other - you probably need to group th
 That is what you can do with **react-leaflet-markercluster**.
 
 > **Note: Before getting started, please see these useful guides:**
-> - [Leaflet Quick Start Guide](
-http://leafletjs.com/examples/quick-start/).
-> - [react-leaflet Getting started](
-https://github.com/PaulLeCam/react-leaflet/blob/master/docs/Getting%20started.md).
+> - [Leaflet Quick Start Guide](http://leafletjs.com/examples/quick-start/).
+> - [react-leaflet Installation](https://react-leaflet.js.org/docs/en/installation.html).
 
 
 # Table of Contents
@@ -41,10 +39,10 @@ npm install react-leaflet-markercluster # npm
 ```
 The `react-leaflet-markercluster` requires `leaflet.markercluster` as [`peerDependency`](https://docs.npmjs.com/files/package.json#peerdependencies)
 
-(React, PropTypes, Leaflet, react-leaflet also should be installed)
+(Leaflet, react-leaflet, PropTypes also should be installed)
 ```bash
-yarn add leaflet.markercluster # yarn
-npm install leaflet.markercluster # npm
+yarn add leaflet.markercluster leaflet react-leaflet prop-types # yarn
+npm install leaflet.markercluster leaflet react-leaflet prop-types # npm
 ```
 
 **2.** Import Markercluster styles:
@@ -54,58 +52,75 @@ npm install leaflet.markercluster # npm
 
 require('react-leaflet-markercluster/dist/styles.min.css'); // inside .js file
 ```
-or include CSS styles directly to the head of HTML file:
+Or include CSS styles directly to the head of HTML file:
 ```html
 <link rel="stylesheet" href="https://unpkg.com/react-leaflet-markercluster/dist/styles.min.css" />
 ```
 
-**3.** Import package to your component:
+**3.** Write some simple `react-leaflet` Map:
+```javascript
+<Map className="markercluster-map" center={[51.0, 19.0]} zoom={4} maxZoom={18}>
+  <TileLayer
+    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+    attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+  />
+
+  <Marker position={[49.8397, 24.0297]} />
+  <Marker position={[52.2297, 21.0122]} />
+  <Marker position={[51.5074, -0.0901]} />
+
+</Map>
+```
+
+
+**4.** Import package to your component:
 ```javascript
 import MarkerClusterGroup from 'react-leaflet-markercluster';
 ```
 
-**4.** Declare some markers in next format:
+**5.** Just grab your markers inside `<MarkerClusterGroup />` component (right after `<TileLayer />`):
 ```javascript
-const markers = [
-  { position: [49.8397, 24.0297] },
-  { position: [52.2297, 21.0122] },
-  { position: [51.5074, -0.0901] },
-];
-```
-
-**5.** Put `<MarkerClusterGroup ... />` inside react-leaflet, right after `<TileLayer />`:
-```javascript
-<Map className="markercluster-map" center={[51.0, 19.0]} zoom={4} maxZoom={18}>
-  <TileLayer
-    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-    attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-  />
-
-  <MarkerClusterGroup markers={markers} />
-</Map>
+<MarkerClusterGroup>
+  <Marker position={[49.8397, 24.0297]} />
+  <Marker position={[52.2297, 21.0122]} />
+  <Marker position={[51.5074, -0.0901]} />
+</MarkerClusterGroup>
 ```
 
 [**Check demo**](https://yuzhva.github.io/react-leaflet-markercluster/) for more examples.
 
-**P.S:** support of react-leaflet Marker available as a testing feature.  
-Just grab your markers inside MarkerClusterGroup like:
-```javascript
-<Map className="markercluster-map" center={[51.0, 19.0]} zoom={4} maxZoom={18}>
-  <TileLayer
-    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-    attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-  />
-
-  <MarkerClusterGroup>
-    <Marker position={[49.8397, 24.0297]} />
-    <Marker position={[52.2297, 21.0122]} />
-    <Marker position={[51.5074, -0.0901]} />
-  </MarkerClusterGroup>
-</Map>
-```
 
 # API
-* `markers: array of objects` (required)
+Just pass whatever option you need from [All Leaflet.markercluster Options](https://github.com/Leaflet/Leaflet.markercluster#all-options)
+to `MarkerClusterGroup` as `prop`.
+
+For example:
+```javascript
+<MarkerClusterGroup showCoverageOnHover={false} />
+```
+or:
+```javascript
+const createClusterCustomIcon = function (cluster) {
+  return L.divIcon({
+    html: `<span>${cluster.getChildCount()}</span>`,
+    className: 'marker-cluster-custom',
+    iconSize: L.point(40, 40, true),
+  });
+}
+
+<MarkerClusterGroup iconCreateFunction={createClusterCustomIcon} />
+```
+P.S: old examples are available at [CHANGELOG.md](./CHANGELOG.md#v118)
+
+**Event listeners:**
++ `onMarkerClick: function`
++ `onClusterClick: function`
++ `onPopupClose: function`
+
+**Deprecated since v1.1.8 API:**
++ `options: object` All available [options for Leaflet.markercluster](
+  https://github.com/Leaflet/Leaflet.markercluster#options)
+* `markers: array of objects`
 
   keys for marker object, that will be placed in markers array:
     - `position: array | object` [Leaflet.LatLng](http://leafletjs.com/reference-1.2.0.html#latlng) (required)
@@ -115,13 +130,10 @@ Just grab your markers inside MarkerClusterGroup like:
     - `popup: Leaflet.Popup | string | HTMLElement`
     - `tooltip: Leaflet.Tooltip | string | HTMLElement`
 
-+ `options: object` All available [options for Leaflet.markercluster](
-  https://github.com/Leaflet/Leaflet.markercluster#options)
-+ `markerOptions: object` All available [options for Leaflet.Marker](
++ `markerOptions: object` (options for `markers` in JSON format)
+  All available [options for Leaflet.Marker](
   http://leafletjs.com/reference-1.0.3.html#marker-option)
-+ `onMarkerClick: function`
-+ `onClusterClick: function`
-+ `onPopupClose: function`
+
 
 **Refs.** Accessing markerClusterGroup Leaflet element:
 ```javascript
@@ -167,13 +179,9 @@ npm run build:source
 > Don't contribute directly to `./dist` folder.
 Distributions should be updated after running build:source command.
 
-**3.** In newly updated `./dist` folder, please:
-* change `deprecated-styles.scss` to `deprecated-styles.css` in `*.js` file
-* change `deprecated-styles.scss` to `deprecated-styles.min.css` in `*.min.js` file
+**3.** Commit your changes and open Pull Request.
 
-**4.** Commit your changes and open Pull Request.
-
-**5.** :beer: **Thank you for contribution** :beer:
+:beer: **Thank you for contribution** :beer:
 
 
 # UMD

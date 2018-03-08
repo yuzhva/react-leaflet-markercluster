@@ -46,7 +46,7 @@ function getLeafletPopup(name) {
     \`);
 }
 
-// Put <MarkerClusterGroup ... /> inside react-leaflet after <TileLayer />
+// Put <MarkerClusterGroup {...props} /> inside react-leaflet after <TileLayer />
 <Map className="markercluster-map" center={[51.0, 19.0]} zoom={4} maxZoom={18}>
   <TileLayer
     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -62,7 +62,7 @@ function getLeafletPopup(name) {
 
     <div className="alert alert-warning" role="alert">
       <a
-        href="https://github.com/YUzhva/react-leaflet-markercluster/blob/master/demo-app/components/marker-popup/example-one.js"
+        href="https://github.com/YUzhva/react-leaflet-markercluster/blob/master/demo-app/examples/deprecated/marker-popup/example-one.js"
         className="alert-link"
         target="_blank"
         rel="noopener noreferrer"

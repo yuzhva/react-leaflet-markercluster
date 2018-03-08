@@ -2,9 +2,9 @@ import React from 'react';
 
 import { Map, TileLayer } from 'react-leaflet';
 
-import MarkerClusterGroup from './../../../src/react-leaflet-markercluster';
+import MarkerClusterGroup from './../../../../src/react-leaflet-markercluster';
 
-import { MAP_ZOOM, MAP_MAX_ZOOM, MAP_CENTER_COORDINATES } from './../../constants';
+import { MAP_ZOOM, MAP_MAX_ZOOM, MAP_CENTER_COORDINATES } from './../../../constants';
 
 const markers = [
   { position: [49.8397, 24.0297] },
