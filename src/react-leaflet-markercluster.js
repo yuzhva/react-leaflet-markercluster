@@ -32,8 +32,15 @@ function removeMarkersWithSameCoordinates(markers) {
 export default class MarkerClusterGroup extends LayerGroup {
   componentWillMount() {
     const { markers, options } = this.props;
+
+    // TEMP: remove deprecation warning at v1.2.0
+    if (options) {
+      console.warn('[react-leaflet-markercluster] Warning: "options" property is deprecated'
+        + ' and will be removed in v1.2.0. Please see: https://goo.gl/pq3oM7');
+    }
+
     // Override auto created leafletElement with L.markerClusterGroup element
-    this.leafletElement = L.markerClusterGroup(options);
+    this.leafletElement = L.markerClusterGroup(options || this.props);
 
     // TEMP: remove from v1.1.9 because of deprecated wrapperOptions prop
     this.initMapClasses();
@@ -141,7 +148,7 @@ export default class MarkerClusterGroup extends LayerGroup {
   // eslint-disable-next-line class-methods-use-this
   createLeafletElement(props) {
     // eslint-disable-next-line new-cap
-    return new L.markerClusterGroup(props.options);
+    return new L.markerClusterGroup(props.options || props);
   }
 }
 
