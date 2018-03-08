@@ -60,7 +60,7 @@ const markers = [
   { position: [51.5074, -0.0901], popup: 'Hello world' },
 ];
 
-// Put <MarkerClusterGroup ... /> inside react-leaflet after <TileLayer />
+// Put <MarkerClusterGroup {...props} /> inside react-leaflet after <TileLayer />
 <Map className="markercluster-map" center={[51.0, 19.0]} zoom={4} maxZoom={18}>
   <TileLayer
     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -82,7 +82,7 @@ const markers = [
 
     <div className="alert alert-warning" role="alert">
       <a
-        href="https://github.com/YUzhva/react-leaflet-markercluster/blob/master/demo-app/components/event-listeners/example-one.js"
+        href="https://github.com/YUzhva/react-leaflet-markercluster/blob/master/demo-app/examples/event-listeners/example-one.js"
         className="alert-link"
         target="_blank"
         rel="noopener noreferrer"
