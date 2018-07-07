@@ -37,6 +37,12 @@ That is what you can do with **react-leaflet-markercluster**.
 yarn add react-leaflet-markercluster # yarn
 npm install react-leaflet-markercluster # npm
 ```
+**NOTE: For using react-leaflet-markercluster with react-leaflet@^2.0.0 install package as:**
+```bash
+yarn add react-leaflet-markercluster@next # yarn
+npm install react-leaflet-markercluster@next # npm
+```
+
 The `react-leaflet-markercluster` requires `leaflet.markercluster` as [`peerDependency`](https://docs.npmjs.com/files/package.json#peerdependencies)
 
 (Leaflet, react-leaflet, PropTypes also should be installed)
