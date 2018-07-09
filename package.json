@@ -1,6 +1,6 @@
 {
   "name": "react-leaflet-markercluster",
-  "version": "2.0.0-rc1",
+  "version": "2.0.0-rc2",
   "description": "React wrapper of Leaflet.markercluster for react-laeflet",
   "main": "dist/react-leaflet-markercluster.min.js",
   "scripts": {

@@ -4,7 +4,7 @@ import L from 'leaflet';
 require('leaflet.markercluster');
 
 class MarkerClusterGroup extends MapLayer {
-  createLeafletElement({ children, leaflet, ...props }) {
+  createLeafletElement({ children, leaflet: { map }, ...props }) {
     const clusterProps = {};
     const clusterEvents = {};
 
@@ -17,7 +17,7 @@ class MarkerClusterGroup extends MapLayer {
 
     // Creating markerClusterGroup Leaflet element
     const markerClusterGroup = new L.markerClusterGroup(clusterProps);
-    this.contextValue = { layerContainer: markerClusterGroup };
+    this.contextValue = { layerContainer: markerClusterGroup, map };
 
     // Initializing event listeners
     Object.entries(clusterEvents).forEach(
