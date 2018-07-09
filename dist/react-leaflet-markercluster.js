@@ -39,7 +39,7 @@ var MarkerClusterGroup = function (_MapLayer) {
     key: 'createLeafletElement',
     value: function createLeafletElement(_ref) {
       var children = _ref.children,
-          leaflet = _ref.leaflet,
+          map = _ref.leaflet.map,
           props = _objectWithoutProperties(_ref, ['children', 'leaflet']);
 
       var clusterProps = {};
@@ -56,7 +56,7 @@ var MarkerClusterGroup = function (_MapLayer) {
 
       // Creating markerClusterGroup Leaflet element
       var markerClusterGroup = new _leaflet2.default.markerClusterGroup(clusterProps);
-      this.contextValue = { layerContainer: markerClusterGroup };
+      this.contextValue = { layerContainer: markerClusterGroup, map: map };
 
       // Initializing event listeners
       Object.entries(clusterEvents).forEach(function (_ref4) {
