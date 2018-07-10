@@ -10,7 +10,7 @@ class MarkerClusterGroup extends MapLayer {
 
     // Splitting props and events to different objects
     Object.entries(props).forEach(
-      ([propName, prop]) => propName.includes('on')
+      ([propName, prop]) => propName.startsWith('on')
         ? clusterEvents[propName] = prop
         : clusterProps[propName] = prop
     );
