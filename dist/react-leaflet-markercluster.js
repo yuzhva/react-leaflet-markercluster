@@ -51,7 +51,7 @@ var MarkerClusterGroup = function (_MapLayer) {
             propName = _ref3[0],
             prop = _ref3[1];
 
-        return propName.includes('on') ? clusterEvents[propName] = prop : clusterProps[propName] = prop;
+        return propName.startsWith('on') ? clusterEvents[propName] = prop : clusterProps[propName] = prop;
       });
 
       // Creating markerClusterGroup Leaflet element
