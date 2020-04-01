@@ -16,6 +16,7 @@
   "license": "MIT",
   "private": false,
   "scripts": {
+    "lint": "eslint --ext .js ./",
     "build": "webpack --mode production --config ./config/webpack.config.js"
   },
   "devDependencies": {
@@ -24,6 +25,13 @@
     "@babel/preset-env": "^7.9.0",
     "babel-loader": "^8.1.0",
     "css-loader": "^3.4.2",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.1.0",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.19.0",
+    "eslint-plugin-react-hooks": "^2.5.1",
+    "husky": "^4.2.3",
     "mini-css-extract-plugin": "^0.9.0",
     "node-sass": "^4.13.1",
     "sass-loader": "^8.0.2",
@@ -39,5 +47,10 @@
     "leaflet": "^1.6.0",
     "leaflet.markercluster": "^1.4.1",
     "react-leaflet": "^2.6.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn lint"
+    }
   }
 }
