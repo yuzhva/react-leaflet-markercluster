@@ -1,9 +1,10 @@
-# [future-release] v1.2.0
-TODO: There are critical changes that touches to the MarkerClusterGroup API:
+# v2.0.0
+There are critical changes that touches to the MarkerClusterGroup API:
 **1.** Support of `marker` object `lat` and `lng` keys are removed.
 **2.** `options` property of `MarkerClusterGroup` removed.
 **3.** Console **deprecated warnings** are removed.
 **4.** Better handling on events.
+**5.** Demo application completely rewritten and replaced with StoryBook.
 
 # v1.1.8
 There are critical changes that touches to the MarkerClusterGroup API:
@@ -104,7 +105,7 @@ const markers = [
   { position: [51.5074, -0.0901] },
 ];
 ```
-`position` that is [Leaflet.LatLng](http://leafletjs.com/reference-1.2.0.html#latlng)
+`position` that is [Leaflet.LatLng](http://leafletjs.com/reference.html#latlng)
 `array` or `object`, that could be declared like:
 ```javascript
 const markers = [

@@ -11,7 +11,7 @@ import './styles.scss';
 
 // Setup Tooltip according to react-leaflet documentation
 // https://react-leaflet.js.org/docs/en/examples.html
-// http://leafletjs.com/reference-1.0.3.html#tooltip-option
+// http://leafletjs.com/reference.html#tooltip-option
 
 const MarkerTooltip = () => (
   <Map

@@ -19,7 +19,7 @@ const redMarker = L.icon({
 
 // Setup Popup according to react-leaflet documentation
 // https://react-leaflet.js.org/docs/en/examples.html
-// http://leafletjs.com/reference-1.0.3.html#popup-option
+// http://leafletjs.com/reference.html#popup-option
 
 const MarkerPopup = () => (
   <Map
