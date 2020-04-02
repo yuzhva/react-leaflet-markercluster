@@ -1,6 +1,6 @@
 {
   "name": "react-leaflet-markercluster",
-  "version": "2.0.0-rc4",
+  "version": "2.0.0",
   "description": "React wrapper of Leaflet.markercluster for react-laeflet",
   "main": "dist/index.js",
   "repository": "git@github.com:YUzhva/react-leaflet-markercluster.git",
