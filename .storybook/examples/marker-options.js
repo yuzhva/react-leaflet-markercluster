@@ -3,19 +3,21 @@ import React from 'react';
 import L from 'leaflet';
 import { Map, TileLayer, Marker } from 'react-leaflet';
 
-import MarkerClusterGroup from './../../../src/react-leaflet-markercluster';
+import MarkerClusterGroup from './../../src/react-leaflet-markercluster';
 
-import { MAP_ZOOM, MAP_MAX_ZOOM, MAP_CENTER_COORDINATES } from './../../constants';
+import redFilledMarker from './icons/red-filled-marker.svg';
+import { MAP_ZOOM, MAP_MAX_ZOOM, MAP_CENTER_COORDINATES } from './constants';
+
+import './styles.scss';
 
 // Create marker icon according to the official leaflet documentation
 const redMarker = L.icon({
-  iconUrl: './demo-app/assets/icons/red-filled-marker.svg',
+  iconUrl: redFilledMarker,
   iconSize: [40, 40],
   iconAnchor: [20, 40],
 });
 
-// E.G. (Exempli Gratia)
-const MarkerOptionsEGOne = () => (
+const MarkerOptions = () => (
   <Map
     className="markercluster-map"
     center={MAP_CENTER_COORDINATES}
@@ -35,9 +37,9 @@ const MarkerOptionsEGOne = () => (
       <Marker position={[50.0647, 19.9450]} />
       <Marker position={[48.9226, 24.7111]} title="San Frankivsko title on hover" />
       <Marker position={[48.7164, 21.2611]} />
-      <Marker position={[51.5, -0.09]} icon={redMarker} />
+      <Marker position={[51.5, -0.09]} icon={redMarker} title="London title on hover" />
     </MarkerClusterGroup>
   </Map>
 );
 
-export default MarkerOptionsEGOne;
+export default MarkerOptions;

@@ -1,21 +1,20 @@
 {
-  "extends": "airbnb",
   "env": {
     "browser": true,
-    "jest": true
+    "es6": true
   },
-  "plugins": [
-    "react",
-    "jsx-a11y",
-    "import"
-  ],
-  "rules": {
-    "arrow-parens": ["error", "always"],
-    "no-console": [1, { "allow": ["warn"] }],
-
-    "react/jsx-filename-extension": 0,
-
-    "react/forbid-prop-types": 0,
-    "no-underscore-dangle": ["error", { "allow": ["_container"] }]
-  }
+  "extends": ["plugin:react/recommended", "airbnb"],
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
+  },
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  },
+  "plugins": ["react"],
+  "rules": {}
 }

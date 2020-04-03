@@ -3,11 +3,13 @@ import React from 'react';
 import L from 'leaflet';
 import { Map, TileLayer, Marker } from 'react-leaflet';
 
-import MarkerClusterGroup from './../../../src/react-leaflet-markercluster';
+import MarkerClusterGroup from './../../src/react-leaflet-markercluster';
 
-import { MAP_ZOOM, MAP_MAX_ZOOM, MAP_CENTER_COORDINATES } from './../../constants';
+import { MAP_ZOOM, MAP_MAX_ZOOM, MAP_CENTER_COORDINATES } from './constants';
 
-// Function for creating custom icon for clustere group
+import './styles.scss';
+
+// Function for creating custom icon for cluster group
 // https://github.com/Leaflet/Leaflet.markercluster#customising-the-clustered-markers
 // NOTE: iconCreateFunction is running by leaflet, which is not support ES6 arrow func syntax
 // eslint-disable-next-line
@@ -19,8 +21,7 @@ const createClusterCustomIcon = function (cluster) {
   });
 };
 
-// E.G. (Exempli Gratia)
-const MarkerclusterOptionsEGOne = () => (
+const MarkerClusterOptions = () => (
   <Map
     className="markercluster-map"
     center={MAP_CENTER_COORDINATES}
@@ -55,4 +56,4 @@ const MarkerclusterOptionsEGOne = () => (
   </Map>
 );
 
-export default MarkerclusterOptionsEGOne;
+export default MarkerClusterOptions;

@@ -3,23 +3,25 @@ import React from 'react';
 import L from 'leaflet';
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
 
-import MarkerClusterGroup from './../../../src/react-leaflet-markercluster';
+import MarkerClusterGroup from './../../src/react-leaflet-markercluster';
 
-import { MAP_ZOOM, MAP_MAX_ZOOM, MAP_CENTER_COORDINATES } from './../../constants';
+import redFilledMarker from './icons/red-filled-marker.svg';
+import { MAP_ZOOM, MAP_MAX_ZOOM, MAP_CENTER_COORDINATES } from './constants';
+
+import './styles.scss';
 
 // Create marker icon according to the official leaflet documentation
 const redMarker = L.icon({
-  iconUrl: './demo-app/assets/icons/red-filled-marker.svg',
+  iconUrl: redFilledMarker,
   iconSize: [40, 40],
   iconAnchor: [20, 40],
 });
 
 // Setup Popup according to react-leaflet documentation
 // https://react-leaflet.js.org/docs/en/examples.html
-// http://leafletjs.com/reference-1.0.3.html#popup-option
+// http://leafletjs.com/reference.html#popup-option
 
-// E.G. (Exempli Gratia)
-const MarkerPopupEGOne = () => (
+const MarkerPopup = () => (
   <Map
     className="markercluster-map"
     center={MAP_CENTER_COORDINATES}
@@ -63,4 +65,4 @@ const MarkerPopupEGOne = () => (
   </Map>
 );
 
-export default MarkerPopupEGOne;
+export default MarkerPopup;

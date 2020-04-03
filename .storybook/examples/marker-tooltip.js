@@ -3,16 +3,17 @@ import React from 'react';
 import L from 'leaflet';
 import { Map, TileLayer, Marker, Tooltip } from 'react-leaflet';
 
-import MarkerClusterGroup from './../../../src/react-leaflet-markercluster';
+import MarkerClusterGroup from './../../src/react-leaflet-markercluster';
 
-import { MAP_ZOOM, MAP_MAX_ZOOM, MAP_CENTER_COORDINATES } from './../../constants';
+import { MAP_ZOOM, MAP_MAX_ZOOM, MAP_CENTER_COORDINATES } from './constants';
+
+import './styles.scss';
 
 // Setup Tooltip according to react-leaflet documentation
 // https://react-leaflet.js.org/docs/en/examples.html
-// http://leafletjs.com/reference-1.0.3.html#tooltip-option
+// http://leafletjs.com/reference.html#tooltip-option
 
-// E.G. (Exempli Gratia)
-const MarkerTooltipEGOne = () => (
+const MarkerTooltip = () => (
   <Map
     className="markercluster-map"
     center={MAP_CENTER_COORDINATES}
@@ -49,4 +50,4 @@ const MarkerTooltipEGOne = () => (
   </Map>
 );
 
-export default MarkerTooltipEGOne;
+export default MarkerTooltip;

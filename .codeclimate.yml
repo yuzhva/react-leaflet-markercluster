@@ -14,4 +14,4 @@ ratings:
 
 exclude_paths:
 - "dist/"
-- "demo-app/"
+- ".storybook/"

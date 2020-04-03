@@ -24,7 +24,7 @@ class MarkerClusterGroup extends MapLayer {
       ([eventAsProp, callback]) => {
         const clusterEvent = `cluster${eventAsProp.substring(2).toLowerCase()}`;
         markerClusterGroup.on(clusterEvent, callback);
-      }
+      },
     );
 
     return markerClusterGroup;

@@ -1,0 +1,21 @@
+@import '../../src/styles.scss';
+// NOTE: '~leaflet/dist/leaflet.css' should be imported here instead of {preview-head.html}
+
+$puple: #9370db;
+$gray: #ededed;
+
+.markercluster-map {
+  height: 90vh;
+}
+
+/* Customize the Clustered Markers */
+.marker-cluster-custom {
+  background: $puple;
+  border: 3px solid $gray;
+  border-radius: 50%;
+  color: $gray;
+  height: 40px;
+  line-height: 37px;
+  text-align: center;
+  width: 40px;
+}
