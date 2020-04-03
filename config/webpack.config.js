@@ -1,5 +1,7 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 const babelConfig = require('../babel.config.js');
 
@@ -16,6 +18,8 @@ module.exports = {
   output: {
     filename: 'index.js',
     path: path.resolve(PATH.ROOT, 'dist'),
+    library: 'reactLeafletMarkercluster',
+    libraryTarget: 'umd',
   },
   module: {
     rules: [
@@ -45,4 +49,15 @@ module.exports = {
       filename: 'styles.min.css',
     }),
   ],
+  optimization: {
+    minimize: true,
+    minimizer: [
+      new TerserPlugin({
+        cache: true,
+        parallel: true,
+        sourceMap: true,
+      }),
+      new OptimizeCSSAssetsPlugin({}),
+    ],
+  },
 };
