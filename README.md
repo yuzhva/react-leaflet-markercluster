@@ -202,9 +202,9 @@ UMD builds are available on [unpkg](https://unpkg.com/):
 <script src="https://unpkg.com/react-leaflet-markercluster/src/react-leaflet-markercluster.js"></script>
 
 <!-- unpkg, production styles (minified) -->
-<script src="https://unpkg.com/react-leaflet-markercluster/dist/styles.min.css"></script>
+<link rel="stylesheet" type="text/css" href="https://unpkg.com/react-leaflet-markercluster/dist/styles.min.css" />
 <!-- unpkg, development styles -->
-<script src="https://unpkg.com/react-leaflet-markercluster/src/styles.scss"></script>
+<link rel="stylesheet" type="text/css" href="https://unpkg.com/react-leaflet-markercluster/src/styles.scss" />
 ```
 
 # License
