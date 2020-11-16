@@ -20,14 +20,15 @@ overlapping because they are close to each other - you probably need to group th
 That is what you can do with **react-leaflet-markercluster**.
 
 Just grab your markers inside `<MarkerClusterGroup />` component, right after `<TileLayer />`:
+
 ```javascript
-import MarkerClusterGroup from "react-leaflet-markercluster";
+import MarkerClusterGroup from 'react-leaflet-markercluster';
 
 <MarkerClusterGroup>
   <Marker position={[49.8397, 24.0297]} />
   <Marker position={[52.2297, 21.0122]} />
   <Marker position={[51.5074, -0.0901]} />
-</MarkerClusterGroup>
+</MarkerClusterGroup>;
 ```
 
 > **Note: Before getting started, please see these useful guides:**
@@ -84,9 +85,14 @@ Or include CSS styles directly to the head of HTML file:
 **3.** Write some simple `react-leaflet` Map:
 
 ```javascript
-import { Map, TileLayer, Marker } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker } from 'react-leaflet';
 
-<Map className="markercluster-map" center={[51.0, 19.0]} zoom={4} maxZoom={18}>
+<MapContainer
+  className="markercluster-map"
+  center={[51.0, 19.0]}
+  zoom={4}
+  maxZoom={18}
+>
   <TileLayer
     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
     attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -95,7 +101,7 @@ import { Map, TileLayer, Marker } from 'react-leaflet';
   <Marker position={[49.8397, 24.0297]} />
   <Marker position={[52.2297, 21.0122]} />
   <Marker position={[51.5074, -0.0901]} />
-</Map>
+</MapContainer>;
 ```
 
 **NOTE:** Remember to add map styles `.markercluster-map { height: 90vh; }`.
@@ -103,13 +109,13 @@ import { Map, TileLayer, Marker } from 'react-leaflet';
 **4.** Just grab your markers inside `<MarkerClusterGroup />` component, right after `<TileLayer />`:
 
 ```javascript
-import MarkerClusterGroup from "react-leaflet-markercluster";
+import MarkerClusterGroup from 'react-leaflet-markercluster';
 
 <MarkerClusterGroup>
   <Marker position={[49.8397, 24.0297]} />
   <Marker position={[52.2297, 21.0122]} />
   <Marker position={[51.5074, -0.0901]} />
-</MarkerClusterGroup>
+</MarkerClusterGroup>;
 ```
 
 [More examples with the Documentation](https://yuzhva.github.io/react-leaflet-markercluster/) <br />
