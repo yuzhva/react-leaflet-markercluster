@@ -20,14 +20,15 @@ overlapping because they are close to each other - you probably need to group th
 That is what you can do with **react-leaflet-markercluster**.
 
 Just grab your markers inside `<MarkerClusterGroup />` component, right after `<TileLayer />`:
+
 ```javascript
-import MarkerClusterGroup from "react-leaflet-markercluster";
+import MarkerClusterGroup from 'react-leaflet-markercluster';
 
 <MarkerClusterGroup>
   <Marker position={[49.8397, 24.0297]} />
   <Marker position={[52.2297, 21.0122]} />
   <Marker position={[51.5074, -0.0901]} />
-</MarkerClusterGroup>
+</MarkerClusterGroup>;
 ```
 
 > **Note: Before getting started, please see these useful guides:**
@@ -40,16 +41,20 @@ import MarkerClusterGroup from "react-leaflet-markercluster";
 - [Getting started](#getting-started)
 - [API](#api)
 - [How to run DEV env](#how-to-run-dev-env)
+- [Contributors ✨](#contributors-)
 - [Contributing](#contributing)
+- [License](#license)
 
 # Getting started
 
 **1.** Install package:
 
 ```bash
-yarn add react-leaflet-markercluster # yarn
+yarn add react-leaflet-markercluster@next # yarn
 npm install react-leaflet-markercluster # npm
 ```
+
+**NOTE:** the `@next` is required for **react-leaflet v3** support. If you are still using react-leaflet v3, add dependency as `react-leaflet-markercluster@^2.x.x`
 
 The `react-leaflet-markercluster` requires `leaflet.markercluster` as [`peerDependency`](https://docs.npmjs.com/files/package.json#peerdependencies)
 
@@ -84,9 +89,14 @@ Or include CSS styles directly to the head of HTML file:
 **3.** Write some simple `react-leaflet` Map:
 
 ```javascript
-import { Map, TileLayer, Marker } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker } from 'react-leaflet';
 
-<Map className="markercluster-map" center={[51.0, 19.0]} zoom={4} maxZoom={18}>
+<MapContainer
+  className="markercluster-map"
+  center={[51.0, 19.0]}
+  zoom={4}
+  maxZoom={18}
+>
   <TileLayer
     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
     attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -95,7 +105,7 @@ import { Map, TileLayer, Marker } from 'react-leaflet';
   <Marker position={[49.8397, 24.0297]} />
   <Marker position={[52.2297, 21.0122]} />
   <Marker position={[51.5074, -0.0901]} />
-</Map>
+</MapContainer>;
 ```
 
 **NOTE:** Remember to add map styles `.markercluster-map { height: 90vh; }`.
@@ -103,13 +113,13 @@ import { Map, TileLayer, Marker } from 'react-leaflet';
 **4.** Just grab your markers inside `<MarkerClusterGroup />` component, right after `<TileLayer />`:
 
 ```javascript
-import MarkerClusterGroup from "react-leaflet-markercluster";
+import MarkerClusterGroup from 'react-leaflet-markercluster';
 
 <MarkerClusterGroup>
   <Marker position={[49.8397, 24.0297]} />
   <Marker position={[52.2297, 21.0122]} />
   <Marker position={[51.5074, -0.0901]} />
-</MarkerClusterGroup>
+</MarkerClusterGroup>;
 ```
 
 [More examples with the Documentation](https://yuzhva.github.io/react-leaflet-markercluster/) <br />
@@ -173,6 +183,19 @@ npm run dev # npm
 http://localhost:8080/
 ```
 
+# Contributors ✨
+
+Thanks goes to these wonderful people:
+<a href="https://github.com/yuzhva/react-leaflet-markercluster/graphs/contributors">
+  <img src="https://contributors-img.web.app/image?repo=yuzhva/react-leaflet-markercluster" />
+</a>
+Avatars rendered by [contributors-img](https://contributors-img.web.app).
+
+**Special thanks to:**
+
+- [@webcarrot](https://github.com/webcarrot) for [react-leaflet v2 support](https://github.com/yuzhva/react-leaflet-markercluster/issues/71#issuecomment-403071677)
+- [@CodeCutterUK](https://github.com/CodeCutterUK) for [react-leaflet v3 support](https://github.com/yuzhva/react-leaflet-markercluster/pull/124)
+
 # Contributing
 
 All sources are placed in the `./src` folder:
@@ -196,9 +219,17 @@ UMD builds are available on [unpkg](https://unpkg.com/):
 <script src="https://unpkg.com/react-leaflet-markercluster/src/react-leaflet-markercluster.js"></script>
 
 <!-- unpkg, production styles (minified) -->
-<script src="https://unpkg.com/react-leaflet-markercluster/dist/styles.min.css"></script>
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="https://unpkg.com/react-leaflet-markercluster/dist/styles.min.css"
+/>
 <!-- unpkg, development styles -->
-<script src="https://unpkg.com/react-leaflet-markercluster/src/styles.scss"></script>
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="https://unpkg.com/react-leaflet-markercluster/src/styles.scss"
+/>
 ```
 
 # License
