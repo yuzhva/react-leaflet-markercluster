@@ -41,16 +41,20 @@ import MarkerClusterGroup from 'react-leaflet-markercluster';
 - [Getting started](#getting-started)
 - [API](#api)
 - [How to run DEV env](#how-to-run-dev-env)
+- [Contributors ✨](#contributors-)
 - [Contributing](#contributing)
+- [License](#license)
 
 # Getting started
 
 **1.** Install package:
 
 ```bash
-yarn add react-leaflet-markercluster # yarn
+yarn add react-leaflet-markercluster@next # yarn
 npm install react-leaflet-markercluster # npm
 ```
+
+**NOTE:** the `@next` is required for **react-leaflet v3** support. If you are still using react-leaflet v3, add dependency as `react-leaflet-markercluster@^2.x.x`
 
 The `react-leaflet-markercluster` requires `leaflet.markercluster` as [`peerDependency`](https://docs.npmjs.com/files/package.json#peerdependencies)
 
@@ -179,6 +183,19 @@ npm run dev # npm
 http://localhost:8080/
 ```
 
+# Contributors ✨
+
+Thanks goes to these wonderful people:
+<a href="https://github.com/yuzhva/react-leaflet-markercluster/graphs/contributors">
+  <img src="https://contributors-img.web.app/image?repo=yuzhva/react-leaflet-markercluster" />
+</a>
+Avatars rendered by [contributors-img](https://contributors-img.web.app).
+
+**Special thanks to:**
+
+- [@webcarrot](https://github.com/webcarrot) for [react-leaflet v2 support](https://github.com/yuzhva/react-leaflet-markercluster/issues/71#issuecomment-403071677)
+- [@CodeCutterUK](https://github.com/CodeCutterUK) for [react-leaflet v3 support](https://github.com/yuzhva/react-leaflet-markercluster/pull/124)
+
 # Contributing
 
 All sources are placed in the `./src` folder:
@@ -202,9 +219,17 @@ UMD builds are available on [unpkg](https://unpkg.com/):
 <script src="https://unpkg.com/react-leaflet-markercluster/src/react-leaflet-markercluster.js"></script>
 
 <!-- unpkg, production styles (minified) -->
-<link rel="stylesheet" type="text/css" href="https://unpkg.com/react-leaflet-markercluster/dist/styles.min.css" />
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="https://unpkg.com/react-leaflet-markercluster/dist/styles.min.css"
+/>
 <!-- unpkg, development styles -->
-<link rel="stylesheet" type="text/css" href="https://unpkg.com/react-leaflet-markercluster/src/styles.scss" />
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="https://unpkg.com/react-leaflet-markercluster/src/styles.scss"
+/>
 ```
 
 # License
