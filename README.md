@@ -232,6 +232,33 @@ UMD builds are available on [unpkg](https://unpkg.com/):
 />
 ```
 
+# Troubleshooting
+
+You can face performance issues if component which holds markercluster needs to re-render. In this case re-rendering process means reinitializing whole markercluster with all its elements. It can take several seconds with +5k markers. In this case it's better idea to wrap markercluster elements in React's [useMemo](https://reactjs.org/docs/hooks-reference.html#usememo).
+
+```javascript
+import * as React from "react";
+import { Marker } from "react-leaflet";
+import MarkerClusterGroup from 'react-leaflet-markercluster';
+import 'react-leaflet-markercluster/dist/styles.min.css';
+
+function ClusterContainer({ markers }) {
+  const markerComponents = React.useMemo(() => {
+    return markers.map((marker) => {
+      return (
+        <Marker position={{ lat: marker.latitude, lng: marker.longitude }} />
+      );
+    });
+  }, [markers]);
+
+  return (
+    <>
+      <MarkerClusterGroup>{markerComponents}</MarkerClusterGroup>
+    </>
+  );
+}
+```
+
 # License
 
 MIT License, see [LICENSE](https://github.com/YUzhva/react-leaflet-markercluster/blob/master/LICENSE) file.
