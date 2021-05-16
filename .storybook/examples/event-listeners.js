@@ -22,7 +22,7 @@ const EventListeners = () => (
     />
 
     <MarkerClusterGroup
-      onClusterClick={cluster =>
+      onClick={cluster =>
         logAction('cluster-click', cluster, cluster.layer.getAllChildMarkers())
       }
     >
