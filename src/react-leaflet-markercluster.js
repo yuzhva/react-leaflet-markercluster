@@ -28,7 +28,21 @@ const MarkerClusterGroup = createPathComponent(
       instance: markerClusterGroup,
       context: { ...ctx, layerContainer: markerClusterGroup },
     };
-  }
+  },
+  (instance, props, prevProps) => {
+    const keys = Object.keys(props);
+    let updated = false;
+    keys.forEach((key) => {
+      if (key !== 'children' && props[key] !== prevProps[key]) {
+        // eslint-disable-next-line no-param-reassign
+        instance.options[key] = props[key];
+        updated = true;
+      }
+    });
+    if (updated) {
+      instance.refreshClusters();
+    }
+  },
 );
 
 export default MarkerClusterGroup;
