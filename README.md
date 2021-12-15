@@ -34,7 +34,7 @@ import MarkerClusterGroup from 'react-leaflet-markercluster';
 > **Note: Before getting started, please see these useful guides:**
 >
 > - [Leaflet Quick Start Guide](http://leafletjs.com/examples/quick-start/).
-> - [react-leaflet Installation](https://react-leaflet.js.org/docs/en/installation.html).
+> - [react-leaflet Installation](https://react-leaflet.js.org/docs/start-installation/).
 
 # Table of Contents
 
