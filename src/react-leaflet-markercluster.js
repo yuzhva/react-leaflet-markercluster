@@ -20,7 +20,7 @@ const MarkerClusterGroup = createPathComponent(
 
     // Initializing event listeners
     Object.entries(clusterEvents).forEach(([eventAsProp, callback]) => {
-      const clusterEvent = `cluster${eventAsProp.substring(2).toLowerCase()}`;
+      const clusterEvent = eventAsProp.substring(2).toLowerCase();
       markerClusterGroup.on(clusterEvent, callback);
     });
 
