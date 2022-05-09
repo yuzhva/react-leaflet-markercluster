@@ -1,6 +1,6 @@
 {
   "name": "react-leaflet-markercluster",
-  "version": "3.0.0-rc1",
+  "version": "4.0.0-rc1",
   "description": "React wrapper of Leaflet.markercluster for react-laeflet",
   "main": "dist/index.js",
   "repository": "git@github.com:YUzhva/react-leaflet-markercluster.git",
@@ -48,19 +48,14 @@
     "terser": "^4.6.10"
   },
   "dependencies": {
-    "@react-leaflet/core": "^1.0.2",
-    "leaflet": "^1.6.0",
-    "leaflet.markercluster": "^1.4.1",
-    "react-leaflet": "^3.0.0"
+    "@react-leaflet/core": "^2.0.0",
+    "leaflet": "^1.8.0",
+    "leaflet.markercluster": "^1.5.3",
+    "react-leaflet": "^4.0.0"
   },
   "peerDependencies": {
-    "leaflet": "^1.6.0",
-    "leaflet.markercluster": "^1.4.1",
-    "react-leaflet": "^3.0.0"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "yarn lint"
-    }
+    "leaflet": "^1.8.0",
+    "leaflet.markercluster": "^1.5.3",
+    "react-leaflet": "^4.0.0"
   }
 }
