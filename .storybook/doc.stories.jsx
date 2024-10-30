@@ -5,6 +5,7 @@ import {
   MarkerOptions,
   MarkerPopup,
   MarkerTooltip,
+  RegionExample,
 } from "./examples";
 
 export default {
@@ -39,4 +40,9 @@ export const MarkerPopupStory = {
 export const MarkerTooltipStory = {
   render: MarkerTooltip,
   name: "Marker tooltip",
+};
+
+export const RegionExampleStory = {
+  render: RegionExample,
+  name: "Region example",
 };
