@@ -208,3 +208,4 @@ function createMarkerCluster(_ref, context) {
 }
 var MarkerCluster = (0, _core.createPathComponent)(createMarkerCluster);
 var _default = (exports.default = MarkerCluster);
+
