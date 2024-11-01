@@ -1,7 +1,7 @@
 {
   "name": "react-leaflet-markercluster",
-  "version": "4.0.0-rc1",
-  "description": "React wrapper of Leaflet.markercluster for react-laeflet",
+  "version": "4.1.0",
+  "description": "React wrapper of Leaflet.markercluster for react-leaflet",
   "main": "dist/index.js",
   "repository": "git@github.com:YUzhva/react-leaflet-markercluster.git",
   "keywords": [
@@ -13,6 +13,23 @@
     "cluster"
   ],
   "author": "Yevhen Uzhva <yevhen.uzhva@gmail.com>",
+  "contributors": [
+    {
+      "name": "Charles Dalmeida Richardson",
+      "email": "charlesrichardsonusa@gmail.com",
+      "url": "https://github.com/charlieforward9"
+    },
+    {
+      "name": "Lucas Hänke de Cansino",
+      "email": "lucas.cansino@mail.de",
+      "url": "https://github.com/l4b4r4b4b4"
+    },
+    {
+      "name": "Eric Chang",
+      "email": "eric61213@gmail.com",
+      "url": "https://github.com/changey"
+    }
+  ],
   "license": "MIT",
   "private": false,
   "scripts": {
