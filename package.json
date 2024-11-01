@@ -2,8 +2,17 @@
   "name": "react-leaflet-markercluster",
   "version": "4.1.1",
   "description": "React wrapper of Leaflet.markercluster for react-leaflet",
-  "main": "dist/index.js",
   "repository": "git@github.com:YUzhva/react-leaflet-markercluster.git",
+  "type": "module",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "exports": {
+    ".": {
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js"
+    },
+    "./styles": "./dist/styles.min.css"
+  },
   "keywords": [
     "react",
     "leaflet",
@@ -35,7 +44,9 @@
   "scripts": {
     "dev": "storybook dev -p 6006",
     "lint": "eslint --ext .js ./ --ignore-pattern '/dist/'",
-    "build:code": "babel ./src -d ./dist && terser ./dist/react-leaflet-markercluster.js -o ./dist/index.js && rm ./dist/react-leaflet-markercluster.js",
+    "build:cjs": "cross-env BABEL_ENV=cjs babel ./src -o ./dist/cjs/index.js && terser ./dist/cjs/index.js -o ./dist/cjs/index.min.js",
+    "build:esm": "cross-env BABEL_ENV=esm babel ./src -o ./dist/esm/index.js && terser ./dist/esm/index.js -o ./dist/esm/index.min.js",
+    "build:code": "npm run build:cjs && npm run build:esm",
     "build:styles": "sass ./src/styles.scss ./dist/styles.min.css --style=compressed --no-source-map --load-path=node_modules",
     "build:source": "npm run build:code && npm run build:styles",
     "build:gh-pages": "storybook build",
@@ -61,6 +72,7 @@
     "@storybook/react": "^8.4.0",
     "@storybook/react-webpack5": "^8.4.0",
     "@storybook/test": "^8.4.0",
+    "cross-env": "^7.0.3",
     "css-loader": "^7.1.2",
     "eslint": "^9.13.0",
     "eslint-config-prettier": "^9.1.0",
