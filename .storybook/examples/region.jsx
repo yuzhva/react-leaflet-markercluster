@@ -10,13 +10,12 @@ function randomCoords() {
   return [160 * Math.random() - 80, 360 * Math.random() - 180];
 }
 
-// Extend L.Polygon to include a clustering-compatible getLatLng method
-// Credits to https://github.com/Leaflet/Leaflet.markercluster/issues/612#issuecomment-242929562
 const ClusterableRegion = createPathComponent(function createClusterableRegion(
   { coordinates, color = "blue", fillOpacity = 0.3, onClick },
   ctx,
 ) {
   // Define a clusterable region with a getLatLng method for clustering compatibility
+  // Credits to https://github.com/Leaflet/Leaflet.markercluster/issues/612#issuecomment-242929562
   const ClusterableRegion = Polygon.extend({
     initialize: function (latlngs, options) {
       Polygon.prototype.initialize.call(this, latlngs, options);
