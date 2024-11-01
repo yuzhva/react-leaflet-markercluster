@@ -1,0 +1,11 @@
+# folders
+.github
+.husky
+.storybook
+
+# files
+.codeclimate.yml
+.commitlintrc.json
+babel.config.js
+eslint.config.mjs
+preview.png
