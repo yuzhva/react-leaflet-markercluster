@@ -13,6 +13,7 @@ const babelConfig = {
         },
       },
     ],
+    '@babel/preset-react',
   ],
 };
 

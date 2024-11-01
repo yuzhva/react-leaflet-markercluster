@@ -1,2 +1,2 @@
-@import 'node_modules/leaflet.markercluster/dist/MarkerCluster.Default';
-@import 'node_modules/leaflet.markercluster/dist/MarkerCluster';
+@forward 'leaflet.markercluster/dist/MarkerCluster.Default';
+@forward 'leaflet.markercluster/dist/MarkerCluster';

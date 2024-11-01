@@ -1,7 +1,6 @@
-import { MapLayer, withLeaflet } from 'react-leaflet';
+import { createPathComponent } from '@react-leaflet/core';
 import L from 'leaflet';
-
-require('leaflet.markercluster');
+import 'leaflet.markercluster';
 
 L.MarkerClusterGroup.include({
   _flushLayerBuffer() {
@@ -21,32 +20,32 @@ L.MarkerClusterGroup.addInitHook(function() {
   this._layerBuffer = [];
 });
 
-class MarkerClusterGroup extends MapLayer {
-  createLeafletElement({ children, leaflet: { map }, ...props }) {
-    const clusterProps = {};
-    const clusterEvents = {};
+function createMarkerCluster({ children: _c, ...props }, context) {
+  const clusterProps = {};
+  const clusterEvents = {};
+  
+  // Splitting props and events to different objects
+  Object.entries(props).forEach(([propName, prop]) =>
+    propName.startsWith('on')
+      ? (clusterEvents[propName] = prop)
+      : (clusterProps[propName] = prop)
+  );
+  const instance = new L.MarkerClusterGroup(clusterProps);
 
-    // Splitting props and events to different objects
-    Object.entries(props).forEach(
-      ([propName, prop]) => propName.startsWith('on')
-        ? clusterEvents[propName] = prop
-        : clusterProps[propName] = prop
-    );
-
-    // Creating markerClusterGroup Leaflet element
-    const markerClusterGroup = new L.markerClusterGroup(clusterProps);
-    this.contextValue = { layerContainer: markerClusterGroup, map };
-
-    // Initializing event listeners
-    Object.entries(clusterEvents).forEach(
-      ([eventAsProp, callback]) => {
-        const clusterEvent = `cluster${eventAsProp.substring(2).toLowerCase()}`;
-        markerClusterGroup.on(clusterEvent, callback);
-      },
-    );
-
-    return markerClusterGroup;
-  }
+  // Initializing event listeners
+  Object.entries(clusterEvents).forEach(([eventAsProp, callback]) => {
+    const clusterEvent = `cluster${eventAsProp.substring(2).toLowerCase()}`;
+    instance.on(clusterEvent, callback);
+  });
+  return {
+    instance,
+    context: {
+      ...context,
+      layerContainer: instance,
+    },
+  };
 }
 
-export default withLeaflet(MarkerClusterGroup);
+const MarkerCluster = createPathComponent(createMarkerCluster);
+
+export default MarkerCluster;

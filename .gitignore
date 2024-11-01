@@ -8,3 +8,4 @@
 /coverage
 
 /storybook-static
+*storybook.log
