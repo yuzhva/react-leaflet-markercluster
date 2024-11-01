@@ -1,9 +1,12 @@
+// eslint-disable-next-line no-undef
+const isESM = process.env.BABEL_ENV === "esm";
+
 const babelConfig = {
   presets: [
     [
       "@babel/preset-env",
       {
-        modules: false,
+        modules: isESM ? false : "commonjs",
         targets: {
           node: "current",
           chrome: "60",
