@@ -176,6 +176,21 @@ function _objectWithoutPropertiesLoose(r, e) {
     }
   return t;
 }
+_leaflet.default.MarkerClusterGroup.include({
+  _flushLayerBuffer: function _flushLayerBuffer() {
+    this.addLayers(this._layerBuffer);
+    this._layerBuffer = [];
+  },
+  addLayer: function addLayer(layer) {
+    if (this._layerBuffer.length === 0) {
+      setTimeout(this._flushLayerBuffer.bind(this), 50);
+    }
+    this._layerBuffer.push(layer);
+  },
+});
+_leaflet.default.MarkerClusterGroup.addInitHook(function () {
+  this._layerBuffer = [];
+});
 function createMarkerCluster(_ref, context) {
   var _c = _ref.children,
     props = _objectWithoutProperties(_ref, _excluded);

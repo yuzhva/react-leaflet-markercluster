@@ -1,4 +1,4 @@
-import { Meta, Story, Preview } from '@storybook/addon-docs/blocks';
+import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
 
 import {
   BasicExample,
@@ -7,7 +7,8 @@ import {
   MarkerOptions,
   MarkerPopup,
   MarkerTooltip,
-} from './examples';
+  RegionExample,
+} from "./examples";
 
 <Meta title="React Leaflet MarkerCluster" />
 
@@ -16,8 +17,8 @@ import {
 Just grab your markers inside `<MarkerClusterGroup />` component, right after `<TileLayer />`:
 
 ```javascript
-import { MapContainer, TileLayer, Marker } from 'react-leaflet';
-import MarkerClusterGroup from 'react-leaflet-markercluster';
+import { MapContainer, TileLayer, Marker } from "react-leaflet";
+import MarkerClusterGroup from "react-leaflet-markercluster";
 
 <MapContainer
   className="markercluster-map"
@@ -45,7 +46,7 @@ If you would like to pass some props to the Marker, please use [react-leaflet Ma
   <Story name="Basic example">{BasicExample}</Story>
 </Preview>
 
-[GitHub source code](https://github.com/YUzhva/react-leaflet-markercluster/blob/master/.storybook/examples/basic.js)
+[GitHub source code](https://github.com/YUzhva/react-leaflet-markercluster/blob/master/.storybook/examples/basic.jsx)
 
 ---
 
@@ -54,8 +55,8 @@ If you would like to pass some props to the Marker, please use [react-leaflet Ma
 Just pass event handler into appropriate component, like:
 
 ```javascript
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import MarkerClusterGroup from 'react-leaflet-markercluster';
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import MarkerClusterGroup from "react-leaflet-markercluster";
 
 <MapContainer
   className="markercluster-map"
@@ -69,20 +70,20 @@ import MarkerClusterGroup from 'react-leaflet-markercluster';
   />
 
   <MarkerClusterGroup
-    onClusterClick={cluster =>
-      console.warn('cluster-click', cluster, cluster.layer.getAllChildMarkers())
+    onClusterClick={(cluster) =>
+      console.warn("cluster-click", cluster, cluster.layer.getAllChildMarkers())
     }
   >
     <Marker
       position={[49.8397, 24.0297]}
-      onClick={marker =>
-        console.warn('marker-click', marker, marker.target.getLatLng())
+      onClick={(marker) =>
+        console.warn("marker-click", marker, marker.target.getLatLng())
       }
     />
     <Marker
       position={[52.2297, 21.0122]}
-      onClick={marker =>
-        console.warn('marker-click', marker, marker.target.getLatLng())
+      onClick={(marker) =>
+        console.warn("marker-click", marker, marker.target.getLatLng())
       }
     />
 
@@ -90,7 +91,7 @@ import MarkerClusterGroup from 'react-leaflet-markercluster';
       <Popup
         minWidth={200}
         closeButton={false}
-        onClose={popup => console.warn('popup-close', popup)}
+        onClose={(popup) => console.warn("popup-close", popup)}
       >
         <div>
           <b>Hello world!</b>
@@ -106,7 +107,7 @@ import MarkerClusterGroup from 'react-leaflet-markercluster';
   <Story name="Event listeners">{EventListeners}</Story>
 </Preview>
 
-[GitHub source code](https://github.com/YUzhva/react-leaflet-markercluster/blob/master/.storybook/examples/event-listeners.js)
+[GitHub source code](https://github.com/YUzhva/react-leaflet-markercluster/blob/master/.storybook/examples/event-listeners.jsx)
 
 ---
 
@@ -181,7 +182,7 @@ If you would like to pass some props to the Cluster, please check [List of all L
   <Story name="Cluster custom icon">{MarkerClusterOptions}</Story>
 </Preview>
 
-[GitHub source code](https://github.com/YUzhva/react-leaflet-markercluster/blob/master/.storybook/examples/marker-cluster-options.js)
+[GitHub source code](https://github.com/YUzhva/react-leaflet-markercluster/blob/master/.storybook/examples/marker-cluster-options.jsx)
 
 ---
 
@@ -191,11 +192,11 @@ Base on: [react-leaflet example](https://github.com/PaulLeCam/react-leaflet/blob
 For setting Marker options, please use [react-leaflet Marker API](https://react-leaflet.js.org/docs/en/components.html#marker)
 
 ```javascript
-import L from 'leaflet';
-import { MapContainer, TileLayer, Marker } from 'react-leaflet';
-import MarkerClusterGroup from 'react-leaflet-markercluster';
+import L from "leaflet";
+import { MapContainer, TileLayer, Marker } from "react-leaflet";
+import MarkerClusterGroup from "react-leaflet-markercluster";
 
-import redFilledMarker from './icons/red-filled-marker.svg';
+import redFilledMarker from "./icons/red-filled-marker.svg";
 
 // Create marker icon according to the official leaflet documentation
 const redMarker = L.icon({
@@ -240,7 +241,7 @@ If you would like to pass some props to the Cluster, please check [List of all L
   <Story name="Marker icon and title">{MarkerOptions}</Story>
 </Preview>
 
-[GitHub source code](https://github.com/YUzhva/react-leaflet-markercluster/blob/master/.storybook/examples/marker-options.js)
+[GitHub source code](https://github.com/YUzhva/react-leaflet-markercluster/blob/master/.storybook/examples/marker-options.jsx)
 
 ---
 
@@ -251,11 +252,11 @@ Create Popup for Marker as easy, as to cluster all markers. <br />
 Just pass **react-leaflet Popup** component to the **Marker** as a child: <br />
 
 ```javascript
-import L from 'leaflet';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import MarkerClusterGroup from 'react-leaflet-markercluster';
+import L from "leaflet";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import MarkerClusterGroup from "react-leaflet-markercluster";
 
-import redFilledMarker from './icons/red-filled-marker.svg';
+import redFilledMarker from "./icons/red-filled-marker.svg";
 
 // Create marker icon according to the official leaflet documentation
 const redMarker = L.icon({
@@ -309,7 +310,7 @@ If you would like to pass some props to the Cluster, please check [List of all L
   <Story name="Marker popup">{MarkerPopup}</Story>
 </Preview>
 
-[GitHub source code](https://github.com/YUzhva/react-leaflet-markercluster/blob/master/.storybook/examples/marker-popup.js)
+[GitHub source code](https://github.com/YUzhva/react-leaflet-markercluster/blob/master/.storybook/examples/marker-popup.jsx)
 
 ---
 
@@ -320,8 +321,8 @@ Creation of Tooltip for Marker as easy, as a creation of Popup. <br />
 Just pass **react-leaflet Tooltip** component to the **Marker** as a child: <br />
 
 ```javascript
-import { MapContainer, TileLayer, Marker, Tooltip } from 'react-leaflet';
-import MarkerClusterGroup from 'react-leaflet-markercluster';
+import { MapContainer, TileLayer, Marker, Tooltip } from "react-leaflet";
+import MarkerClusterGroup from "react-leaflet-markercluster";
 
 // Setup Tooltip according to react-leaflet documentation
 // https://react-leaflet.js.org/docs/en/examples.html
@@ -365,4 +366,83 @@ If you would like to pass some props to the Cluster, please check [List of all L
   <Story name="Marker tooltip">{MarkerTooltip}</Story>
 </Preview>
 
-[GitHub source code](https://github.com/YUzhva/react-leaflet-markercluster/blob/master/.storybook/examples/marker-tooltip.js)
+[GitHub source code](https://github.com/YUzhva/react-leaflet-markercluster/blob/master/.storybook/examples/marker-tooltip.jsx)
+
+# Region example
+
+Use a custom `<ClusterableRegion />` inside `<MarkerClusterGroup />` component:
+
+```javascript
+import { MapContainer, TileLayer, Marker } from "react-leaflet";
+import MarkerClusterGroup from "react-leaflet-markercluster";
+
+const ClusterableRegion = createPathComponent(function createClusterableRegion(
+  { coordinates, color = "blue", fillOpacity = 0.3, onClick },
+  ctx,
+) {
+  // Define a clusterable region with a getLatLng method for clustering compatibility
+  // Credits to https://github.com/Leaflet/Leaflet.markercluster/issues/612#issuecomment-242929562
+  const ClusterableRegion = Polygon.extend({
+    initialize: function (latlngs, options) {
+      Polygon.prototype.initialize.call(this, latlngs, options);
+      this._latlng = this.getBounds().getCenter();
+    },
+    getLatLng: function () {
+      return this._latlng;
+    },
+    setLatLng: function () {}, // Dummy method to satisfy marker clustering requirements
+  });
+
+  // Instantiate the ClusterablePolygon with provided positions and options
+  const region = new ClusterableRegion(coordinates, {
+    color,
+    fillOpacity,
+    onclick: onClick,
+  });
+
+  return {
+    instance: region,
+    context: {
+      ...ctx,
+      overlayContainer: region,
+    },
+  };
+});
+
+<MapContainer
+  className="markercluster-map"
+  center={MAP_CENTER_COORDINATES}
+  zoom={MAP_ZOOM}
+  maxZoom={MAP_MAX_ZOOM}
+>
+  <TileLayer
+    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+    attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+  />
+
+  <MarkerClusterGroup animate={true}>
+    {Array.from({ length: 42069 }, (_, i) => {
+      const centerCoords = randomCoords();
+      return (
+        <ClusterableRegion
+          key={i}
+          coordinates={[
+            centerCoords,
+            [centerCoords[0] - Math.random(), centerCoords[1] - Math.random()],
+            [centerCoords[0] - Math.random(), centerCoords[1] + Math.random()],
+            [centerCoords[0] + Math.random(), centerCoords[1] + Math.random()],
+          ]}
+        />
+      );
+    })}
+  </MarkerClusterGroup>
+</MapContainer>;
+```
+
+<Preview>
+  <Story name="Region example">{RegionExample}</Story>
+</Preview>
+
+[GitHub source code](https://github.com/YUzhva/react-leaflet-markercluster/blob/master/.storybook/examples/region.jsx)
+
+---
