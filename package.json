@@ -6,10 +6,12 @@
   "type": "module",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "import": "./dist/esm/index.js",
-      "require": "./dist/cjs/index.js"
+      "require": "./dist/cjs/index.js",
+      "types": "./dist/index.d.ts"
     },
     "./styles": "./dist/styles.min.css"
   },
@@ -46,7 +48,7 @@
     "lint": "eslint --ext .js ./ --ignore-pattern '/dist/'",
     "build:cjs": "cross-env BABEL_ENV=cjs babel ./src -o ./dist/cjs/index.js",
     "build:esm": "cross-env BABEL_ENV=esm babel ./src -o ./dist/esm/index.js",
-    "build:code": "npm run build:cjs && npm run build:esm",
+    "build:code": "npm run build:cjs && npm run build:esm && cp ./index.d.ts ./dist/index.d.ts",
     "build:styles": "sass ./src/styles.scss ./dist/styles.min.css --style=compressed --no-source-map --load-path=node_modules",
     "build:source": "npm run build:code && npm run build:styles",
     "build:gh-pages": "storybook build",
