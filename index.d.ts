@@ -183,3 +183,5 @@ declare module "react-leaflet-markercluster" {
     children?: React.ReactNode | null;
   }
 }
+declare const MarkerClusterGroup: ComponentType<MarkerClusterGroupProps>;
+export default MarkerClusterGroup;
