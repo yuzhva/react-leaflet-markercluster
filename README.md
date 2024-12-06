@@ -15,11 +15,11 @@ for [react-leaflet](https://github.com/PaulLeCam/react-leaflet)
 
 # Description
 
-If you are faced with an issue with markers overlapping during map zooming, or they are
+If you are faced with an issue with markers or polygons overlapping during map zooming, or they are
 overlapping because they are close to each other - you probably need to group them. <br />
 That is what you can do with **react-leaflet-markercluster**.
 
-Just grab your markers inside `<MarkerClusterGroup />` component, right after `<TileLayer />`:
+Just grab your markers or [ClusterableRegions](https://github.com/yuzhva/react-leaflet-markercluster/blob/645bcad7b98e0ecf598c99543373aeeb9c8b301f/.storybook/examples/region.jsx#L13-L45) inside `<MarkerClusterGroup />` component, right after `<TileLayer />`:
 
 ```javascript
 import MarkerClusterGroup from "react-leaflet-markercluster";
@@ -54,8 +54,6 @@ yarn add react-leaflet-markercluster@next # yarn
 npm install react-leaflet-markercluster # npm
 ```
 
-**NOTE:** the `@next` is required for **react-leaflet v3** support. If you are still using react-leaflet v3, add dependency as `react-leaflet-markercluster@^2.x.x`
-
 The `react-leaflet-markercluster` requires `leaflet.markercluster` as [`peerDependency`](https://docs.npmjs.com/files/package.json#peerdependencies)
 
 (Leaflet and react-leaflet also should be installed)
@@ -88,7 +86,7 @@ Or include CSS styles directly to the head of HTML file:
 
 <link
   rel="stylesheet"
-  href="https://unpkg.com/react-leaflet-markercluster/dist/styles.min.css"
+  href="https://unpkg.com/react-leaflet-markercluster/styles"
 />
 ```
 
@@ -230,7 +228,7 @@ UMD builds are available on [unpkg](https://unpkg.com/):
 <link
   rel="stylesheet"
   type="text/css"
-  href="https://unpkg.com/react-leaflet-markercluster/dist/styles.min.css"
+  href="https://unpkg.com/react-leaflet-markercluster/styles"
 />
 <!-- unpkg, development styles -->
 <link
