@@ -1,4 +1,3 @@
-"use strict";
 function _typeof(o) {
   "@babel/helpers - typeof";
   return (
@@ -18,15 +17,7 @@ function _typeof(o) {
     _typeof(o)
   );
 }
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.default = void 0;
-var _core = require("@react-leaflet/core");
-var _leaflet = _interopRequireDefault(require("leaflet"));
-require("leaflet.markercluster");
 var _excluded = ["children"];
-function _interopRequireDefault(e) {
-  return e && e.__esModule ? e : { default: e };
-}
 function ownKeys(e, r) {
   var t = Object.keys(e);
   if (Object.getOwnPropertySymbols) {
@@ -176,7 +167,10 @@ function _objectWithoutPropertiesLoose(r, e) {
     }
   return t;
 }
-_leaflet.default.MarkerClusterGroup.include({
+import { createPathComponent } from "@react-leaflet/core";
+import L from "leaflet";
+import "leaflet.markercluster";
+L.MarkerClusterGroup.include({
   _flushLayerBuffer: function _flushLayerBuffer() {
     this.addLayers(this._layerBuffer);
     this._layerBuffer = [];
@@ -188,7 +182,7 @@ _leaflet.default.MarkerClusterGroup.include({
     this._layerBuffer.push(layer);
   },
 });
-_leaflet.default.MarkerClusterGroup.addInitHook(function () {
+L.MarkerClusterGroup.addInitHook(function () {
   this._layerBuffer = [];
 });
 function createMarkerCluster(_ref, context) {
@@ -196,6 +190,8 @@ function createMarkerCluster(_ref, context) {
     props = _objectWithoutProperties(_ref, _excluded);
   var clusterProps = {};
   var clusterEvents = {};
+
+  // Splitting props and events to different objects
   Object.entries(props).forEach(function (_ref2) {
     var _ref3 = _slicedToArray(_ref2, 2),
       propName = _ref3[0],
@@ -204,7 +200,9 @@ function createMarkerCluster(_ref, context) {
       ? (clusterEvents[propName] = prop)
       : (clusterProps[propName] = prop);
   });
-  var instance = new _leaflet.default.MarkerClusterGroup(clusterProps);
+  var instance = new L.MarkerClusterGroup(clusterProps);
+
+  // Initializing event listeners
   Object.entries(clusterEvents).forEach(function (_ref4) {
     var _ref5 = _slicedToArray(_ref4, 2),
       eventAsProp = _ref5[0],
@@ -217,9 +215,11 @@ function createMarkerCluster(_ref, context) {
     context: _objectSpread(
       _objectSpread({}, context),
       {},
-      { layerContainer: instance },
+      {
+        layerContainer: instance,
+      },
     ),
   };
 }
-var MarkerCluster = (0, _core.createPathComponent)(createMarkerCluster);
-var _default = (exports.default = MarkerCluster);
+var MarkerCluster = createPathComponent(createMarkerCluster);
+export default MarkerCluster;

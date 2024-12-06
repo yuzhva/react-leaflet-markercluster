@@ -1,7 +1,7 @@
 import React from "react";
 import { Polygon } from "leaflet";
 import { createPathComponent } from "@react-leaflet/core";
-import { MapContainer, TileLayer } from "react-leaflet";
+import { MapContainer, TileLayer, Popup } from "react-leaflet";
 import MarkerClusterGroup from "../../src/react-leaflet-markercluster";
 import { MAP_ZOOM, MAP_MAX_ZOOM, MAP_CENTER_COORDINATES } from "./constants";
 import "./styles.scss";
@@ -11,7 +11,7 @@ function randomCoords() {
 }
 
 const ClusterableRegion = createPathComponent(function createClusterableRegion(
-  { coordinates, color = "blue", fillOpacity = 0.3, onClick },
+  { latlngs, color = "blue", fillOpacity = 0.3, ...props },
   ctx,
 ) {
   // Define a clusterable region with a getLatLng method for clustering compatibility
@@ -28,10 +28,10 @@ const ClusterableRegion = createPathComponent(function createClusterableRegion(
   });
 
   // Instantiate the ClusterablePolygon with provided positions and options
-  const region = new ClusterableRegion(coordinates, {
+  const region = new ClusterableRegion(latlngs, {
     color,
     fillOpacity,
-    onclick: onClick,
+    ...props,
   });
 
   return {
@@ -61,7 +61,7 @@ const RegionExample = () => (
         return (
           <ClusterableRegion
             key={i}
-            coordinates={[
+            latlngs={[
               centerCoords,
               [
                 centerCoords[0] - Math.random(),
@@ -76,7 +76,30 @@ const RegionExample = () => (
                 centerCoords[1] + Math.random(),
               ],
             ]}
-          />
+            eventHandlers={{
+              click: () => {
+                console.log(`Region ${i} clicked`);
+              },
+              mouseover: (event) => {
+                event.target.openPopup();
+              },
+              mouseout: (event) => {
+                const target = event.target;
+                if (
+                  target._popup &&
+                  target._popup._container.contains(
+                    //@ts-expect-error - toElement not recognized by TS
+                    event.originalEvent.toElement,
+                  )
+                ) {
+                  return;
+                }
+                target.closePopup();
+              },
+            }}
+          >
+            <Popup>Region {i}</Popup>
+          </ClusterableRegion>
         );
       })}
     </MarkerClusterGroup>
