@@ -22,7 +22,7 @@ That is what you can do with **react-leaflet-markercluster**.
 Just grab your markers inside `<MarkerClusterGroup />` component, right after `<TileLayer />`:
 
 ```javascript
-import MarkerClusterGroup from 'react-leaflet-markercluster';
+import MarkerClusterGroup from "react-leaflet-markercluster";
 
 <MarkerClusterGroup>
   <Marker position={[49.8397, 24.0297]} />
@@ -89,7 +89,7 @@ Or include CSS styles directly to the head of HTML file:
 **3.** Write some simple `react-leaflet` Map:
 
 ```javascript
-import { MapContainer, TileLayer, Marker } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker } from "react-leaflet";
 
 <MapContainer
   className="markercluster-map"
@@ -113,7 +113,7 @@ import { MapContainer, TileLayer, Marker } from 'react-leaflet';
 **4.** Just grab your markers inside `<MarkerClusterGroup />` component, right after `<TileLayer />`:
 
 ```javascript
-import MarkerClusterGroup from 'react-leaflet-markercluster';
+import MarkerClusterGroup from "react-leaflet-markercluster";
 
 <MarkerClusterGroup>
   <Marker position={[49.8397, 24.0297]} />
@@ -187,7 +187,7 @@ http://localhost:8080/
 
 Thanks goes to these wonderful people:
 <a href="https://github.com/yuzhva/react-leaflet-markercluster/graphs/contributors">
-  <img src="https://contributors-img.web.app/image?repo=yuzhva/react-leaflet-markercluster" />
+<img src="https://contributors-img.web.app/image?repo=yuzhva/react-leaflet-markercluster" />
 </a>
 Avatars rendered by [contributors-img](https://contributors-img.web.app).
 
@@ -205,6 +205,8 @@ All sources are placed in the `./src` folder:
 **2.** Edit `react-leaflet-markercluster.js` plugin or `style.scss` style files.
 
 **3.** Commit your changes and open Pull Request.
+
+<!--Release instructions https://github.com/yuzhva/react-leaflet-markercluster/pull/210#issuecomment-2447972111 -->
 
 :beer: **Thank you for contribution** :beer:
 
