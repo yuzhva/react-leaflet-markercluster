@@ -68,11 +68,17 @@ npm install leaflet.markercluster leaflet react-leaflet # npm
 **2.** Import **markercluster** and **leaflet** styles:
 
 ```javascript
-@import '~leaflet/dist/leaflet.css'; // sass
-@import '~react-leaflet-markercluster/dist/styles.min.css'; // sass
+//sass
+@import '~leaflet/dist/leaflet.css'; 
+@import '~react-leaflet-markercluster/styles'; 
 
-require('~leaflet/dist/leaflet.css'); // inside .js file
-require('react-leaflet-markercluster/dist/styles.min.css'); // inside .js file
+//cjs
+require('~leaflet/dist/leaflet.css');
+require('react-leaflet-markercluster/styles'); 
+
+//esm
+import 'leaflet/dist/leaflet.css'
+import 'react-leaflet-markercluster/styles'
 ```
 
 Or include CSS styles directly to the head of HTML file:
@@ -110,7 +116,7 @@ import { MapContainer, TileLayer, Marker } from "react-leaflet";
 
 **NOTE:** Remember to add map styles `.markercluster-map { height: 90vh; }`.
 
-**4.** Just grab your markers inside `<MarkerClusterGroup />` component, right after `<TileLayer />`:
+**4.** Just put your markers or [ClusterableRegions](https://github.com/yuzhva/react-leaflet-markercluster/blob/645bcad7b98e0ecf598c99543373aeeb9c8b301f/.storybook/examples/region.jsx#L13-L45) inside `<MarkerClusterGroup />` component, right after `<TileLayer />`:
 
 ```javascript
 import MarkerClusterGroup from "react-leaflet-markercluster";
