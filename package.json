@@ -45,7 +45,7 @@
   "private": false,
   "scripts": {
     "dev": "storybook dev -p 6006",
-    "lint": "eslint --ext .js ./ --ignore-pattern '/dist/'",
+    "lint": "eslint",
     "build:cjs": "cross-env BABEL_ENV=cjs babel ./src -o ./dist/cjs/index.js",
     "build:esm": "cross-env BABEL_ENV=esm babel ./src -o ./dist/esm/index.js",
     "build:code": "npm run build:cjs && npm run build:esm && cp ./index.d.ts ./dist/index.d.ts",

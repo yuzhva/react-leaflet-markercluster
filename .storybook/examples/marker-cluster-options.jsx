@@ -1,22 +1,21 @@
-import React from 'react';
+import React from "react";
 
-import L from 'leaflet';
-import { MapContainer, TileLayer, Marker } from 'react-leaflet';
+import L from "leaflet";
+import { MapContainer, TileLayer, Marker } from "react-leaflet";
 
-import MarkerClusterGroup from './../../src/react-leaflet-markercluster';
+import MarkerClusterGroup from "./../../src/react-leaflet-markercluster";
 
-import { MAP_ZOOM, MAP_MAX_ZOOM, MAP_CENTER_COORDINATES } from './constants';
+import { MAP_ZOOM, MAP_MAX_ZOOM, MAP_CENTER_COORDINATES } from "./constants";
 
-import './styles.scss';
+import "./styles.scss";
 
 // Function for creating custom icon for cluster group
 // https://github.com/Leaflet/Leaflet.markercluster#customising-the-clustered-markers
 // NOTE: iconCreateFunction is running by leaflet, which is not support ES6 arrow func syntax
-// eslint-disable-next-line
-const createClusterCustomIcon = function(cluster) {
+const createClusterCustomIcon = function (cluster) {
   return L.divIcon({
     html: `<span>${cluster.getChildCount()}</span>`,
-    className: 'marker-cluster-custom',
+    className: "marker-cluster-custom",
     iconSize: L.point(40, 40, true),
   });
 };

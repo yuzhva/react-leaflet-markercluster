@@ -1,13 +1,12 @@
-import React from 'react';
+import React from "react";
 
-import L from 'leaflet';
-import { MapContainer, TileLayer, Marker, Tooltip } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, Tooltip } from "react-leaflet";
 
-import MarkerClusterGroup from './../../src/react-leaflet-markercluster';
+import MarkerClusterGroup from "./../../src/react-leaflet-markercluster";
 
-import { MAP_ZOOM, MAP_MAX_ZOOM, MAP_CENTER_COORDINATES } from './constants';
+import { MAP_ZOOM, MAP_MAX_ZOOM, MAP_CENTER_COORDINATES } from "./constants";
 
-import './styles.scss';
+import "./styles.scss";
 
 // Setup Tooltip according to react-leaflet documentation
 // https://react-leaflet.js.org/docs/en/examples.html

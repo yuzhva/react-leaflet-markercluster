@@ -1,6 +1,6 @@
-import { createPathComponent } from '@react-leaflet/core';
-import L from 'leaflet';
-import 'leaflet.markercluster';
+import { createPathComponent } from "@react-leaflet/core";
+import L from "leaflet";
+import "leaflet.markercluster";
 
 L.MarkerClusterGroup.include({
   _flushLayerBuffer() {
@@ -16,19 +16,20 @@ L.MarkerClusterGroup.include({
   },
 });
 
-L.MarkerClusterGroup.addInitHook(function() {
+L.MarkerClusterGroup.addInitHook(function () {
   this._layerBuffer = [];
 });
 
+// eslint-disable-next-line no-unused-vars
 function createMarkerCluster({ children: _c, ...props }, context) {
   const clusterProps = {};
   const clusterEvents = {};
-  
+
   // Splitting props and events to different objects
   Object.entries(props).forEach(([propName, prop]) =>
-    propName.startsWith('on')
+    propName.startsWith("on")
       ? (clusterEvents[propName] = prop)
-      : (clusterProps[propName] = prop)
+      : (clusterProps[propName] = prop),
   );
   const instance = new L.MarkerClusterGroup(clusterProps);
 
