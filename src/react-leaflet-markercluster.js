@@ -4,6 +4,10 @@ import "leaflet.markercluster";
 
 L.MarkerClusterGroup.include({
   _flushLayerBuffer() {
+    this.eachLayer((layer:any)=>{
+        this.removeLayer(layer);
+    });
+    
     this.addLayers(this._layerBuffer);
     this._layerBuffer = [];
   },
